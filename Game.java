@@ -16,12 +16,12 @@
 public class Game {
     /** The world where the game takes place. */
     private World world;
-    /** The room the player character is currently in. */
-    private Room currentRoom;
     /** The The score the player currently has. */
     private int score;
     /** The turns the player has taken. */
     private int turnCounter;
+    /** The character controlled by the player, */
+    private Player player;
 
     /**
      * Create the game and initialize its internal map.

@@ -31,7 +31,7 @@ public class Game {
         score = 0;
         turnCounter = -1;
         // set the starting room
-        Player player = new Player(world.getRoom("outside"));
+        player = new Player(world.getRoom("outside"));
     }
 
     /**
@@ -163,9 +163,8 @@ public class Game {
      * Prints out the current location and exits.
      */
     private void printLocationInformation() {
-        Room using = player.getRoom();
-        Writer.println(using.getName() + ":");
-        Writer.println("You are " + using.getDescription());
+        Writer.println(player.getRoom().getName() + ":");
+        Writer.println("You are " + player.getRoom().getDescription());
         Writer.print("Exits: ");
         if (player.getRoom().northExit != null) {
             Writer.print("north ");

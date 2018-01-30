@@ -1,3 +1,4 @@
+import java.util.HashMap;
 /**
  * Class Room - a room in an adventure game.
  * 
@@ -19,15 +20,9 @@ public class Room {
     /** The description of this room. */
     private String description;
 
-    /** This room's north exit, null if none exits. */
-    private Door northExit;
-    /** This room's south exit, null if none exits. */
-    private Door southExit;
-    /** This room's east exit, null if none exits. */
-    private Door eastExit;
-    /** This room's west exit, null if none exits. */
-    private Door westExit;
-
+    /** The hashmap for the directions. */ 
+    private HashMap<String, Door> roomMap;
+    
     /**
      * Static initializer.
      */
@@ -75,75 +70,23 @@ public class Room {
     }
 
     /**
-     * Returns the north exit.
+     * Defines an exit from this room.
      * 
-     * @return The north exit.
+     * @param directions The direction of the exit.
+     * @param neighbor The door in the given direction.
      */
-    public Door getNorthExit() {
-        return northExit;
+    public void setExit(String direction, Door neighbor) {
+        roomMap.put(direction, neighbor);
     }
-
+    
     /**
-     * Changes the north exit.
+     * Gets a door in a specified direction if it exists.
      * 
-     * @param northExitValue
+     * @return The door in the specified direction or null if it does not.
      */
-    public void setNorthExit(Door northExitValue) {
-        northExit = northExitValue;
-    }
-
-    /**
-     * Returns the south exit.
-     * 
-     * @return The south exit.
-     */
-    public Door getSouthExit() {
-        return southExit;
-    }
-
-    /**
-     * Changes the south exit.
-     * 
-     * @param southExitValue
-     */
-    public void setSouthExit(Door southExitValue) {
-        southExit = southExitValue;
-    }
-
-    /**
-     * Returns the east exit.
-     * 
-     * @return The east exit.
-     */
-    public Door getEastExit() {
-        return eastExit;
-    }
-
-    /**
-     * Changes the east exit.
-     * 
-     * @param eastExitValue
-     */
-    public void setEastExit(Door eastExitValue) {
-        eastExit = eastExitValue;
-    }
-
-    /**
-     * Returns the west exit.
-     * 
-     * @return The west exit.
-     */
-    public Door getWestExit() {
-        return westExit;
-    }
-
-    /**
-     * Changes the west exit.
-     * 
-     * @param westExitValue
-     */
-    public void setWestExit(Door westExitValue) {
-        westExit = westExitValue;
+    public Door getExit(String direction) {
+        Door answer = roomMap.get(direction);
+        return answer;
     }
 
     /**

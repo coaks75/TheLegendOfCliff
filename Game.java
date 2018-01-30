@@ -1,3 +1,4 @@
+import java.util.HashMap;
 /**
  * This class is the main class of the "Campus of Kings" application.
  * "Campus of Kings" is a very simple, text based adventure game. Users can walk

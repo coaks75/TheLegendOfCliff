@@ -91,7 +91,7 @@ public class Room {
     public void setNorthExit(Door northExitValue) {
         northExit = northExitValue;
     }
-    
+
     /**
      * Returns the south exit.
      * 
@@ -100,7 +100,7 @@ public class Room {
     public Door getSouthExit() {
         return southExit;
     }
-    
+
     /**
      * Changes the south exit.
      * 
@@ -109,7 +109,7 @@ public class Room {
     public void setSouthExit(Door southExitValue) {
         southExit = southExitValue;
     }
-    
+
     /**
      * Returns the east exit.
      * 
@@ -118,7 +118,7 @@ public class Room {
     public Door getEastExit() {
         return eastExit;
     }
-    
+
     /**
      * Changes the east exit.
      * 
@@ -127,7 +127,7 @@ public class Room {
     public void setEastExit(Door eastExitValue) {
         eastExit = eastExitValue;
     }
-    
+
     /**
      * Returns the west exit.
      * 
@@ -136,7 +136,7 @@ public class Room {
     public Door getWestExit() {
         return westExit;
     }
-    
+
     /**
      * Changes the west exit.
      * 
@@ -145,4 +145,32 @@ public class Room {
     public void setWestExit(Door westExitValue) {
         westExit = westExitValue;
     }
+
+    /**
+     * Returns a string description including all the details of a Room.
+     * 
+     * @return A string representing all the details of a Room.
+     */
+    public String toString() {
+        String line1 = String.format("%s :\n", name);
+        String line2 = String.format("%s \n", description);
+        String line3 = ("Exits: ");
+        if (northExit != null) {
+            line3 += ("north ");
+        }
+        if (eastExit != null) {
+            line3 += ("east ");
+        }
+        if (southExit != null) {
+            line3 += ("south ");
+        }
+        if (westExit != null) {
+            line3 += ("west ");
+        }
+        String line4 = ("\n");
+        
+        String answer = String.format("%s%s%s%s", line1, line2, line3, line4);
+        return answer;
+    }
+    
 }

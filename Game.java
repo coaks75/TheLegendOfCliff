@@ -1,4 +1,5 @@
 import java.util.HashMap;
+
 /**
  * This class is the main class of the "Campus of Kings" application.
  * "Campus of Kings" is a very simple, text based adventure game. Users can walk
@@ -104,17 +105,10 @@ public class Game {
 
             // Try to leave current.
             Door doorway = null;
-            if (direction.equals("north")) {
-                doorway = player.getRoom().getWestExit();
-            }
-            if (direction.equals("east")) {
-                doorway = player.getRoom().getEastExit();
-            }
-            if (direction.equals("south")) {
-                doorway = player.getRoom().getSouthExit();
-            }
-            if (direction.equals("west")) {
-                doorway = player.getRoom().getWestExit();
+
+            if (direction.equalsIgnoreCase("north") || direction.equalsIgnoreCase("east") || 
+            direction.equalsIgnoreCase("south") || direction.equalsIgnoreCase("west")){
+                doorway = player.getRoom().getExit(direction);
             }
 
             if (doorway == null) {

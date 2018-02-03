@@ -1,4 +1,5 @@
 import java.util.HashMap;
+
 /**
  * Class Room - a room in an adventure game.
  * 
@@ -40,6 +41,7 @@ public class Room {
     public Room(String name, String description) {
         this.name = name;
         this.description = description;
+        roomMap = new HashMap<String, Door>();
         counter++;
     }
 
@@ -98,22 +100,14 @@ public class Room {
         String line1 = String.format("%s :\n", name);
         String line2 = String.format("%s \n", description);
         String line3 = ("Exits: ");
-        if (northExit != null) {
-            line3 += ("north ");
-        }
-        if (eastExit != null) {
-            line3 += ("east ");
-        }
-        if (southExit != null) {
-            line3 += ("south ");
-        }
-        if (westExit != null) {
-            line3 += ("west ");
+        for (String element: roomMap.keySet()) {
+            if (roomMap.get(element) != null) {
+                line3 += element + ", ";
+            }
         }
         String line4 = ("\n");
         
         String answer = String.format("%s%s%s%s", line1, line2, line3, line4);
         return answer;
     }
-    
 }

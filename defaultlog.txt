@@ -5,18 +5,6 @@ Type 'help' if you need help.
 
 Outside :
 outside in the center of the King's College campus. 
-Exits: north east south west 
-
-> go west
-Campus Center :
-in the center of student activities on campus. 
-Exits: east 
-
-> go north
-There is no door!
-> go east
-Outside :
-outside in the center of the King's College campus. 
-Exits: north east south west 
+Exits: east: south: north: west: 
 
 > 

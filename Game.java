@@ -106,10 +106,7 @@ public class Game {
             // Try to leave current.
             Door doorway = null;
 
-            if (direction.equalsIgnoreCase("north") || direction.equalsIgnoreCase("east") || 
-            direction.equalsIgnoreCase("south") || direction.equalsIgnoreCase("west")){
-                doorway = player.getRoom().getExit(direction);
-            }
+            doorway = player.getRoom().getExit(direction);
 
             if (doorway == null) {
                 Writer.println("There is no door!");

@@ -7,9 +7,4 @@ Outside :
 outside in the center of the King's College campus. 
 Exits: east, south, north, west, 
 
-> go north
-Essef :
-at the other main dormitory on campus. 
-Exits: south, 
-
 > 

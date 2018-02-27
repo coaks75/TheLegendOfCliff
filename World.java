@@ -146,28 +146,35 @@ public class World {
         this.addRoom(theQueensHiddenRoom);
         
         // Creating all the doors between the rooms.
-        this.createDoor(essef, "south", outside);
-        this.createDoor(outside, "north", essef);
-
-        this.createDoor(campusCenter, "east", outside);
-        this.createDoor(outside, "west", campusCenter);
-
-        this.createDoor(outside, "east", holyCross);
-        this.createDoor(holyCross, "west", outside);
-
-        this.createDoor(outside, "south", admin);
-        this.createDoor(admin, "north", outside);
-
-        this.createDoor(admin, "east", lab);
-        this.createDoor(lab, "west", admin);
-
-        this.createDoor(admin, "south", hoggOffice);
-        this.createDoor(hoggOffice, "north", admin);
-
-        this.createDoor(admin, "west", jumpOffice);
-        this.createDoor(jumpOffice, "east", admin);
-
-        this.createDoor(lab, "south", classroom);
-        this.createDoor(classroom, "north", lab);
+        this.createDoor(mainRoom, "west", westernDoor);
+        this.createDoor(westernDoor, "east", mainRoom);
+        
+        this.createDoor(westernDoor, "west", westernHallway);
+        this.createDoor(westernHallway, "east", westernDoor);
+        
+        this.createDoor(westernHallway, "south", diningChamber);
+        this.createDoor(diningChamber, "north", westernHallway);
+        
+        this.createDoor(westernHallway, "north", sleepingChamber);
+        this.createDoor(sleepingChamber, "south", westernHallway);
+        
+        this.createDoor(westernHallway, "west", endOfWesternHallway);
+        this.createDoor(endOfWesternHallway, "east", westernHallway);
+        
+        this.createDoor(endOfWesternHallway, "down", southWestBasement);
+        this.createDoor(southWestBasement, "up", endOfWesternHallway);
+        
+        this.createDoor(southWestBasement, "south", forkedPassage);
+        this.createDoor(forkedPassage, "north", southWestBasement);
+        
+        this.createDoor(forkedPassage, "south-west", endOfForkedPassage);
+        this.createDoor(endOfForkedPassage, "north-east", forkedPassage);
+        
+        this.createDoor(forkedPassage, "south", theHallwaysEnd);
+        this.createDoor(theHallwaysEnd, "north", forkedPassage);
+        
+        this.createDoor(theHallwaysEnd, "south", hiddenPuzzleRoom);
+        this.createDoor(hiddenPuzzleRoom, "north", theHallwaysEnd);
+        
     }
 }

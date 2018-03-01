@@ -59,7 +59,7 @@ public class World {
     private void createDoor(Room from, String direction, Room to) {
         from.setExit(direction, new Door(to));
     }
-
+    
     /**
      * This method creates all of the individual places in this world and all
      * the doors connecting them.
@@ -175,6 +175,91 @@ public class World {
         
         this.createDoor(theHallwaysEnd, "south", hiddenPuzzleRoom);
         this.createDoor(hiddenPuzzleRoom, "north", theHallwaysEnd);
+        
+        this.createDoor(mainRoom, "south", southernDoor);
+        this.createDoor(southernDoor, "north", mainRoom);
+        
+        this.createDoor(southernDoor, "south", southernHallway);
+        this.createDoor(southernHallway, "north", southernDoor);
+        
+        this.createDoor(southernHallway, "west", theQueensArtChamber);
+        this.createDoor(theQueensArtChamber, "east", southernHallway);
+        
+        this.createDoor(southernHallway, "east", theTrappingChamber);
+        this.createDoor(theTrappingChamber, "west", southernHallway);
+        
+        this.createDoor(southernHallway, "south", endOfSouthernHallway);
+        this.createDoor(endOfSouthernHallway, "north", southernHallway);
+        
+        this.createDoor(endOfSouthernHallway, "down", southernBasement);
+        this.createDoor(southernBasement, "up", endOfSouthernHallway);
+        
+        this.createDoor(southernBasement, "west", equipmentRoom);
+        this.createDoor(equipmentRoom, "east", southernBasement);
+        
+        this.createDoor(southernBasement, "east", theOldLibrary);
+        this.createDoor(theOldLibrary, "west", southernBasement);
+        
+        this.createDoor(theOldLibrary, "north", hiddenToolRoom);
+        this.createDoor(hiddenToolRoom, "south", theOldLibrary);
+        
+        this.createDoor(southernBasement, "south", southernBasementBend);
+        this.createDoor(southernBasementBend, "north", southernBasement);
+        
+        this.createDoor(southernBasementBend, "west", endOfSouthernBasement);
+        this.createDoor(endOfSouthernBasement, "east", southernBasementBend);
+        
+        this.createDoor(endOfSouthernBasement, "west", hiddenPuzzleRoom);
+        this.createDoor(hiddenPuzzleRoom, "east", endOfSouthernBasement);
+        
+        this.createDoor(mainRoom, "east", easternDoor);
+        this.createDoor(easternDoor, "west", mainRoom);
+        
+        this.createDoor(easternDoor, "east", easternHallway);
+        this.createDoor(easternHallway, "west", easternDoor);
+        
+        this.createDoor(easternHallway, "south", theJailcell);
+        this.createDoor(theJailcell, "north", easternHallway);
+        
+        this.createDoor(easternHallway, "east", endOfEasternHallway);
+        this.createDoor(endOfSouthernHallway, "west", easternHallway);
+        
+        this.createDoor(endOfEasternHallway, "east", theBreakRoom);
+        this.createDoor(theBreakRoom, "west", endOfEasternHallway);
+        
+        this.createDoor(theBreakRoom, "south", corneliusDen);
+        this.createDoor(corneliusDen, "north", theBreakRoom);
+        
+        this.createDoor(theBreakRoom, "north", sirSeanFortevirsRoom);
+        this.createDoor(sirSeanFortevirsRoom, "south", theBreakRoom);
+        
+        this.createDoor(sirSeanFortevirsRoom, "north", maximusDen);
+        this.createDoor(maximusDen, "south", sirSeanFortevirsRoom);
+        
+        this.createDoor(sirSeanFortevirsRoom, "east", sirSeanFortevirsSecretDoor);
+        this.createDoor(sirSeanFortevirsSecretDoor, "west", sirSeanFortevirsRoom);
+        
+        this.createDoor(sirSeanFortevirsSecretDoor, "east", sirSeanFortevirsSecretRoom);
+        this.createDoor(sirSeanFortevirsSecretRoom, "west", sirSeanFortevirsSecretDoor);
+        
+        this.createDoor(mainRoom, "north", northernDoor);
+        this.createDoor(northernDoor, "south", mainRoom);
+        
+        this.createDoor(northernDoor, "north", northernHallway);
+        this.createDoor(northernHallway, "south", northernDoor);
+        
+        this.createDoor(northernHallway, "west", theRoyalToolRoom);
+        this.createDoor(theRoyalToolRoom, "east", northernHallway);
+        
+        this.createDoor(northernHallway, "east", theRoyalEquipmentRoom);
+        this.createDoor(theRoyalEquipmentRoom, "west", northernHallway);
+        
+        this.createDoor(northernHallway, "north", endOfNorthernHallway);
+        this.createDoor(endOfNorthernHallway, "south", northernHallway);
+        
+        this.createDoor(endOfNorthernHallway, "north", theQueensHiddenRoom);
+        this.createDoor(theQueensHiddenRoom, "south", endOfNorthernHallway);
+        
         
     }
 }

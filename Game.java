@@ -157,7 +157,7 @@ public class Game {
     private void printLocationInformation() {
         Writer.println(player.getRoom().toString());
     }
-
+    
     /**
      * "Quit" was entered. Check the rest of the command to see whether we
      * really quit the game.

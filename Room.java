@@ -24,6 +24,9 @@ public class Room {
     /** The hashmap for the directions. */ 
     private HashMap<String, Door> roomMap;
     
+    /** A field for the points a player can score for entering rooms. */
+    private int points;
+    
     /**
      * Static initializer.
      */
@@ -109,5 +112,23 @@ public class Room {
         
         String answer = String.format("%s%s%s%s", line1, line2, line3, line4);
         return answer;
+    }
+    
+    /**
+     * Mutator for the points field.
+     * 
+     * @param pointsValue The amount of points for a certain room.
+     */
+    public void setPoints(int pointsValue) {
+        points = pointsValue;
+    }
+    
+    /**
+     * Accessor for the points field.
+     * 
+     * @return The number of points.
+     */
+    public int getPoints() {
+        return points;
     }
 }

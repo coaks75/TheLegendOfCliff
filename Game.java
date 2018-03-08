@@ -33,7 +33,7 @@ public class Game {
         score = 0;
         turnCounter = -1;
         // set the starting room
-        player = new Player(world.getRoom("outside"));
+        player = new Player(world.getRoom("Main Room"));
     }
 
     /**
@@ -133,7 +133,8 @@ public class Game {
      */
     private void printHelp() {
         Writer.println("You are lost. You are alone. You wander");
-        Writer.println("around at the university.");
+        Writer.println("around the caverns of the");
+        Writer.println("Castle of Isa.");
         Writer.println();
         Writer.println("Your command words are:");
         Writer.println("   go quit help");
@@ -144,13 +145,13 @@ public class Game {
      */
     private void printWelcome() {
         Writer.println();
-        Writer.println("Welcome to the Campus of Kings!");
-        Writer.println("Campus of Kings is a new, incredibly boring adventure game.");
-        Writer.println("Type 'help' if you need help.");
+        Writer.println("You fall through a trap after taking the gem!");
+        Writer.println("You fall into a dark room, you can't see anyhting it's so dark.");
+        Writer.println("You light the lantern on your backpack.");
         Writer.println();
         printLocationInformation();
     }
-
+    
     /**
      * Prints out the current location and exits.
      */

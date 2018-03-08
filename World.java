@@ -260,6 +260,8 @@ public class World {
         this.createDoor(endOfNorthernHallway, "north", theQueensHiddenRoom);
         this.createDoor(theQueensHiddenRoom, "south", endOfNorthernHallway);
         
-        
+        southernDoor.setPoints(20);
+        easternDoor.setPoints(20);
+        northernDoor.setPoints(20);
     }
 }

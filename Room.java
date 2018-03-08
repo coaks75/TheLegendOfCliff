@@ -20,7 +20,7 @@ public class Room {
     private String name;
     /** The description of this room. */
     private String description;
-
+    
     /** The hashmap for the directions. */ 
     private HashMap<String, Door> roomMap;
     
@@ -65,7 +65,7 @@ public class Room {
     public String getDescription() {
         return description;
     }
-
+    
     /**
      * Returns the number of rooms that have been created in the world.
      * @return The number of rooms that have been created in the world.
@@ -129,6 +129,10 @@ public class Room {
      * @return The number of points.
      */
     public int getPoints() {
-        return points;
+        int answer = points;
+        
+        points = 0;
+        
+        return answer;
     }
 }

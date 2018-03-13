@@ -222,7 +222,7 @@ public class World {
         this.createDoor(theJailcell, "north", easternHallway);
         
         this.createDoor(easternHallway, "east", endOfEasternHallway);
-        this.createDoor(endOfSouthernHallway, "west", easternHallway);
+        this.createDoor(endOfEasternHallway, "west", easternHallway);
         
         this.createDoor(endOfEasternHallway, "east", theBreakRoom);
         this.createDoor(theBreakRoom, "west", endOfEasternHallway);

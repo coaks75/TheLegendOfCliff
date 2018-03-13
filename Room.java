@@ -11,6 +11,7 @@ import java.util.HashMap;
  * For each direction, the room stores a reference to an instance of door.
  * 
  * @author Maria Jump
+ * @author Chris Coakley
  * @version 2015.02.01
  */
 public class Room {

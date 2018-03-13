@@ -70,18 +70,18 @@ public class Game {
             Writer.println("I don't know what you mean...");
         } else {
 
-            String commandWord = command.getCommandWord();
+            CommandEnum commandWord = command.getCommandWord();
             switch (commandWord) {
-                case "help":
+                case HELP:
                     printHelp();
                     break;
-                case "go":
+                case GO:
                     goRoom(command);
                     break;
-                case "quit":
+                case QUIT:
                     wantToQuit = quit(command);
                     break;
-                case "look":
+                case LOOK:
                     look();
                     break;
                 default:

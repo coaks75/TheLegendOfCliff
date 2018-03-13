@@ -9,6 +9,7 @@ import java.util.HashMap;
  * This world class creates the world where the game takes place.
  * 
  * @author Maria Jump
+ * @author Chris Coakley
  * @version 2015.02.01
  */
 public class World {
@@ -260,8 +261,8 @@ public class World {
         this.createDoor(endOfNorthernHallway, "north", theQueensHiddenRoom);
         this.createDoor(theQueensHiddenRoom, "south", endOfNorthernHallway);
         
-        southernDoor.setPoints(20);
-        easternDoor.setPoints(20);
-        northernDoor.setPoints(20);
+        southernHallway.setPoints(20);
+        easternHallway.setPoints(20);
+        northernHallway.setPoints(20);
     }
 }

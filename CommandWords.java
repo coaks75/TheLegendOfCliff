@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 /**
  * This class is part of the "Campus of Kings" application. "Campus of Kings" is a
  * very simple, text based adventure game.
@@ -6,19 +8,22 @@
  * used to recognize commands as they are typed in.
  * 
  * @author Maria Jump
+ * @author Chris Coakley
  * @version 2015.02.01
  */
 
 public class CommandWords {
     /** A constant array that holds all valid command words. */
-    private static String[] validCommands;
+    private static HashMap<String, CommandEnum> validCommands;
 
     /**
      * Static block to initialize the fields of CommandWords.
      */
     static {
-        String[] tempCommands = {"go", "quit", "help", "look" }; 
-        validCommands = tempCommands;
+        validCommands = new HashMap<String, CommandEnum>();
+        for (CommandEnum element : CommandEnum.values()) {
+            validCommands.put(element.getText(), element);
+        }
     }
 
     /**
@@ -29,13 +34,16 @@ public class CommandWords {
      */
     public static boolean isCommand(String aString) {
         boolean valid = false;
-        int index = 0;
-        while (!valid && index < validCommands.length) {
-            if (validCommands[index].equals(aString)) {
-                valid = true;
+        boolean done = false;
+        while (!valid && !done) {
+            for (String element : validCommands.keySet()) {
+                if (element.equalsIgnoreCase(aString)) {
+                    valid = true;
+                }
             }
-            index++;
+            done = true;
         }
+        
         // if we get here, the string was not found in the commands
         return valid;
     }
@@ -49,6 +57,25 @@ public class CommandWords {
      */
     public static String getCommandString() {
         String answer = "look go quit help";
+        return answer;
+    }
+    
+    /**
+     * Converts a String into a CommandEnum object.
+     * 
+     * @param theString the String containing the command word.
+     * @return The CommandEnum object representing the command, or null if 
+     *      the command does not exist.
+     */
+    public static CommandEnum getCommand(String theString) {
+        CommandEnum answer = null;
+        
+        for (String element : validCommands.keySet()) {
+            if (element.equalsIgnoreCase(theString)) {
+                answer = validCommands.get(element);
+            }
+        }
+        
         return answer;
     }
 }

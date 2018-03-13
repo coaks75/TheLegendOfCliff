@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 /**
  * This class is part of the "Campus of Kings" application. "Campus of Kings" is a
  * very simple, text based adventure game.
@@ -16,23 +15,24 @@ import java.util.Scanner;
  * a command object that is marked as an unknown command.
  * 
  * @author Maria Jump
+ * @author Chris Coakley
  * @version 2017.12.18
  */
 public class Reader {
-	/** The source of command input. */
-	private static Scanner reader;
+    /** The source of command input. */
+    private static Scanner reader;
     
-	/**
-	 * Create a parser to read from the terminal window.
-	 */
-	static {
-		reader = new Scanner(System.in);
-	}	
+    /**
+     * Create a parser to read from the terminal window.
+     */
+    static {
+        reader = new Scanner(System.in);
+    }   
 
-	/**
-	 * Returns the next command from the user.
-	 * @return The next command from the user.
-	 */
+    /**
+     * Returns the next command from the user.
+     * @return The next command from the user.
+     */
     public static Command getCommand() {
         String inputLine; // will hold the full input line
         String word1 = null;
@@ -42,41 +42,41 @@ public class Reader {
 
         inputLine = reader.nextLine().toLowerCase();
         Writer.printInput(inputLine);
-
+        
         // Find up to two words on the line.
         Scanner tokenizer = new Scanner(inputLine);
         if (tokenizer.hasNext()) {
             word1 = tokenizer.next(); // get first word
             if (tokenizer.hasNext()) {
-            	restOfLine = new ArrayList<String>();
-            	while(tokenizer.hasNext()) {
-            		restOfLine.add(tokenizer.next());
-            	}
+                restOfLine = new ArrayList<String>();
+                while(tokenizer.hasNext()) {
+                    restOfLine.add(tokenizer.next());
+                }
             }
         }
         tokenizer.close();
-
+        
         // Now check whether this word is known. If so, create a command
         // with it. If not, create a "null" command (for unknown command).
         Command result = null;
         if (CommandWords.isCommand(word1)) {
-            result = new Command(word1, restOfLine);
-        } 
+            result = new Command(CommandWords.getCommand(word1), restOfLine);
+        }
         else {
             result = new Command(null, restOfLine);
         }
         return result;
     }
-    
+
     /**
      * Return the response to a question in all lower case.
      *
      * @return The response typed in by the user.
      */
     public static String getResponse() {
-    	return getResponseKeepCase().toLowerCase();
+        return getResponseKeepCase().toLowerCase();
     }
-    
+
     /**
      * Return the response to a question in the case used by the player.
      *

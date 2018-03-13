@@ -10,33 +10,45 @@
  */
 
 public class CommandWords {
-	/** A constant array that holds all valid command words. */
-	private static String[] validCommands;
+    /** A constant array that holds all valid command words. */
+    private static String[] validCommands;
 
-	/**
-	 * Static block to initialize the fields of CommandWords.
-	 */
-	static {
-		String[] tempCommands = {"go", "quit", "help", "look" }; 
-		validCommands = tempCommands;
-	}
+    /**
+     * Static block to initialize the fields of CommandWords.
+     */
+    static {
+        String[] tempCommands = {"go", "quit", "help", "look" }; 
+        validCommands = tempCommands;
+    }
 
-	/**
-	 * Check whether a given String is a valid command word.
-	 * 
-	 * @param aString The string to determine whether it is a valid command.
-	 * @return true if a given string is a valid command, false if it isn't.
-	 */
-	public static boolean isCommand(String aString) {
-		boolean valid = false;
-		int index = 0;
-		while (!valid && index < validCommands.length) {
-			if (validCommands[index].equals(aString)) {
-				valid = true;
-			}
-			index++;
-		}
-		// if we get here, the string was not found in the commands
-		return valid;
-	}
+    /**
+     * Check whether a given String is a valid command word.
+     * 
+     * @param aString The string to determine whether it is a valid command.
+     * @return true if a given string is a valid command, false if it isn't.
+     */
+    public static boolean isCommand(String aString) {
+        boolean valid = false;
+        int index = 0;
+        while (!valid && index < validCommands.length) {
+            if (validCommands[index].equals(aString)) {
+                valid = true;
+            }
+            index++;
+        }
+        // if we get here, the string was not found in the commands
+        return valid;
+    }
+    
+    /**
+     * Returns a list of the available commands, of the form:
+     *      Your command words are:
+     *          look go quit help
+     *      
+     * @return A string containing the list of available commands.
+     */
+    public static String getCommandString() {
+        String answer = "look go quit help";
+        return answer;
+    }
 }

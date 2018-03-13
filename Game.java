@@ -146,7 +146,7 @@ public class Game {
         Writer.println("Castle of Isa.");
         Writer.println();
         Writer.println("Your command words are:");
-        Writer.println("   go quit help look");
+        Writer.println("     " + CommandWords.getCommandString());
     }
 
     /**

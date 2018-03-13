@@ -71,14 +71,22 @@ public class Game {
         } else {
 
             String commandWord = command.getCommandWord();
-            if (commandWord.equals("help")) {
-                printHelp();
-            } else if (commandWord.equals("go")) {
-                goRoom(command);
-            } else if (commandWord.equals("quit")) {
-                wantToQuit = quit(command);
-            } else {
-                Writer.println(commandWord + " is not implemented yet!");
+            switch (commandWord) {
+                case "help":
+                    printHelp();
+                    break;
+                case "go":
+                    goRoom(command);
+                    break;
+                case "quit":
+                    wantToQuit = quit(command);
+                    break;
+                case "look":
+                    look();
+                    break;
+                default:
+                    Writer.println(commandWord + " is not implemented yet!");
+                    break;
             }
         }
         return wantToQuit;
@@ -138,7 +146,7 @@ public class Game {
         Writer.println("Castle of Isa.");
         Writer.println();
         Writer.println("Your command words are:");
-        Writer.println("   go quit help");
+        Writer.println("   go quit help look");
     }
 
     /**
@@ -175,5 +183,12 @@ public class Game {
             wantToQuit = false;
         }
         return wantToQuit;
+    }
+    
+    /**
+     * Prints out the location information.
+     */
+    private void look() {
+        printLocationInformation();
     }
 }

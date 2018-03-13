@@ -5,15 +5,14 @@
  * @author Chris Coakley
  * @version 23 January 2018
  */
-public class Player
-{
+public class Player {
     /** A field for the room that the player is currently in. */
     private Room room;
     
     /**
      * Constructor for the player class.
      * 
-     * @param rooomValue The room the player starts in.
+     * @param roomValue The room the player starts in.
      */
     public Player(Room roomValue) {
         room = roomValue;

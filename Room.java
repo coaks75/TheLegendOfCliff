@@ -77,7 +77,7 @@ public class Room {
     /**
      * Defines an exit from this room.
      * 
-     * @param directions The direction of the exit.
+     * @param direction The direction of the exit.
      * @param neighbor The door in the given direction.
      */
     public void setExit(String direction, Door neighbor) {
@@ -87,6 +87,7 @@ public class Room {
     /**
      * Gets a door in a specified direction if it exists.
      * 
+     * @param direction The direction we are looking for a door in.
      * @return The door in the specified direction or null if it does not.
      */
     public Door getExit(String direction) {
@@ -103,7 +104,7 @@ public class Room {
         String line1 = String.format("%s :\n", name);
         String line2 = String.format("%s \n", description);
         String line3 = ("Exits: ");
-        for (String element: roomMap.keySet()) {
+        for (String element : roomMap.keySet()) {
             if (roomMap.get(element) != null) {
                 line3 += element + ", ";
             }

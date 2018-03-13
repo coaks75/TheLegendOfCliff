@@ -1,4 +1,3 @@
-import java.util.HashMap;
 
 /**
  * This class is the main class of the "Campus of Kings" application.
@@ -22,7 +21,7 @@ public class Game {
     private int score;
     /** The turns the player has taken. */
     private int turnCounter;
-    /** The character controlled by the player, */
+    /** The character controlled by the player. */
     private Player player;
 
     /**

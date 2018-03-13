@@ -112,11 +112,13 @@ public class Game {
             } else {
                 Room newRoom = doorway.getDestination();
                 player.setRoom(newRoom);
+                int pointsUsing = newRoom.getPoints();
+                score += pointsUsing;
                 printLocationInformation();
             }
         }
     }
-
+    
     /**
      * Print out the closing message for the player.
      */

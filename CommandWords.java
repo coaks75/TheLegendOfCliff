@@ -56,7 +56,7 @@ public class CommandWords {
      * @return A string containing the list of available commands.
      */
     public static String getCommandString() {
-        String answer = "look go quit help";
+        String answer = "look go quit help score turns back status";
         return answer;
     }
     

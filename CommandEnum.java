@@ -9,7 +9,11 @@ public enum CommandEnum {
     LOOK("look"),
     GO("go"),
     HELP("help"),
-    QUIT("quit");
+    QUIT("quit"),
+    SCORE("score"),
+    TURNS("turns"),
+    BACK("back"),
+    STATUS("status");
     
     /** A field for the text that would be entered by the person playing the game.*/
     private final String text;

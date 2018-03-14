@@ -84,9 +84,23 @@ public class Game {
                 case LOOK:
                     look();
                     break;
-                default:
-                    Writer.println(commandWord + " is not implemented yet!");
+                case SCORE:
+                    Writer.println("Your current score is " + score);
                     break;
+                case TURNS:
+                    Writer.println("The current number of turns you've taken are " + turnCounter);
+                    break;
+                case BACK:
+                    player.setRoom(player.getPreviousRoom());
+                    break;
+                case STATUS:
+                    Writer.println("Your current score is " + score);
+                    Writer.println("The current number of turns you've taken are " + turnCounter);
+                    Writer.println(player.getRoom().toString());
+                    break;
+                default:
+                Writer.println(commandWord + " is not implemented yet!");
+                break;
             }
         }
         return wantToQuit;
@@ -126,12 +140,12 @@ public class Game {
             }
         }
     }
-    
+
     /**
      * Print out the closing message for the player.
      */
     private void printGoodbye() {
-        Writer.println("I hope you weren't too bored here on the Campus of Kings!");
+        Writer.println("It looks like your Legend of Cliff will end here.");
         Writer.println("You have earned " + score + " points in " + turnCounter + " turns.");
         Writer.println("Thank you for playing.  Good bye.");
     }
@@ -142,8 +156,8 @@ public class Game {
      */
     private void printHelp() {
         Writer.println("You are lost. You are alone. You wander");
-        Writer.println("around the caverns of the");
-        Writer.println("Castle of Isa.");
+        Writer.println("     around the caverns of the");
+        Writer.println("         Castle of Isa.");
         Writer.println();
         Writer.println("Your command words are:");
         Writer.println("     " + CommandWords.getCommandString());
@@ -160,14 +174,14 @@ public class Game {
         Writer.println();
         printLocationInformation();
     }
-    
+
     /**
      * Prints out the current location and exits.
      */
     private void printLocationInformation() {
         Writer.println(player.getRoom().toString());
     }
-    
+
     /**
      * "Quit" was entered. Check the rest of the command to see whether we
      * really quit the game.
@@ -184,7 +198,7 @@ public class Game {
         }
         return wantToQuit;
     }
-    
+
     /**
      * Prints out the location information.
      */

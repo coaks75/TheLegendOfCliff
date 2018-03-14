@@ -8,6 +8,7 @@
 public class Player {
     /** A field for the room that the player is currently in. */
     private Room room;
+    private Room previousRoom;
     
     /**
      * Constructor for the player class.
@@ -16,6 +17,7 @@ public class Player {
      */
     public Player(Room roomValue) {
         room = roomValue;
+        previousRoom = roomValue;
     }
     
     /**
@@ -28,11 +30,21 @@ public class Player {
     }
     
     /**
+     * Accessor method for the previous room.
+     * 
+     * @return The previous room.
+     */
+    public Room getPreviousRoom() {
+        return previousRoom;
+    }
+    
+    /**
      * Mutator method for the room.
      * 
      * @param roomValue The new room.
      */
     public void setRoom(Room roomValue) {
+        previousRoom = room;
         room = roomValue;
     }
     

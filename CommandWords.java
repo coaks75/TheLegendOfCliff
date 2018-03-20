@@ -25,7 +25,7 @@ public class CommandWords {
             validCommands.put(element.getText(), element);
         }
     }
-
+    
     /**
      * Check whether a given String is a valid command word.
      * 
@@ -34,14 +34,9 @@ public class CommandWords {
      */
     public static boolean isCommand(String aString) {
         boolean valid = false;
-        boolean done = false;
-        while (!valid && !done) {
-            for (String element : validCommands.keySet()) {
-                if (element.equalsIgnoreCase(aString)) {
-                    valid = true;
-                }
-            }
-            done = true;
+        
+        if(validCommands.containsKey(aString)) {
+            valid = true;
         }
         
         // if we get here, the string was not found in the commands
@@ -56,7 +51,10 @@ public class CommandWords {
      * @return A string containing the list of available commands.
      */
     public static String getCommandString() {
-        String answer = "look go quit help score turns back status";
+        String answer = "";
+        for (CommandEnum element: CommandEnum.values()) {
+            answer += element.getText() + "  ";
+        }
         return answer;
     }
     
@@ -68,14 +66,7 @@ public class CommandWords {
      *      the command does not exist.
      */
     public static CommandEnum getCommand(String theString) {
-        CommandEnum answer = null;
-        
-        for (String element : validCommands.keySet()) {
-            if (element.equalsIgnoreCase(theString)) {
-                answer = validCommands.get(element);
-            }
-        }
-        
+        CommandEnum answer = validCommands.get(theString);
         return answer;
     }
 }

@@ -52,7 +52,7 @@ public class CommandWords {
      */
     public static String getCommandString() {
         String answer = "";
-        for (CommandEnum element: CommandEnum.values()) {
+        for (CommandEnum element : CommandEnum.values()) {
             answer += element.getText() + "  ";
         }
         return answer;

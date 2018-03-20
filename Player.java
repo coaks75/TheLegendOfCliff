@@ -8,6 +8,7 @@
 public class Player {
     /** A field for the room that the player is currently in. */
     private Room room;
+    /** A field for the previous room. */
     private Room previousRoom;
     
     /**

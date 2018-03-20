@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * Class Room - a room in an adventure game.
@@ -28,6 +29,9 @@ public class Room {
     /** A field for the points a player can score for entering rooms. */
     private int points;
     
+    /** A field for the items in a room. */
+    private ArrayList<Item> items;
+    
     /**
      * Static initializer.
      */
@@ -47,6 +51,7 @@ public class Room {
         this.description = description;
         roomMap = new HashMap<String, Door>();
         counter++;
+        items = new ArrayList<Item>();
     }
 
     /**
@@ -136,5 +141,45 @@ public class Room {
         points = 0;
         
         return answer;
+    }
+    
+    /**
+     * A method used to add an item.
+     * 
+     * @param itemValue
+     */
+    public void addItem(Item itemValue) {
+        items.add(itemValue);
+    }
+    
+    /**
+     * A mehtod used to get an item from a room
+     * 
+     * @param nameValue The name of the item.
+     * @return The item.
+     */
+    public Item getItem(String nameValue) {
+        Item answer = null;
+        for (Item element : items) {
+            if (element.getName().equalsIgnoreCase(nameValue)) {
+                answer = element;
+            }
+        }
+        return answer;
+    }
+    
+    /**
+     * A method used to remove an item from a room. 
+     * 
+     * @param nameValue The name of the item we are removing.
+     */
+    public void removeItem(String nameValue) {
+        Item removing = null;
+        for (Item element : items) {
+            if (element.getName().equalsIgnoreCase(nameValue)) {
+                removing = element;
+            }
+        }
+        items.remove(removing);
     }
 }

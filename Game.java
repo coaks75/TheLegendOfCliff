@@ -92,6 +92,7 @@ public class Game {
                     break;
                 case BACK:
                     player.setRoom(player.getPreviousRoom());
+                    Writer.println(player.getRoom().toString());
                     break;
                 case STATUS:
                     Writer.println("Your current score is " + score);

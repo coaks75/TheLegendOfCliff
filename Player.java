@@ -47,5 +47,4 @@ public class Player {
         previousRoom = room;
         room = roomValue;
     }
-    
 }

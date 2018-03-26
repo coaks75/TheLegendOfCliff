@@ -115,8 +115,10 @@ public class Room {
                 line3 += element + ", ";
             }
         }
-        String line4 = ("\n");
-        
+        String line4 = ("\nItems:");
+        for (Item element : items) {
+            line4 += element.getName() + ", ";
+        }
         String answer = String.format("%s%s%s%s", line1, line2, line3, line4);
         return answer;
     }
@@ -137,9 +139,7 @@ public class Room {
      */
     public int getPoints() {
         int answer = points;
-        
         points = 0;
-        
         return answer;
     }
     

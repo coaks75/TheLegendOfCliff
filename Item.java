@@ -14,7 +14,7 @@ public class Item {
     private int points;
     /** A field for the weight of an item. */
     private double weight;
-
+    
     /**
      * Constructor for an item.
      * 

@@ -8,28 +8,29 @@
 public enum CommandEnum {
     /**A command to look. */
     LOOK("look"),
-
     /** A command to go in a direction. */
     GO("go"),
-
     /** A command for help. */
     HELP("help"),
-
     /** A command to quit. */
     QUIT("quit"),
-
     /** A command to get the score. */
     SCORE("score"),
-
     /** A command to get the turns. */
     TURNS("turns"),
-
     /** A command to go back. */
     BACK("back"),
-
     /** A command to get your status. */
-    STATUS("status");
-
+    STATUS("status"),
+    /** A command to examine something. */
+    EXAMINE("examine"),
+    /** A command to take an item. */
+    TAKE("take"),
+    /** A command to drop an item. */
+    DROP("drop"),
+    /** A command to get a list of the inventory items. */
+    INVENTORY("inventory");
+    
     /** A field for the text that would be entered by the person playing the game.*/
     private final String text;
 

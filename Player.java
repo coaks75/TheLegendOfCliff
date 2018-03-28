@@ -83,4 +83,19 @@ public class Player {
     public String getName(Item itemValue) {
         return itemValue.getName();
     }
+    
+    /**
+     * A method used to remove an item from the inventory.
+     * 
+     * @param itemValue The item we are looking to remove.
+     */
+    public void removeItem(String itemValue) {
+        Item removing = null;
+        for (Item element : inventory) {
+            if (element.getName().equalsIgnoreCase(itemValue)) {
+                removing = element;
+            }
+        }
+        inventory.remove(removing);
+    }
 }

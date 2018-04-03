@@ -22,16 +22,16 @@ public class Room {
     private String name;
     /** The description of this room. */
     private String description;
-    
+
     /** The hashmap for the directions. */ 
     private HashMap<String, Door> roomMap;
-    
+
     /** A field for the points a player can score for entering rooms. */
     private int points;
-    
+
     /** A field for the items in a room. */
     private ArrayList<Item> items;
-    
+
     /**
      * Static initializer.
      */
@@ -71,7 +71,7 @@ public class Room {
     public String getDescription() {
         return description;
     }
-    
+
     /**
      * Returns the number of rooms that have been created in the world.
      * @return The number of rooms that have been created in the world.
@@ -89,7 +89,7 @@ public class Room {
     public void setExit(String direction, Door neighbor) {
         roomMap.put(direction, neighbor);
     }
-    
+
     /**
      * Gets a door in a specified direction if it exists.
      * 
@@ -122,7 +122,7 @@ public class Room {
         String answer = String.format("%s%s%s%s", line1, line2, line3, line4);
         return answer;
     }
-    
+
     /**
      * Mutator for the points field.
      * 
@@ -131,7 +131,7 @@ public class Room {
     public void setPoints(int pointsValue) {
         points = pointsValue;
     }
-    
+
     /**
      * Accessor for the points field.
      * 
@@ -142,7 +142,7 @@ public class Room {
         points = 0;
         return answer;
     }
-    
+
     /**
      * A method used to add an item.
      * 
@@ -151,7 +151,7 @@ public class Room {
     public void addItem(Item itemValue) {
         items.add(itemValue);
     }
-    
+
     /**
      * A mehtod used to get an item from a room.
      * 
@@ -160,14 +160,19 @@ public class Room {
      */
     public Item getItem(String nameValue) {
         Item answer = null;
-        for (Item element : items) {
-            if (element.getName().equalsIgnoreCase(nameValue)) {
-                answer = element;
+        boolean done = false;
+        while (!done) {
+            for (Item element : items) {
+                if (element.getName().equalsIgnoreCase(nameValue)) {
+                    answer = element;
+                    done = true;
+                }
             }
+            done = true;
         }
         return answer;
     }
-    
+
     /**
      * A method used to remove an item from a room. 
      * 
@@ -175,10 +180,15 @@ public class Room {
      */
     public void removeItem(String nameValue) {
         Item removing = null;
-        for (Item element : items) {
-            if (element.getName().equalsIgnoreCase(nameValue)) {
-                removing = element;
+        boolean done = false;
+        while (!done) {
+            for (Item element : items) {
+                if (element.getName().equalsIgnoreCase(nameValue)) {
+                    removing = element;
+                    done = true;
+                }
             }
+            done = true;
         }
         items.remove(removing);
     }

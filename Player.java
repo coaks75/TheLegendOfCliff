@@ -15,7 +15,7 @@ public class Player {
     private Room previousRoom;
     /** A field for the players inventory. */
     private ArrayList<Item> inventory;
-    
+
     /**
      * Constructor for the player class.
      * 
@@ -26,7 +26,7 @@ public class Player {
         previousRoom = roomValue;
         inventory = new ArrayList<Item>();
     }
-    
+
     /**
      * Accessor method for the room the player is in.
      * 
@@ -35,7 +35,7 @@ public class Player {
     public Room getRoom() {
         return room;
     }
-    
+
     /**
      * Accessor method for the previous room.
      * 
@@ -44,7 +44,7 @@ public class Player {
     public Room getPreviousRoom() {
         return previousRoom;
     }
-    
+
     /**
      * Mutator method for the room.
      * 
@@ -54,7 +54,7 @@ public class Player {
         previousRoom = room;
         room = roomValue;
     }
-    
+
     /**
      * A method for a player to add an item to the inventory.
      * 
@@ -74,7 +74,7 @@ public class Player {
         }
         return answer;
     }
-    
+
     /**
      * A method used to get an item from the inventory by name.
      * 
@@ -84,7 +84,7 @@ public class Player {
     public String getName(Item itemValue) {
         return itemValue.getName();
     }
-    
+
     /**
      * A method used to check if a player has an item.
      * 
@@ -98,7 +98,7 @@ public class Player {
         }
         return answer;
     }
-    
+
     /**
      * A method used to get an item from a string.
      * 
@@ -108,10 +108,15 @@ public class Player {
      */
     public Item getItem(String itemName) {
         Item itemValue = null;
-        for (Item element : inventory) {
-            if (element.getName().equalsIgnoreCase(itemName)) {
-                itemValue = element;
+        boolean done = false;
+        while (!done) {
+            for (Item element : inventory) {
+                if (element.getName().equalsIgnoreCase(itemName)) {
+                    itemValue = element;
+                    done = true;
+                }
             }
+            done = true;
         }
         return itemValue;
     }
@@ -123,14 +128,19 @@ public class Player {
      */
     public void removeItem(String itemValue) {
         Item removing = null;
-        for (Item element : inventory) {
-            if (element.getName().equalsIgnoreCase(itemValue)) {
-                removing = element;
+        boolean done = false;
+        while (!done) {
+            for (Item element : inventory) {
+                if (element.getName().equalsIgnoreCase(itemValue)) {
+                    removing = element;
+                    done = true;
+                }
             }
+            done = true;
         }
         inventory.remove(removing);
     }
-    
+
     /**
      * A method that returns all items in the inventory.
      * 
@@ -143,7 +153,7 @@ public class Player {
         }
         return answer;
     }
-    
+
     /**
      * A method that returns the max carrying weight.
      * 

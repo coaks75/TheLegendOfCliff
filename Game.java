@@ -23,7 +23,7 @@ public class Game {
     private int turnCounter;
     /** The character controlled by the player. */
     private Player player;
-
+    
     /**
      * Create the game and initialize its internal map.
      */

@@ -68,7 +68,7 @@ public class Player {
             currentWeight += element.getWeight();
         }
         double potentialWeight = currentWeight + itemValue.getWeight();
-        if (potentialWeight < MAX_WEIGHT) {
+        if (potentialWeight <= MAX_WEIGHT) {
             inventory.add(itemValue);
             answer = true;
         }

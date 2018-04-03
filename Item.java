@@ -6,6 +6,8 @@
  * @version 20 March 2018
  */
 public class Item {
+    /** A field for the constant of a heavy item. */
+    private static final int HEAVY = 7;
     /** A field for the name of an item. */
     private String name;
     /** A field for the description of an item. */
@@ -93,7 +95,7 @@ public class Item {
      */
     public String toString() {
         String answer = "This " + name + " is " + description;
-        if (weight >= 7) {
+        if (weight >= HEAVY) {
             answer += " and is heavy.";
         }
         else {

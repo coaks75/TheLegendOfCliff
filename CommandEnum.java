@@ -42,7 +42,7 @@ public enum CommandEnum {
     private CommandEnum(String textValue) {
         text = textValue;
     }
-
+    
     /**
      * A method used to get the text that would be entered by the person playing the game.
      * 

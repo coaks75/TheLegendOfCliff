@@ -69,36 +69,42 @@ public class Game {
         if (command.isUnknown()) {
             Writer.println("I don't know what you mean...");
         } else {
-
+            
             CommandEnum commandWord = command.getCommandWord();
             switch (commandWord) {
                 case HELP:
-                    printHelp();
-                    break;
+                printHelp();
+                break;
                 case GO:
-                    goRoom(command);
-                    break;
+                goRoom(command);
+                break;
                 case QUIT:
-                    wantToQuit = quit(command);
-                    break;
+                wantToQuit = quit(command);
+                break;
                 case LOOK:
-                    look();
-                    break;
+                look();
+                break;
                 case SCORE:
-                    Writer.println("Your current score is " + score);
-                    break;
+                Writer.println("Your current score is " + score);
+                break;
                 case TURNS:
-                    Writer.println("The current number of turns you've taken are " + turnCounter);
-                    break;
+                Writer.println("The current number of turns you've taken are " + turnCounter);
+                break;
                 case BACK:
-                    player.setRoom(player.getPreviousRoom());
-                    Writer.println(player.getRoom().toString());
-                    break;
+                player.setRoom(player.getPreviousRoom());
+                Writer.println(player.getRoom().toString());
+                break;
                 case STATUS:
-                    Writer.println("Your current score is " + score);
-                    Writer.println("The current number of turns you've taken are " + turnCounter);
-                    Writer.println(player.getRoom().toString());
-                    break;
+                Writer.println("Your current score is " + score);
+                Writer.println("The current number of turns you've taken are " + turnCounter);
+                Writer.println(player.getRoom().toString());
+                break;
+                case INVENTORY:
+                inventory();
+                break;
+                case DROP:
+                
+                break;
                 default:
                 Writer.println(commandWord + " is not implemented yet!");
                 break;
@@ -124,7 +130,7 @@ public class Game {
             Writer.println("Go where?");
         } else {
             String direction = command.getRestOfLine();
-
+            
             // Try to leave current.
             Door doorway = null;
 
@@ -141,7 +147,7 @@ public class Game {
             }
         }
     }
-
+    
     /**
      * Print out the closing message for the player.
      */
@@ -175,7 +181,7 @@ public class Game {
         Writer.println();
         printLocationInformation();
     }
-
+    
     /**
      * Prints out the current location and exits.
      */
@@ -205,5 +211,71 @@ public class Game {
      */
     private void look() {
         printLocationInformation();
+    }
+
+    /**
+     * A method used to drop an item.
+     * 
+     * @param itemValue The item we wish to drop.
+     */
+    private void drop(Item itemValue) {
+        if (itemValue == null) {
+            Writer.println("Which item?");
+        }
+        else if (player.hasItem(itemValue) == false) {
+            Writer.println("You don't have that!");
+        }
+        else {
+            player.removeItem(itemValue.getName());
+        }
+    }
+
+    /**
+     * A method used to examine an item.
+     * 
+     * @param itemValue The item we wish to examine.
+     */
+    private void examine(Item itemValue) {
+        if (itemValue == null) {
+            Writer.println("Which item?");
+        }
+        else if ((player.hasItem(itemValue) == false) && player.getRoom().getItem(itemValue.getName()) == null) {
+            Writer.println("No such item exists.");
+        }
+        else if ((player.hasItem(itemValue)) || player.getRoom().getItem(itemValue.getName()) != null) {
+            Writer.println(itemValue.toString());
+        }
+    }
+    
+    /**
+     * A method used to list the items in the inventory.
+     */
+    private void inventory() {
+        Writer.println(player.getInventory());
+    }
+
+    /**
+     * A method used to take an item.
+     * 
+     * @param itemValue The item we wish to take.
+     */
+    private void take(Item itemValue) {
+        if (itemValue == null) {
+            Writer.println("Take what?");
+        }
+        else if (player.getRoom().getItem(itemValue.getName()) == null) {
+            Writer.println("No such item.");
+        }
+        else if (itemValue.getWeight() > player.getMaxWeight()) {
+            Writer.println("Item is too heavy to lift.");
+        }
+        else if (player.getRoom().getItem(itemValue.getName()) != null && player.addToInventory(itemValue) == false) {
+            Writer.println("Carrying too much.");
+        }
+        else {
+            player.getRoom().removeItem(itemValue.getName());
+            player.addToInventory(itemValue);
+            Writer.println("You took " + itemValue.getName() + ".");
+        }
     }
 }

@@ -85,6 +85,19 @@ public class Player {
     }
     
     /**
+     * A method used to check if a player has an item.
+     * 
+     * @param itemValue The item we are looking for.
+     */
+    public boolean hasItem(Item itemValue) {
+        boolean answer = false;
+        if (inventory.contains(itemValue)) {
+            answer = true;
+        }
+        return answer;
+    }
+    
+    /**
      * A method used to remove an item from the inventory.
      * 
      * @param itemValue The item we are looking to remove.
@@ -97,5 +110,23 @@ public class Player {
             }
         }
         inventory.remove(removing);
+    }
+    
+    /**
+     * A method that returns all items in the inventory.
+     */
+    public String getInventory() {
+        String answer = "";
+        for (Item element : inventory) {
+            answer += element.getName() + ", ";
+        }
+        return answer;
+    }
+    
+    /**
+     * A method that returns the max carrying weight.
+     */
+    public int getMaxWeight() {
+        return MAX_WEIGHT;
     }
 }

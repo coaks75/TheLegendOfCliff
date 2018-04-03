@@ -23,7 +23,7 @@ public class Game {
     private int turnCounter;
     /** The character controlled by the player. */
     private Player player;
-    
+
     /**
      * Create the game and initialize its internal map.
      */
@@ -69,7 +69,7 @@ public class Game {
         if (command.isUnknown()) {
             Writer.println("I don't know what you mean...");
         } else {
-            
+
             CommandEnum commandWord = command.getCommandWord();
             switch (commandWord) {
                 case HELP:
@@ -103,13 +103,13 @@ public class Game {
                 inventory();
                 break;
                 case DROP:
-                drop(getItem(command));
+                drop(command);
                 break;
                 case EXAMINE:
-                examine(getItem(command));
+                examine(command);
                 break;
                 case TAKE:
-                take(getItem(command));
+                take(command);
                 break;
                 default:
                 Writer.println(commandWord + " is not implemented yet!");
@@ -136,7 +136,7 @@ public class Game {
             Writer.println("Go where?");
         } else {
             String direction = command.getRestOfLine();
-            
+
             // Try to leave current.
             Door doorway = null;
 
@@ -153,7 +153,7 @@ public class Game {
             }
         }
     }
-    
+
     /**
      * Print out the closing message for the player.
      */
@@ -187,7 +187,7 @@ public class Game {
         Writer.println();
         printLocationInformation();
     }
-    
+
     /**
      * Prints out the current location and exits.
      */
@@ -219,58 +219,49 @@ public class Game {
         printLocationInformation();
     }
 
-        /**
-     * A method used to get an item from a command.
-     * 
-     * @param commandValue The command we are given.
-     * @return The item from the command.
-     */
-    private Item getItem(Command commandValue) {
-        Item itemValue = null;
-        String inventory = player.getInventory();
-        if (inventory.contains(commandValue.getRestOfLine()) ) {
-                itemValue = player.getItem(commandValue.getRestOfLine());
-            }
-        else if (player.getRoom().getItem(commandValue.getRestOfLine()) != null){
-                itemValue = player.getRoom().getItem(commandValue.getRestOfLine());
-            }
-        return itemValue;
-    }
-    
     /**
      * A method used to drop an item.
      * 
-     * @param itemValue The item we wish to drop.
+     * @param commandValue The item we wish to drop.
      */
-    private void drop(Item itemValue) {
-        if (itemValue == null) {
+    private void drop(Command commandValue) {
+        String inventory = player.getInventory();
+        if (commandValue.getRestOfLine() == null) {
             Writer.println("Which item?");
         }
-        else if (player.hasItem(itemValue) == false) {
+        else if (inventory.contains(commandValue.getRestOfLine()) == false) {
             Writer.println("You don't have that!");
         }
         else {
-            player.removeItem(itemValue.getName());
+            player.removeItem(commandValue.getRestOfLine());
         }
     }
 
     /**
      * A method used to examine an item.
      * 
-     * @param itemValue The item we wish to examine.
+     * @param commandValue The item we wish to examine.
      */
-    private void examine(Item itemValue) {
-        if (itemValue == null) {
+    private void examine(Command commandValue) {
+        String inventory = player.getInventory();
+        if (commandValue.getRestOfLine() == null) {
             Writer.println("Which item?");
         }
-        else if ((player.hasItem(itemValue) == false) && player.getRoom().getItem(itemValue.getName()) == null) {
+        else if ((inventory.contains(commandValue.getRestOfLine()) == false) && (player.getRoom().getItem(commandValue.getRestOfLine()) == null)) {
             Writer.println("No such item exists.");
         }
-        else if ((player.hasItem(itemValue)) || player.getRoom().getItem(itemValue.getName()) != null) {
+        else{
+            Item itemValue = null;
+            if (inventory.contains(commandValue.getRestOfLine()) ) {
+                itemValue = player.getItem(commandValue.getRestOfLine());
+            }
+            else {
+                itemValue = player.getRoom().getItem(commandValue.getRestOfLine());
+            }
             Writer.println(itemValue.toString());
         }
     }
-    
+
     /**
      * A method used to list the items in the inventory.
      */
@@ -283,12 +274,20 @@ public class Game {
      * 
      * @param itemValue The item we wish to take.
      */
-    private void take(Item itemValue) {
-        if (itemValue == null) {
+    private void take(Command commandValue) {
+        String inventory = player.getInventory();
+        String word = commandValue.getRestOfLine();
+        Item itemValue = null;
+        if (!commandValue.hasSecondWord()) {
             Writer.println("Take what?");
         }
-        else if (player.getRoom().getItem(itemValue.getName()) == null) {
-            Writer.println("No such item.");
+        else {
+            itemValue = player.getItem(commandValue.getRestOfLine());
+        }
+        if (itemValue != null) {
+            if ((inventory.contains(word) == false) && (player.getRoom().getItem(word) == null)) {
+                Writer.println("No such item.");
+            }
         }
         else if (itemValue.getWeight() > player.getMaxWeight()) {
             Writer.println("Item is too heavy to lift.");

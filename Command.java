@@ -111,7 +111,6 @@ public class Command {
         return result;
     }   
     
-
     /**
      * Returns the second word of this command, if it exists.
      * 

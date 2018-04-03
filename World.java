@@ -15,7 +15,7 @@ import java.util.HashMap;
 public class World {
     /** The rooms in the world. */
     private HashMap<String, Room> rooms;
-
+    
     /**
      * Constructor for the world.
      */
@@ -271,6 +271,8 @@ public class World {
      * A method used to create all the items of the world.
      */
     private void createItems() {
+        Item broom = new Item("Broom", "The broom is ratty and old.", 0, 3);
+        rooms.get("main room").addItem(broom);
         Item altar = new Item("Altar", "The Altar is in the center of the room. There's a little divot in the center...", 0, 100);
         rooms.get("main room").addItem(altar);
         

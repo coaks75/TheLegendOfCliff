@@ -7,14 +7,14 @@ import java.util.ArrayList;
  * @version 23 January 2018
  */
 public class Player {
+    /** A field for the players max carry weight. */
+    private static final int MAX_WEIGHT = 25;
     /** A field for the room that the player is currently in. */
     private Room room;
     /** A field for the previous room. */
     private Room previousRoom;
     /** A field for the players inventory. */
     private ArrayList<Item> inventory;
-    /** A field for the players max carry weight. */
-    private static int MAX_WEIGHT = 25;
     
     /**
      * Constructor for the player class.

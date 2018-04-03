@@ -103,7 +103,13 @@ public class Game {
                 inventory();
                 break;
                 case DROP:
-                
+                drop(getItem(command));
+                break;
+                case EXAMINE:
+                examine(getItem(command));
+                break;
+                case TAKE:
+                take(getItem(command));
                 break;
                 default:
                 Writer.println(commandWord + " is not implemented yet!");
@@ -213,6 +219,24 @@ public class Game {
         printLocationInformation();
     }
 
+        /**
+     * A method used to get an item from a command.
+     * 
+     * @param commandValue The command we are given.
+     * @return The item from the command.
+     */
+    private Item getItem(Command commandValue) {
+        Item itemValue = null;
+        String inventory = player.getInventory();
+        if (inventory.contains(commandValue.getRestOfLine()) ) {
+                itemValue = player.getItem(commandValue.getRestOfLine());
+            }
+        else if (player.getRoom().getItem(commandValue.getRestOfLine()) != null){
+                itemValue = player.getRoom().getItem(commandValue.getRestOfLine());
+            }
+        return itemValue;
+    }
+    
     /**
      * A method used to drop an item.
      * 
@@ -275,7 +299,7 @@ public class Game {
         else {
             player.getRoom().removeItem(itemValue.getName());
             player.addToInventory(itemValue);
-            Writer.println("You took " + itemValue.getName() + ".");
+            Writer.println("You took the " + itemValue.getName() + ".");
         }
     }
 }

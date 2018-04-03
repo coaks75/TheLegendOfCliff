@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import java.util.ArrayList;
 
 /**
  * This class represents the entire world that makes up the "Campus of Kings"

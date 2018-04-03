@@ -146,14 +146,14 @@ public class Room {
     /**
      * A method used to add an item.
      * 
-     * @param itemValue
+     * @param itemValue The item we are adding.
      */
     public void addItem(Item itemValue) {
         items.add(itemValue);
     }
     
     /**
-     * A mehtod used to get an item from a room
+     * A mehtod used to get an item from a room.
      * 
      * @param nameValue The name of the item.
      * @return The item.

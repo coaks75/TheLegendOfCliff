@@ -14,7 +14,7 @@ public class Player {
     /** A field for the players inventory. */
     private ArrayList<Item> inventory;
     /** A field for the players max carry weight. */
-    private static final int MAX_WEIGHT = 25;
+    private static int MAX_WEIGHT = 25;
     
     /**
      * Constructor for the player class.
@@ -24,6 +24,7 @@ public class Player {
     public Player(Room roomValue) {
         room = roomValue;
         previousRoom = roomValue;
+        inventory = new ArrayList<Item>();
     }
     
     /**
@@ -88,6 +89,7 @@ public class Player {
      * A method used to check if a player has an item.
      * 
      * @param itemValue The item we are looking for.
+     * @return If the player has the item or not.
      */
     public boolean hasItem(Item itemValue) {
         boolean answer = false;
@@ -95,6 +97,23 @@ public class Player {
             answer = true;
         }
         return answer;
+    }
+    
+    /**
+     * A method used to get an item from a string.
+     * 
+     * @param itemName The name of the item.
+     * @return The item we are looking for
+     *          or null if the item is not in the inventory.
+     */
+    public Item getItem(String itemName) {
+        Item itemValue = null;
+        for (Item element : inventory) {
+            if (element.getName().equalsIgnoreCase(itemName)) {
+                itemValue = element;
+            }
+        }
+        return itemValue;
     }
     
     /**
@@ -114,6 +133,8 @@ public class Player {
     
     /**
      * A method that returns all items in the inventory.
+     * 
+     * @return A string of all items in the inventory.
      */
     public String getInventory() {
         String answer = "";
@@ -125,6 +146,8 @@ public class Player {
     
     /**
      * A method that returns the max carrying weight.
+     * 
+     * @return The max weight.
      */
     public int getMaxWeight() {
         return MAX_WEIGHT;

@@ -53,7 +53,7 @@ public class Item {
     /**
      * Accessor method for the name of an item.
      * 
-     * @reurn The name of an item.
+     * @return The name of an item.
      */
     public String getName() {
         return name;

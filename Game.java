@@ -226,7 +226,7 @@ public class Game {
      */
     private void drop(Command commandValue) {
         String inventory = player.getInventory();
-        if (commandValue.getRestOfLine() == null) {
+        if (commandValue.hasSecondWord() == false) {
             Writer.println("Which item?");
         }
         else if (inventory.contains(commandValue.getRestOfLine()) == false) {
@@ -244,7 +244,7 @@ public class Game {
      */
     private void examine(Command commandValue) {
         String inventory = player.getInventory();
-        if (commandValue.getRestOfLine() == null) {
+        if (commandValue.hasSecondWord() == false) {
             Writer.println("Which item?");
         }
         else if ((inventory.contains(commandValue.getRestOfLine()) == false) && (player.getRoom().getItem(commandValue.getRestOfLine()) == null)) {
@@ -276,29 +276,34 @@ public class Game {
      */
     private void take(Command commandValue) {
         String inventory = player.getInventory();
-        String word = commandValue.getRestOfLine();
+        String word = null;
         Item itemValue = null;
+        boolean hasWord = false;
         if (!commandValue.hasSecondWord()) {
             Writer.println("Take what?");
         }
         else {
             itemValue = player.getItem(commandValue.getRestOfLine());
+            word = commandValue.getRestOfLine();
+            hasWord = true;
         }
-        if (itemValue != null) {
-            if ((inventory.contains(word) == false) && (player.getRoom().getItem(word) == null)) {
-                Writer.println("No such item.");
+        if (hasWord) {
+            if (itemValue != null) {
+                if ((inventory.contains(word) == false) && (player.getRoom().getItem(word) == null)) {
+                    Writer.println("No such item.");
+                }
             }
-        }
-        else if (itemValue.getWeight() > player.getMaxWeight()) {
-            Writer.println("Item is too heavy to lift.");
-        }
-        else if (player.getRoom().getItem(itemValue.getName()) != null && player.addToInventory(itemValue) == false) {
-            Writer.println("Carrying too much.");
-        }
-        else {
-            player.getRoom().removeItem(itemValue.getName());
-            player.addToInventory(itemValue);
-            Writer.println("You took the " + itemValue.getName() + ".");
+            else if (itemValue.getWeight() > player.getMaxWeight()) {
+                Writer.println("Item is too heavy to lift.");
+            }
+            else if (player.getRoom().getItem(itemValue.getName()) != null && player.addToInventory(itemValue) == false) {
+                Writer.println("Carrying too much.");
+            }
+            else {
+                player.getRoom().removeItem(itemValue.getName());
+                player.addToInventory(itemValue);
+                Writer.println("You took the " + itemValue.getName() + ".");
+            }
         }
     }
 }

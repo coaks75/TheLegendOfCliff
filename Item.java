@@ -94,7 +94,7 @@ public class Item {
      * @return A toString for the item.
      */
     public String toString() {
-        String answer = "This " + name + " is " + description;
+        String answer = description;
         if (weight >= HEAVY) {
             answer += " and is heavy.";
         }

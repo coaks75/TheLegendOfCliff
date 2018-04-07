@@ -229,11 +229,14 @@ public class Game {
         if (commandValue.hasSecondWord() == false) {
             Writer.println("Which item?");
         }
-        else if (inventory.contains(commandValue.getRestOfLine()) == false) {
+        else if (inventory.contains(commandValue.getRestOfLine().toLowerCase()) == false) {
             Writer.println("You don't have that!");
         }
         else {
+            Item itemValue = player.getItem(commandValue.getRestOfLine());
             player.removeItem(commandValue.getRestOfLine());
+            player.getRoom().addItem(itemValue);
+            Writer.println("You dropped the " + itemValue.getName() + ".");
         }
     }
 
@@ -283,15 +286,13 @@ public class Game {
             Writer.println("Take what?");
         }
         else {
-            itemValue = player.getItem(commandValue.getRestOfLine());
+            itemValue = player.getRoom().getItem(commandValue.getRestOfLine());
             word = commandValue.getRestOfLine();
             hasWord = true;
         }
         if (hasWord) {
-            if (itemValue != null) {
-                if ((inventory.contains(word) == false) && (player.getRoom().getItem(word) == null)) {
-                    Writer.println("No such item.");
-                }
+            if ((inventory.contains(word) == false) && (player.getRoom().getItem(word) == null)) {
+                Writer.println("No such item.");
             }
             else if (itemValue.getWeight() > player.getMaxWeight()) {
                 Writer.println("Item is too heavy to lift.");

@@ -149,7 +149,7 @@ public class Player {
     public String getInventory() {
         String answer = "";
         for (Item element : inventory) {
-            answer += element.getName() + ", ";
+            answer += element.getName().toLowerCase() + ", ";
         }
         return answer;
     }

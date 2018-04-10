@@ -9,13 +9,9 @@ Exits: east, south, north, west,
 Items:Broom, Altar, 
 > take broom
 You took the Broom.
-> drop broom
-You dropped the Broom.
-> examine broom
-The broom is ratty and old. and is light.
 > inventory
 broom, 
 > quit
 It looks like your Legend of Cliff will end here.
-You have earned 0 points in 4 turns.
+You have earned 0 points in 2 turns.
 Thank you for playing.  Good bye.

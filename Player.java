@@ -74,7 +74,26 @@ public class Player {
         }
         return answer;
     }
-
+    
+    /**
+     * A method used to check if an item can be added.
+     * 
+     * @param itemValue The item being added.
+     * @return If the item was added or not.
+     */
+    public boolean canAdd(Item itemValue) {
+        boolean answer = false;
+        double currentWeight = 0;
+        for (Item element : inventory) {
+            currentWeight += element.getWeight();
+        }
+        double potentialWeight = currentWeight + itemValue.getWeight();
+        if (potentialWeight <= MAX_WEIGHT) {
+            answer = true;
+        }
+        return answer;
+    }
+    
     /**
      * A method used to get an item from the inventory by name.
      * 

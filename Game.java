@@ -297,7 +297,7 @@ public class Game {
             else if (itemValue.getWeight() > player.getMaxWeight()) {
                 Writer.println("Item is too heavy to lift.");
             }
-            else if (player.getRoom().getItem(itemValue.getName()) != null && player.addToInventory(itemValue) == false) {
+            else if (player.getRoom().getItem(itemValue.getName()) != null && player.canAdd(itemValue) == false) {
                 Writer.println("Carrying too much.");
             }
             else {

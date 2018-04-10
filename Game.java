@@ -291,8 +291,8 @@ public class Game {
             hasWord = true;
         }
         if (hasWord) {
-            if ((inventory.contains(word) == false) && (player.getRoom().getItem(word) == null)) {
-                Writer.println("No such item.");
+            if (player.getRoom().getItem(word) == null) {
+                Writer.println("No such item in the room.");
             }
             else if (itemValue.getWeight() > player.getMaxWeight()) {
                 Writer.println("Item is too heavy to lift.");

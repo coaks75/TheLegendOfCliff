@@ -275,6 +275,8 @@ public class World {
         rooms.get("main room").addItem(broom);
         Item altar = new Item("Altar", "The Altar is in the center of the room. There's a little divot in the center...", 0, 100);
         rooms.get("main room").addItem(altar);
+        Item backpack = new Item("Backpack", "This backpack will be useful to carry items.", 0, 0);
+        rooms.get("main room").addItem(backpack);
         
         Item weakSword = new Item("Sword", "This sword seems heavy but useful.", 0, 8);
         rooms.get("sleeping chamber").addItem(weakSword);
@@ -298,9 +300,13 @@ public class World {
         
         Item cinderBlock = new Item("Cinderblock", "This cinderblock is about a foot tall.", 0, 10);
         rooms.get("end of forked passage").addItem(cinderBlock);
+        rooms.get("sir sean fortevir's room").getExit("east").setLocked(true);
+        rooms.get("sir sean fortevir's room").getExit("east").setKey(cinderBlock);
         
         Item hammer = new Item("Hammer", "This hammer is very dusty, but seems like it was never used.", 0, 3);
         rooms.get("southern door").addItem(hammer);
+        rooms.get("southern door").getExit("south").setLocked(true);
+        rooms.get("southern door").getExit("south").setKey(hammer);
         
         Item cannedFood = new Item("Canned Food", "This canned food doesn't look that good but it should restore some health...", 0, 2);
         rooms.get("the trapping chamber").addItem(cannedFood);
@@ -314,7 +320,68 @@ public class World {
         Item keyTable = new Item("Table", "This table is very sturdy.", 0, 100);
         rooms.get("equipment room").addItem(keyTable);
         
-        // Created items up to the equipment room
+        Item toolChest = new Item("Chest", "This chest is big, heavy, and being held shut by a rope.", 0, 100);
+        rooms.get("hidden tool room").addItem(toolChest);
+        
+        Item pickaxe = new Item("Pickaxe", "This pickaxe looks like it could be useful.", 10, 15);
+        rooms.get("hidden tool room").addItem(pickaxe);
+        rooms.get("the hallways end").getExit("south").setLocked(true);
+        rooms.get("the hallways end").getExit("south").setKey(pickaxe);
+        
+        Item blueKey = new Item("Blue Key", "Thiis blue key has a few divots in it.", 0, 1);
+        rooms.get("hidden tool room").addItem(blueKey);
+        
+        Item superKey = new Item("Super Key", "This is the combinaion of all the keys, in correct order", 0, 3);
+        rooms.get("eastern door").getExit("east").setLocked(true);
+        rooms.get("eastern door").getExit("east").setKey(superKey);
+        
+        Item apology = new Item("Plato's 'Apology'", "This old dusty book looks like its Plato's Apology", 0, 5);
+        rooms.get("end of southern basement").addItem(apology);
+        rooms.get("the old library").getExit("north").setLocked(true);
+        rooms.get("the old library").getExit("north").setKey(apology);
+        
+        Item smallPuzzlePiece = new Item("Small Puzzle Piece", "This looks like a small puzzle piece. About one inch wide.", 0, 1);
+        rooms.get("hidden puzzle room").addItem(smallPuzzlePiece);
+        
+        Item guardArmor = new Item("Sleeping Guard Armor", "This is the armor worn by the sleeping guard. It is a little beat up but it is advanced armor.", 0, 15);
+        rooms.get("the break room").addItem(guardArmor);
+        
+        Item guardHelmet = new Item("Sleeping Guard Helmet", "This is the helmet worn by the sleeping guard. It is in good condition.", 0, 5);
+        rooms.get("the break room").addItem(guardHelmet);
+        
+        Item guardSword = new Item("Sleeping Guard Sword", "This is the sword used by the sleeping guard. It is a little beat up but it is an advanced sword.", 0, 15);
+        rooms.get("the break room").addItem(guardSword);
+        
+        Item dinnerFood = new Item("The Guards Dinner", "This food looks decently appetizing.", 0, 3);
+        rooms.get("sir sean fortevirs room").addItem(dinnerFood);
+        
+        Item necklace = new Item("Necklace", "This is the necklace that was around Maximus's neck", 0, 1);
+        rooms.get("maximus den").addItem(necklace);
+        
+        Item mediumPuzzlePiece = new Item("Medium Puzzle Piece", "This puzzle piece looks medium sized. About 2 inches wide", 0, 1);
+        rooms.get("maximus' den").addItem(mediumPuzzlePiece);
+        
+        Item largePuzzlePiece = new Item("Large Puzzle Piece", "This puzzle piece looks rather large. About 4 inces in diameter.", 0, 1);
+        rooms.get("sir sean fortevir's secret room").addItem(largePuzzlePiece);
+        
+        Item superPuzzlePiece = new Item("Super Puzzle Piece", "This is a combination of the puzzle pieces, in correct order.", 0, 3);
+        rooms.get("northern door").getExit("north").setLocked(true);
+        rooms.get("northern door").getExit("north").setKey(superPuzzlePiece);
+        
+        Item royalArmor = new Item("Royal Armor", "This looks like the armor worn by the Royal Guard.", 0, 15);
+        rooms.get("the royal equipment room").addItem(royalArmor);
+        
+        Item royalHelmet = new Item("Royal Helmet", "This looks like the helmets worn by the Royal Guard.", 0, 5);
+        rooms.get("the royal equipment room").addItem(royalHelmet);
+        
+        Item royalSword = new Item("Royal Sword", "This looks like a sword used by the Royal Guard.", 0, 15);
+        rooms.get("the royal tool room").addItem(royalSword);
+        
+        Item queensChest = new Item("Queen's Chest", "This chest at the foot of Queen Isa's bed.", 0, 100);
+        rooms.get("the queen's hidden room").addItem(queensChest);
+        
+        Item gem = new Item("Valentinian Gem", "This is the fabled Valentinian Gem...", 25, 5);
+        rooms.get("the queen's hidden room").addItem(gem);
         
     }
 }

@@ -134,7 +134,8 @@ public class Game {
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
             Writer.println("Go where?");
-        } else {
+        } 
+        else {
             String direction = command.getRestOfLine();
 
             // Try to leave current.
@@ -144,7 +145,11 @@ public class Game {
 
             if (doorway == null) {
                 Writer.println("There is no door!");
-            } else {
+            }
+            else if (!doorway.isLocked()) {
+                Writer.println("Door is locked");
+            }
+            else {
                 Room newRoom = doorway.getDestination();
                 player.setRoom(newRoom);
                 int pointsUsing = newRoom.getPoints();
@@ -222,7 +227,7 @@ public class Game {
     /**
      * A method used to drop an item.
      * 
-     * @param commandValue The item we wish to drop.
+     * @param commandValue The command to be processed.
      */
     private void drop(Command commandValue) {
         String inventory = player.getInventory();
@@ -243,7 +248,7 @@ public class Game {
     /**
      * A method used to examine an item.
      * 
-     * @param commandValue The item we wish to examine.
+     * @param commandValue The command to be processed.
      */
     private void examine(Command commandValue) {
         String inventory = player.getInventory();
@@ -275,7 +280,7 @@ public class Game {
     /**
      * A method used to take an item.
      * 
-     * @param itemValue The item we wish to take.
+     * @param commandValue The command to be processed.
      */
     private void take(Command commandValue) {
         String inventory = player.getInventory();
@@ -306,5 +311,17 @@ public class Game {
                 Writer.println("You took the " + itemValue.getName() + ".");
             }
         }
+    }
+
+    /**
+     * A method used to lock a door.
+     * 
+     * @param commandValue The command to be processed.
+     */
+    private void lock(Command commandValue) {
+        if (!commandValue.hasSecondWord()) {
+            Writer.println("Lock what?");
+        }
+
     }
 }

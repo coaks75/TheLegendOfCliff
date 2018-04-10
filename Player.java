@@ -63,18 +63,13 @@ public class Player {
      */
     public boolean addToInventory(Item itemValue) {
         boolean answer = false;
-        double currentWeight = 0;
-        for (Item element : inventory) {
-            currentWeight += element.getWeight();
-        }
-        double potentialWeight = currentWeight + itemValue.getWeight();
-        if (potentialWeight <= MAX_WEIGHT) {
-            inventory.add(itemValue);
+        if (this.canAdd(itemValue)) {
             answer = true;
+            inventory.add(itemValue);
         }
         return answer;
     }
-
+    
     /**
      * A method used to check if an item can be added.
      * 

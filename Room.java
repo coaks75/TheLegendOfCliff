@@ -89,7 +89,7 @@ public class Room {
     public void setExit(String direction, Door neighbor) {
         roomMap.put(direction, neighbor);
     }
-
+    
     /**
      * Gets a door in a specified direction if it exists.
      * 

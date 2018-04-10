@@ -161,14 +161,13 @@ public class Room {
     public Item getItem(String nameValue) {
         Item answer = null;
         boolean done = false;
-        while (!done) {
-            for (Item element : items) {
-                if (element.getName().equalsIgnoreCase(nameValue)) {
-                    answer = element;
-                    done = true;
-                }
+        int index = 0;
+        while (index < items.size() && done == false) {
+            if (items.get(index).getName().equalsIgnoreCase(nameValue)) {
+                answer = items.get(index);
+                done = true;
             }
-            done = true;
+            index++;
         }
         return answer;
     }
@@ -181,14 +180,13 @@ public class Room {
     public void removeItem(String nameValue) {
         Item removing = null;
         boolean done = false;
-        while (!done) {
-            for (Item element : items) {
-                if (element.getName().equalsIgnoreCase(nameValue)) {
-                    removing = element;
-                    done = true;
-                }
+        int index = 0;
+        while (index < items.size() && done == false) {
+            if (items.get(index).getName().equalsIgnoreCase(nameValue)) {
+                removing = items.get(index);
+                done = true;
             }
-            done = true;
+            index++;
         }
         items.remove(removing);
     }

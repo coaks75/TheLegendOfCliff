@@ -74,7 +74,7 @@ public class Player {
         }
         return answer;
     }
-    
+
     /**
      * A method used to check if an item can be added.
      * 
@@ -93,7 +93,7 @@ public class Player {
         }
         return answer;
     }
-    
+
     /**
      * A method used to get an item from the inventory by name.
      * 
@@ -128,18 +128,17 @@ public class Player {
     public Item getItem(String itemName) {
         Item itemValue = null;
         boolean done = false;
-        while (!done) {
-            for (Item element : inventory) {
-                if (element.getName().equalsIgnoreCase(itemName)) {
-                    itemValue = element;
-                    done = true;
-                }
+        int index = 0;
+        while (index < inventory.size() && done == false) {
+            if (inventory.get(index).getName().equalsIgnoreCase(itemName)) {
+                itemValue = inventory.get(index);
+                done = true;
             }
-            done = true;
+            index++;
         }
         return itemValue;
     }
-    
+
     /**
      * A method used to remove an item from the inventory.
      * 
@@ -148,14 +147,13 @@ public class Player {
     public void removeItem(String itemValue) {
         Item removing = null;
         boolean done = false;
-        while (!done) {
-            for (Item element : inventory) {
-                if (element.getName().equalsIgnoreCase(itemValue)) {
-                    removing = element;
-                    done = true;
-                }
+        int index = 0;
+        while (index < inventory.size() && done == false) {
+            if (inventory.get(index).getName().equalsIgnoreCase(itemValue)) {
+                removing = inventory.get(index);
+                done = true;
             }
-            done = true;
+            index++;
         }
         inventory.remove(removing);
     }

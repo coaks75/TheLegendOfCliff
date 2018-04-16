@@ -152,7 +152,7 @@ public class Game {
             if (doorway == null) {
                 Writer.println("There is no door!");
             }
-            else if (!doorway.isLocked()) {
+            else if (doorway.isLocked()) {
                 Writer.println("Door is locked");
             }
             else {
@@ -327,6 +327,7 @@ public class Game {
     private void lock(Command commandValue) {
         boolean hasWord = false;
         Door doorValue = null;
+        String keyCommand = null;
         boolean canLock = false;
         String inventory = player.getInventory();
         if (!commandValue.hasSecondWord()) {
@@ -349,13 +350,14 @@ public class Game {
             else if (!doorValue.isLocked()) {
                 Writer.println("With what?");
                 canLock = true;
+                keyCommand = Reader.getResponse();
             }
         }
         if (canLock) {
-            if (!(inventory.contains(commandValue.getRestOfLine()))) {
+            if (!(inventory.contains(keyCommand))) {
                 Writer.println("You do not have that key.");
             }
-            else if ((!doorValue.getKey().getName().equalsIgnoreCase(commandValue.getRestOfLine()))) {
+            else if ((!doorValue.getKey().getName().equalsIgnoreCase(keyCommand))) {
                 Writer.println("Wrong key.");
             }
             else  {
@@ -373,6 +375,7 @@ public class Game {
     private void unlock(Command commandValue) {
         boolean hasWord = false;
         Door doorValue = null;
+        String keyCommand = null;
         boolean canUnlock = false;
         String inventory = player.getInventory();
         if (!commandValue.hasSecondWord()) {
@@ -392,13 +395,14 @@ public class Game {
             else {
                 Writer.println("With what?");
                 canUnlock = true;
+                keyCommand = Reader.getResponse();
             }
         }
         if (canUnlock) {
-            if (!(inventory.contains(commandValue.getRestOfLine()))) {
+            if (!(inventory.contains(keyCommand))) {
                 Writer.println("You don't have that.");
             }
-            else if (!(doorValue.getKey().getName().equalsIgnoreCase(commandValue.getRestOfLine()))) {
+            else if (!(doorValue.getKey().getName().equalsIgnoreCase(keyCommand))) {
                 Writer.println("That key doesn't seem to work on this door...");
             }
             else {

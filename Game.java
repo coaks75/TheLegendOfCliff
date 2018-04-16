@@ -111,6 +111,12 @@ public class Game {
                 case TAKE:
                 take(command);
                 break;
+                case LOCK:
+                lock(command);
+                break;
+                case UNLOCK:
+                unlock(command);
+                break;
                 default:
                 Writer.println(commandWord + " is not implemented yet!");
                 break;
@@ -319,9 +325,86 @@ public class Game {
      * @param commandValue The command to be processed.
      */
     private void lock(Command commandValue) {
+        boolean hasWord = false;
+        Door doorValue = null;
+        boolean canLock = false;
+        String inventory = player.getInventory();
         if (!commandValue.hasSecondWord()) {
             Writer.println("Lock what?");
         }
+        else {
+            hasWord = true;
+            doorValue = player.getRoom().getExit(commandValue.getRestOfLine());
+        }
+        if (hasWord) {
+            if (doorValue == null) {
+                Writer.println("There is no door this direction.");
+            }
+            else if (doorValue.isLocked()) {
+                Writer.println("Door is already locked.");
+            }
+            else if (doorValue.getKey() == null) {
+                Writer.println("Door cannot be locked.");
+            }
+            else if (!doorValue.isLocked()) {
+                Writer.println("With what?");
+                canLock = true;
+            }
+        }
+        if (canLock) {
+            if (!(inventory.contains(commandValue.getRestOfLine()))) {
+                Writer.println("You do not have that key.");
+            }
+            else if ((!doorValue.getKey().getName().equalsIgnoreCase(commandValue.getRestOfLine()))) {
+                Writer.println("Wrong key.");
+            }
+            else  {
+                doorValue.setLocked(true);
+                Writer.println("You locked the door.");
+            }
+        }
+    }
 
+    /**
+     * A method used to unlock a door.
+     * 
+     * @param commandValue The command to be processed.
+     */
+    private void unlock(Command commandValue) {
+        boolean hasWord = false;
+        Door doorValue = null;
+        boolean canUnlock = false;
+        String inventory = player.getInventory();
+        if (!commandValue.hasSecondWord()) {
+            Writer.println("Unlock what?");
+        }
+        else {
+            hasWord = true;
+            doorValue = player.getRoom().getExit(commandValue.getRestOfLine());
+        }
+        if (hasWord) {
+            if (doorValue == null) {
+                Writer.println("There is no door.");
+            }
+            else if (!(doorValue.isLocked())) {
+                Writer.println("Door is not locked.");
+            }
+            else {
+                Writer.println("With what?");
+                canUnlock = true;
+            }
+        }
+        if (canUnlock) {
+            if (!(inventory.contains(commandValue.getRestOfLine()))) {
+                Writer.println("You don't have that.");
+            }
+            else if (!(doorValue.getKey().getName().equalsIgnoreCase(commandValue.getRestOfLine()))) {
+                Writer.println("That key doesn't seem to work on this door...");
+            }
+            else {
+                doorValue.setLocked(false);
+                Writer.println("You have unlocked the door.");
+            }
+        }
     }
 }

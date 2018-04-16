@@ -29,7 +29,11 @@ public enum CommandEnum {
     /** A command to drop an item. */
     DROP("drop"),
     /** A command to get a list of the inventory items. */
-    INVENTORY("inventory");
+    INVENTORY("inventory"),
+    /** A command to lock a door. */
+    LOCK("lock"),
+    /** A command to unlock a door. */
+    UNLOCK("unlock");
     
     /** A field for the text that would be entered by the person playing the game.*/
     private final String text;

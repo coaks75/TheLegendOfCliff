@@ -325,8 +325,8 @@ public class World {
         
         Item pickaxe = new Item("Pickaxe", "This pickaxe looks like it could be useful.", 10, 15);
         rooms.get("hidden tool room").addItem(pickaxe);
-        rooms.get("the hallways end").getExit("south").setLocked(true);
-        rooms.get("the hallways end").getExit("south").setKey(pickaxe);
+        rooms.get("the hallway's end").getExit("south").setLocked(true);
+        rooms.get("the hallway's end").getExit("south").setKey(pickaxe);
         
         Item blueKey = new Item("Blue Key", "Thiis blue key has a few divots in it.", 0, 1);
         rooms.get("hidden tool room").addItem(blueKey);
@@ -353,10 +353,10 @@ public class World {
         rooms.get("the break room").addItem(guardSword);
         
         Item dinnerFood = new Item("The Guards Dinner", "This food looks decently appetizing.", 0, 3);
-        rooms.get("sir sean fortevirs room").addItem(dinnerFood);
+        rooms.get("sir sean fortevir's room").addItem(dinnerFood);
         
         Item necklace = new Item("Necklace", "This is the necklace that was around Maximus's neck", 0, 1);
-        rooms.get("maximus den").addItem(necklace);
+        rooms.get("maximus' den").addItem(necklace);
         
         Item mediumPuzzlePiece = new Item("Medium Puzzle Piece", "This puzzle piece looks medium sized. About 2 inches wide", 0, 1);
         rooms.get("maximus' den").addItem(mediumPuzzlePiece);
@@ -367,6 +367,7 @@ public class World {
         Item superPuzzlePiece = new Item("Super Puzzle Piece", "This is a combination of the puzzle pieces, in correct order.", 0, 3);
         rooms.get("northern door").getExit("north").setLocked(true);
         rooms.get("northern door").getExit("north").setKey(superPuzzlePiece);
+        rooms.get("main room").addItem(superPuzzlePiece);
         
         Item royalArmor = new Item("Royal Armor", "This looks like the armor worn by the Royal Guard.", 0, 15);
         rooms.get("the royal equipment room").addItem(royalArmor);

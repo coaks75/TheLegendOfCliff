@@ -6,18 +6,15 @@ You light the lantern on your backpack.
 Main Room :
 The room is big and open. You don't see much here but an altar in the center, and a door in each cardinal direction. The door to the west pops open from the shock wave of you hitting the ground. 
 Exits: east, south, north, west, 
-Items:Broom, Altar, 
-> take broom
-You took the Broom.
-> look
-Main Room :
-The room is big and open. You don't see much here but an altar in the center, and a door in each cardinal direction. The door to the west pops open from the shock wave of you hitting the ground. 
-Exits: east, south, north, west, 
-Items:Altar, 
-> inventory
-broom, 
-> take broom
-No such item.
+Items:Broom, Altar, Backpack, Super Puzzle Piece, 
+> take super puzzle piece
+You took the Super Puzzle Piece.
+> go north
+Door is locked
+> unlock north
+Door is not locked.
+> go north
+Door is locked
 > quit
 It looks like your Legend of Cliff will end here.
 You have earned 0 points in 4 turns.

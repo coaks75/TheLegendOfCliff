@@ -37,7 +37,7 @@ public class Door {
     public Room getDestination() {
         return destination;
     }
-
+    
     /**
      * A getter for whether this door is locked.
      * @return Whether this door is locked

@@ -17,9 +17,8 @@ public class Container extends Item{
      * @param descriptionValue The description of the container.
      * @param pointsValue The points associated with this container.
      * @param weightValue The weight of the item.
-     * @param maxItemsValue The max amount of items that can be stored in this container.
      */ 
-    public Container(String nameValue, String descriptionValue, int pointsValue, int weightValue, ArrayList<Item> items) {
+    public Container(String nameValue, String descriptionValue, int pointsValue, int weightValue) {
         super(nameValue, descriptionValue, pointsValue,weightValue);
         items = new ArrayList<Item>();
     }

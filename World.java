@@ -275,7 +275,7 @@ public class World {
         rooms.get("main room").addItem(broom);
         Item altar = new Item("Altar", "The Altar is in the center of the room. There's a little divot in the center...", 0, 100);
         rooms.get("main room").addItem(altar);
-        Item backpack = new Item("Backpack", "This backpack will be useful to carry items.", 0, 0);
+        Container backpack = new Container("Backpack", "This backpack will be useful to carry items.", 0, 0);
         rooms.get("main room").addItem(backpack);
         
         Item weakSword = new Item("Sword", "This sword seems heavy but useful.", 0, 8);

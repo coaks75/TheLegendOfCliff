@@ -120,6 +120,9 @@ public class Game {
                 case PACK:
                 pack(command);
                 break;
+                case UNPACK:
+                unpack(command);
+                break;
                 default:
                 Writer.println(commandWord + " is not implemented yet!");
                 break;
@@ -528,12 +531,25 @@ public class Game {
             }
             else {
                 Writer.println("What would you like to unpack from this?");
+                Container using = (Container)unpacking;
+                Writer.println(using.getName() + " contains: \n\t" + using.toString());
                 toUnpackName = Reader.getResponse();
                 isContainer = true;
             }
         }
         if (isContainer) {
-            
+            Container using = (Container)unpacking;
+            if(using.getItem(toUnpackName) == null) {
+                Writer.println("That's odd... That item isn't in the container.");
+            }
+            else if (!(player.canAdd(using.getItem(toUnpackName)))) {
+                Writer.println("Oh boy, you're carrying too much already to hold this.");
+            }
+            else {
+                player.addToInventory(using.getItem(toUnpackName));
+                Writer.println("You unpacked " + using.getItem(toUnpackName).getName() + " from " + using.getName());
+                using.removeItem(toUnpackName);
+            }
         }
     }
 }

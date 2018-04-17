@@ -54,6 +54,26 @@ public class Container extends Item{
     }
     
     /**
+     * A method to check if a container is holding an item.
+     * 
+     * @param name The name of the item we are looking for.
+     * @return If it is in the container.
+     */
+    public Item getItem(String name) {
+        Item answer = null;
+        boolean done = false;
+        int index = 0;
+        while (index < items.size() && done == false) {
+            if (items.get(index).getName().equalsIgnoreCase(name)) {
+                answer = items.get(index);
+                done = true;
+            }
+            index++;
+        }
+        return answer;
+    }
+    
+    /**
      * The to string method of the container class.
      */
     public String toString() {

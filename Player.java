@@ -69,7 +69,7 @@ public class Player {
         }
         return answer;
     }
-    
+
     /**
      * A method used to check if an item can be added.
      * 
@@ -79,10 +79,13 @@ public class Player {
     public boolean canAdd(Item itemValue) {
         boolean answer = false;
         double currentWeight = 0;
+        double potentialWeight = 0;
         for (Item element : inventory) {
             currentWeight += element.getWeight();
         }
-        double potentialWeight = currentWeight + itemValue.getWeight();
+        if (itemValue != null) {
+            potentialWeight = currentWeight + itemValue.getWeight();
+        }
         if (potentialWeight <= MAX_WEIGHT) {
             answer = true;
         }
@@ -133,7 +136,7 @@ public class Player {
         }
         return itemValue;
     }
-    
+
     /**
      * A method used to remove an item from the inventory.
      * 

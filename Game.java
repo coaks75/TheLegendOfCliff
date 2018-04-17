@@ -427,7 +427,7 @@ public class Game {
         String containerUsing = null;
         Item packing = null;
         boolean canPack = false;
-        boolean isContainer = false;
+        boolean exists = false;
         if (!commandValue.hasSecondWord()) {
             Writer.println("Pack what?");
         }
@@ -454,25 +454,25 @@ public class Game {
                 Writer.println("Hmm, it doesn't look like you can see that container around here.");
             }
             else {
-                if (player.getRoom().getItem(itemName) != null) {
-                    packing = player.getRoom().getItem(itemName);
-                    isContainer = true;
+                if (player.getRoom().getItem(containerUsing) != null) {
+                    packing = player.getRoom().getItem(containerUsing);
+                    exists = true;
                 }
-                else if (player.getItem(itemName) != null){
-                    packing = player.getItem(itemName);
-                    isContainer = true;
+                else if (player.getItem(containerUsing) != null){
+                    packing = player.getItem(containerUsing);
+                    exists = true;
                 }
             }
         }
-        if (isContainer) {
-            Container using = (Container)packing;
-            if (!(using instanceof Container)) {
-                Writer.println("That isn't a container.");
+        if (exists) {
+            if (!(packing instanceof Container)) {
+                Writer.println("That isn't a container.\n" + packing.toString());
             }
             else if (!(player.canAdd(player.getRoom().getItem(itemName)))) {
                 Writer.println("You're carrying too much already!");
             }
             else {
+                Container using = (Container)packing;
                 if (player.getRoom().getItem(itemName) != null) {
                     toPack = player.getRoom().getItem(itemName);
                     player.getRoom().removeItem(itemName);
@@ -497,6 +497,9 @@ public class Game {
         String containerName = null;
         Item unpacking = null;
         Item toUnpack = null;
+        String toUnpackName = null;
+        boolean exists = false;
+        boolean isContainer = false;
         if (!commandValue.hasSecondWord()) {
             Writer.println("Unpack what?");
         }
@@ -508,6 +511,29 @@ public class Game {
             if (player.getRoom().getItem(containerName) == null && !(player.getInventory().contains(containerName))) {
                 Writer.println("Hmmm, don't see that here...");
             }
+            else {
+                if (player.getRoom().getItem(containerName) != null) {
+                    unpacking = player.getRoom().getItem(containerName);
+                    exists = true;
+                }
+                else if (player.getItem(containerName) != null){
+                    unpacking = player.getItem(containerName);
+                    exists = true;
+                }
+            }
+        }
+        if (exists) {
+            if (!(unpacking instanceof Container)) {
+                Writer.println("Woah buddy, thats not a container.");
+            }
+            else {
+                Writer.println("What would you like to unpack from this?");
+                toUnpackName = Reader.getResponse();
+                isContainer = true;
+            }
+        }
+        if (isContainer) {
+            
         }
     }
 }

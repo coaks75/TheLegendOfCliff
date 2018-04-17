@@ -14,3 +14,8 @@ You took the Backpack.
 > pack broom
 What would you like to put this in?
 backpack
+You packed Broom
+> quit
+It looks like your Legend of Cliff will end here.
+You have earned 0 points in 3 turns.
+Thank you for playing.  Good bye.

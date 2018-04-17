@@ -36,6 +36,7 @@ public class Container extends Item{
      * A method used to remove an item from a container.
      * 
      * @param name The name of item we are removing from the container.
+     * @return The item we removed.
      */
     public Item removeItem(String name) {
         Item removing = null;

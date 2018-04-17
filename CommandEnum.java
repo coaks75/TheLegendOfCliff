@@ -33,7 +33,11 @@ public enum CommandEnum {
     /** A command to lock a door. */
     LOCK("lock"),
     /** A command to unlock a door. */
-    UNLOCK("unlock");
+    UNLOCK("unlock"),
+    /** A command to pack a container. */
+    PACK("pack"),
+    /** A command to unpack a container. */
+    UNPACK("unpack");
     
     /** A field for the text that would be entered by the person playing the game.*/
     private final String text;

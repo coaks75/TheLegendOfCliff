@@ -45,7 +45,9 @@ public class Container extends Item{
             if (items.get(index).getName().equalsIgnoreCase(name)) {
                 removing = items.get(index);
                 items.remove(removing);
+                done = true;
             }
+            index++;
         }
         return removing;
     }
@@ -60,4 +62,5 @@ public class Container extends Item{
         }
         return answer;
     }
+    
 }

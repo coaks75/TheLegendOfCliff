@@ -133,7 +133,7 @@ public class Player {
         }
         return itemValue;
     }
-
+    
     /**
      * A method used to remove an item from the inventory.
      * 

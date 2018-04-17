@@ -7,48 +7,10 @@ Main Room :
 The room is big and open. You don't see much here but an altar in the center, and a door in each cardinal direction. The door to the west pops open from the shock wave of you hitting the ground. 
 Exits: east, south, north, west, 
 Items:Broom, Altar, Backpack, Super Puzzle Piece, 
-> go north
-Northern Door :
-You look at the door. There seem to be three different sized cut outs on the door. There is nothing on the ground around. 
-Exits: south, north, 
-Items:
-> go north
-Door is locked
-> go south
-Main Room :
-The room is big and open. You don't see much here but an altar in the center, and a door in each cardinal direction. The door to the west pops open from the shock wave of you hitting the ground. 
-Exits: east, south, north, west, 
-Items:Broom, Altar, Backpack, Super Puzzle Piece, 
-> take super puzzle piece
-You took the Super Puzzle Piece.
-> go north
-Northern Door :
-You look at the door. There seem to be three different sized cut outs on the door. There is nothing on the ground around. 
-Exits: south, north, 
-Items:
-> go north
-Door is locked
-> unlock north
-With what?
-super puzzle piece
-You have unlocked the door.
-> go north
-Northern Hallway :
-You walk into the beginning of a long hallway. This hallway has gold walls and a shiny floor. There must be somthing good here... Slightly down the hall there are doors to the east and west. 
-Exits: east, south, north, west, 
-Items:
-> go south
-Northern Door :
-You look at the door. There seem to be three different sized cut outs on the door. There is nothing on the ground around. 
-Exits: south, north, 
-Items:
-> lock north
-With what?
-super puzzle piece
-You locked the door.
-> go north
-Door is locked
-> quit
-It looks like your Legend of Cliff will end here.
-You have earned 20 points in 11 turns.
-Thank you for playing.  Good bye.
+> take broom
+You took the Broom.
+> take backpack
+You took the Backpack.
+> pack broom
+What would you like to put this in?
+backpack

@@ -117,6 +117,9 @@ public class Game {
                 case UNLOCK:
                 unlock(command);
                 break;
+                case PACK:
+                pack(command);
+                break;
                 default:
                 Writer.println(commandWord + " is not implemented yet!");
                 break;
@@ -410,5 +413,86 @@ public class Game {
                 Writer.println("You have unlocked the door.");
             }
         }
+    }
+
+    /**
+     * A helper method used to pack a container.
+     * 
+     * @param commandValue The command to be processed.
+     */
+    private void pack(Command commandValue) {
+        boolean hasWord = false;
+        String itemName = null;
+        Item toPack = null;
+        String containerUsing = null;
+        Item packing = null;
+        boolean canPack = false;
+        boolean isContainer = false;
+        if (!commandValue.hasSecondWord()) {
+            Writer.println("Pack what?");
+        }
+        else {
+            hasWord = true;
+            itemName = commandValue.getRestOfLine();
+            toPack = player.getRoom().getItem(itemName);
+        }
+        if (hasWord) {
+            if (toPack == null && !(player.getInventory().contains(itemName))) {
+                Writer.println("You don't have that.");
+            }
+            else if (player.getRoom().getItem(itemName) != null && toPack.getWeight() > player.getMaxWeight()) {
+                Writer.println(player.getRoom().getItem(itemName).getName() + " is too heavy."); 
+            }
+            else {
+                canPack = true;
+                Writer.println("What would you like to put this in?");
+                containerUsing = Reader.getResponse();
+            }
+        }
+        if (canPack) {
+            if (player.getRoom().getItem(containerUsing) == null && !(player.getInventory().contains(containerUsing))) {
+                Writer.println("Hmm, it doesn't look like you can see that container around here.");
+            }
+            else {
+                if (player.getRoom().getItem(itemName) != null) {
+                    packing = player.getRoom().getItem(itemName);
+                    isContainer = true;
+                }
+                else if (player.getItem(itemName) != null){
+                    packing = player.getItem(itemName);
+                    isContainer = true;
+                }
+            }
+        }
+        if (isContainer) {
+            Container using = (Container)packing;
+            if (!(using instanceof Container)) {
+                Writer.println("That isn't a container.");
+            }
+            else if (!(player.canAdd(player.getRoom().getItem(itemName)))) {
+                Writer.println("You're carrying too much already!");
+            }
+            else {
+                if (player.getRoom().getItem(itemName) != null) {
+                    toPack = player.getRoom().getItem(itemName);
+                    player.getRoom().removeItem(itemName);
+                }
+                else {
+                    toPack = player.getItem(itemName);
+                    player.removeItem(itemName);
+                }
+                using.addItem(toPack);
+                Writer.println("You packed " + toPack.getName());
+            }
+        }
+    }
+
+    /**
+     * A method used to unpack a container.
+     * 
+     * @param commandValue The command to be processed.
+     */
+    private void unpack(Command commandValue) {
+
     }
 }

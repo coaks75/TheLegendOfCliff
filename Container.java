@@ -75,6 +75,7 @@ public class Container extends Item{
     
     /**
      * The to string method of the container class.
+     * @return The string of stuff
      */
     public String toString() {
         String answer = "";

@@ -56,6 +56,8 @@ public class Door {
 
     /**
      * A method to get the key to the door.
+     * 
+     * @return The key
      */
     public Item getKey() {
         return key;

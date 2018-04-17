@@ -493,6 +493,21 @@ public class Game {
      * @param commandValue The command to be processed.
      */
     private void unpack(Command commandValue) {
-
+        boolean hasWord = false;
+        String containerName = null;
+        Item unpacking = null;
+        Item toUnpack = null;
+        if (!commandValue.hasSecondWord()) {
+            Writer.println("Unpack what?");
+        }
+        else {
+            hasWord = true;
+            containerName = commandValue.getRestOfLine();
+        }
+        if (hasWord) {
+            if (player.getRoom().getItem(containerName) == null && !(player.getInventory().contains(containerName))) {
+                Writer.println("Hmmm, don't see that here...");
+            }
+        }
     }
 }

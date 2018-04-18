@@ -52,7 +52,7 @@ public class Container extends Item{
         }
         return removing;
     }
-    
+
     /**
      * A method to check if a container is holding an item.
      * 
@@ -72,17 +72,23 @@ public class Container extends Item{
         }
         return answer;
     }
-    
+
     /**
      * The to string method of the container class.
      * @return The string of stuff
      */
     public String toString() {
-        String answer = "";
-        for (Item element : items) {
-            answer += element.getName() + ", ";
+        String answer = super.toString();
+        answer += "\nContains\n\t";
+        if (items.size() > 0) {
+            for (Item element : items) {
+                answer += element.getName() + ", ";
+            }
+        }
+        else {
+            answer += "Huh, nothings in here.";
         }
         return answer;
     }
-    
+
 }

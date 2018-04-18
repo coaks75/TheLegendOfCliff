@@ -30,6 +30,8 @@ public class Container extends Item{
      */
     public void addItem(Item itemValue) {
         items.add(itemValue);
+        double itemWeight = itemValue.getWeight();
+        this.setWeight(super.getWeight() + itemWeight);
     }
 
     /**

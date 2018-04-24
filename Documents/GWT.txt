@@ -405,7 +405,7 @@ EAT Scenario #4: Specified food is food
 
 EQUIP Scenario #1: no specified item
    GIVEN : 
-    WHEN : "equip item" entered 
+    WHEN : "equip " entered 
     THEN : appropriate message displayed, "equip what?"
 
 EQUIP Scenario #2: specified item to equip is not in the current room or inventory
@@ -439,14 +439,65 @@ EQUIP Scenario #5: the player can equip the item
 
 
 
-HIT Scenario #1: 
+HIT Scenario #1: no target specified
+   GIVEN : 
+    WHEN : "hit " entered
+    THEN : appropriate message displayed, "hit what?"
+
+HIT Scenario #2: specified target is not in the current room
+   GIVEN : Specified item is not in the current room
+    WHEN : "hit target" entered
+    THEN : appropriate message displayed, "not here"
+
+HIT Scenario #3: specified target is in the current room
+   GIVEN : Specified item is in the current room
+    WHEN : "hit target" entered 
+    THEN : user is prompted for the weapon to hit with
+
+HIT Scenario #4: specified weapon is not a weapon
+   GIVEN : Specified weapon is not a weapon
+    WHEN : "hit target" entered
+    THEN : appropriate message displayed, "you can't hit with this"
+
+HIT Scenario #5: specified weapon is a weapon
+   GIVEN : Specified weapon is a weapon
+     and : target was in the current room
+    WHEN : "hit target" was entered
+    THEN : rng used to decide the damage
+     and : damage is done to the target
+     and : appropriate message displayed, "you did _____ to ___"
 
 
 
 
+PLACE Scenario #1: no item specified 
+   GIVEN : 
+    WHEN : "place" entered
+    THEN : appropriate message displayed, "place what?"
 
+PLACE Scenario #2: Player does not have the specified item
+   GIVEN : player does not have the specified item
+    WHEN : "place item" is entered
+    THEN : appropriate message is displayed, "you don't have it"
 
-PLACE Scenario #1: 
+PLACE Scenario #3: Player has the specified item
+   GIVEN : player has the specified item
+    WHEN : "place item" is entered
+    THEN : player is prompted for what to place it on
+
+PLACE Scenario #4: item to get placed on is not in the current room
+   GIVEN : the item the player tried to place it on is not in the current room
+    WHEN : "place item" entered
+    THEN : appropriate message displayed, "not here" 
+
+PLACE Scenario #5: item to be placed on is in the room
+   GIVEN : the item to be placed on is in the room
+    WHEN : "place item" is entered
+     and : user has been prompted for the item to be placed
+    THEN : item is added on top of the item
+     and : item is added to the room
+     and : appropriate message displayed, "you placed ___ on ___"
+
 
 
 

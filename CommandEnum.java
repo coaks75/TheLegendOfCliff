@@ -37,7 +37,9 @@ public enum CommandEnum {
     /** A command to pack a container. */
     PACK("pack"),
     /** A command to unpack a container. */
-    UNPACK("unpack");
+    UNPACK("unpack"),
+    /** A command to eat food. */
+    EAT("eat");
     
     /** A field for the text that would be entered by the person playing the game.*/
     private final String text;

@@ -123,6 +123,9 @@ public class Game {
                 case UNPACK:
                 unpack(command);
                 break;
+                case EAT:
+                eat(command);
+                break;
                 default:
                 Writer.println(commandWord + " is not implemented yet!");
                 break;
@@ -552,4 +555,49 @@ public class Game {
             }
         }
     }
+    
+    /** 
+     * A method used to eat food
+     * 
+     * @param commandValue The command to be processed 
+     */
+    private void eat(Command commandValue) {
+        String foodName = null;
+        boolean hasWord = false;
+        Item theFood = null;
+        boolean isFood = false;
+        boolean exists = false;
+        if (!commandValue.hasSecondWord()) {
+            Writer.println("Eat what?");
+        }
+        else {
+            hasWord = true;
+            foodName = commandValue.getRestOfLine();
+        }
+        if (hasWord) {
+            if (player.getRoom().getItem(foodName) == null && player.getInventory().contains(foodName)) {
+                Writer.println("Hmmm, don't see that here...");
+            }
+            else {
+                if (player.getRoom().getItem(foodName) != null) {
+                    theFood = player.getRoom().getItem(foodName);
+                    exists = true;
+                }
+                else if (player.getItem(foodName) != null){
+                    theFood = player.getItem(foodName);
+                    exists = true;
+                }
+            }
+        }
+        if (exists) {
+            if (!(theFood instanceof Food)) {
+                Writer.println("This doesn't look like it would taste good...");
+            }
+            else {
+                Food using = (Food)theFood;
+                Writer.println("You ate " + using.getName() + " and gained " + using.getHealthGained() + " health.");
+            }
+        }
+    }
+    
 }

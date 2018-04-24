@@ -308,7 +308,7 @@ public class World {
         rooms.get("southern door").getExit("south").setLocked(true);
         rooms.get("southern door").getExit("south").setKey(hammer);
         
-        Item cannedFood = new Item("Canned Food", "This canned food doesn't look that good but it should restore some health...", 0, 2);
+        Food cannedFood = new Food("Canned Food", "This canned food doesn't look that good but it should restore some health...", 0, 2, 25);
         rooms.get("the trapping chamber").addItem(cannedFood);
         
         Item pinkKey = new Item("Pink Key", "This pink key has a few divots in it.", 0, 1);
@@ -352,7 +352,7 @@ public class World {
         Item guardSword = new Item("Sleeping Guard Sword", "This is the sword used by the sleeping guard. It is a little beat up but it is an advanced sword.", 0, 15);
         rooms.get("the break room").addItem(guardSword);
         
-        Item dinnerFood = new Item("The Guards Dinner", "This food looks decently appetizing.", 0, 3);
+        Food dinnerFood = new Food("The Guards Dinner", "This food looks decently appetizing.", 0, 3, 35);
         rooms.get("sir sean fortevir's room").addItem(dinnerFood);
         
         Item necklace = new Item("Necklace", "This is the necklace that was around Maximus's neck", 0, 1);

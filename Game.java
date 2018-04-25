@@ -259,7 +259,7 @@ public class Game {
             Writer.println("You dropped the " + itemValue.getName() + ".");
         }
     }
-
+    
     /**
      * A method used to examine an item.
      * 
@@ -600,4 +600,57 @@ public class Game {
         }
     }
     
+    /**
+     * A method used to equip an item
+     * 
+     * @param commandvalue The command we are looking to process
+     */
+    private void equip(Command commandValue) {
+        boolean hasWord = false;
+        String itemName = null;
+        boolean exists = false;
+        Item equipping = null;
+        boolean canHold = false;
+        boolean inRoom = false;
+        if(!commandValue.hasSecondWord()) {
+            Writer.println("Equip what?");
+        }
+        else {
+            hasWord = true;
+            itemName = commandValue.getRestOfLine();
+        }
+        if (hasWord) {
+            if (player.getRoom().getItem(itemName) == null && !(player.getInventory().contains(itemName))) {
+                Writer.println("Hmmmm, don't see that here...");
+            }
+            else if (player.getRoom().getItem(itemName) != null) {
+                equipping = player.getRoom().getItem(itemName);
+                inRoom = true;
+                exists = true;
+            }
+            else {
+                equipping = player.getItem(itemName);
+                exists = true;
+            }
+        }
+        if (exists) {
+            if (inRoom) {
+                if (!player.canAdd(equipping)) {
+                    Writer.println("You're already carrying too much.");
+                }
+                else {
+                    canHold = true;
+                }
+            }
+            if (canHold) {
+                if (player.getMaxEquippable() == player.getItemsEquipped()) {
+                    Writer.println("Woah, you don't have that many hands...");
+                }
+                else {
+                    Writer.println("You have " + equipping.getName() + " equipped.");
+                    player.addOneEquipped();
+                }
+            }
+        }
+    }
 }

@@ -9,12 +9,16 @@ import java.util.ArrayList;
 public class Player {
     /** A field for the players max carry weight. */
     private static final int MAX_WEIGHT = 25;
+    /** A field for the players max equipped. */
+    private static final int MAX_EQUIPPABLE = 2;
     /** A field for the room that the player is currently in. */
     private Room room;
     /** A field for the previous room. */
     private Room previousRoom;
     /** A field for the players inventory. */
     private ArrayList<Item> inventory;
+    /** A field for the total number of items equipped. */
+    private int itemsEquipped;
 
     /**
      * Constructor for the player class.
@@ -25,6 +29,7 @@ public class Player {
         room = roomValue;
         previousRoom = roomValue;
         inventory = new ArrayList<Item>();
+        itemsEquipped = 0;
     }
 
     /**
@@ -176,5 +181,30 @@ public class Player {
      */
     public int getMaxWeight() {
         return MAX_WEIGHT;
+    }
+    
+    /**
+     * Accessor method for the items equipped.
+     * 
+     * @return The number of items the player has equipped.
+     */
+    public int getItemsEquipped() {
+        return itemsEquipped;
+    }
+    
+    /**
+     * Mutator method for the items equipped.
+     */
+    public void addOneEquipped() {
+        itemsEquipped++;
+    }
+    
+    /**
+     * A method that returns the max equippable.
+     * 
+     * @return The max equippable for the player.
+     */
+    public int getMaxEquippable() {
+        return MAX_EQUIPPABLE;
     }
 }

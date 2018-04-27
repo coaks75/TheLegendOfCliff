@@ -259,7 +259,7 @@ public class Game {
             Writer.println("You dropped the " + itemValue.getName() + ".");
         }
     }
-    
+
     /**
      * A method used to examine an item.
      * 
@@ -555,7 +555,7 @@ public class Game {
             }
         }
     }
-    
+
     /** 
      * A method used to eat food
      * 
@@ -599,7 +599,7 @@ public class Game {
             }
         }
     }
-    
+
     /**
      * A method used to equip an item
      * 
@@ -631,26 +631,53 @@ public class Game {
             else {
                 equipping = player.getItem(itemName);
                 exists = true;
+                canHold = true;
             }
         }
         if (exists) {
-            if (inRoom) {
-                if (!player.canAdd(equipping)) {
-                    Writer.println("You're already carrying too much.");
+            if (equipping.isEquippable()) {
+                if (inRoom) {
+                    if (!player.canAdd(equipping)) {
+                        Writer.println("You're already carrying too much.");
+                    }
+                    else {
+                        canHold = true;
+                    }
                 }
-                else {
-                    canHold = true;
+                if (canHold) {
+                    if (player.getMaxEquippable() == player.getItemsEquipped()) {
+                        Writer.println("Woah, you don't have that many hands...");
+                    }
+                    else {
+                        Writer.println("You have " + equipping.getName() + " equipped.");
+                        player.addOneEquipped();
+                    }
                 }
             }
-            if (canHold) {
-                if (player.getMaxEquippable() == player.getItemsEquipped()) {
-                    Writer.println("Woah, you don't have that many hands...");
-                }
-                else {
-                    Writer.println("You have " + equipping.getName() + " equipped.");
-                    player.addOneEquipped();
-                }
+            else {
+                Writer.println("You can't equip " + equipping.getName() + ".");
             }
+        }
+    }
+    
+    /**
+     * A method used to hit a target.
+     * 
+     * @param commandValue The command to be processed.
+     */
+    private void hit(Command commandValue) {
+        boolean hasWord = false;
+        String targetName = null;
+        
+        if (!commandValue.hasSecondWord()) {
+            Writer.println("Hit what?");
+        }
+        else {
+            hasWord = false;
+            targetName = commandValue.getRestOfLine();
+        }
+        if (hasWord) {
+            
         }
     }
 }

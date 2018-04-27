@@ -5,7 +5,7 @@
  * @author Chris Coakley
  * @version 20 March 2018
  */
-public class Item {
+public class Item implements Equippable{
     /** A field for the constant of a heavy item. */
     private static final int HEAVY = 7;
     /** A field for the name of an item. */
@@ -16,6 +16,10 @@ public class Item {
     private int points;
     /** A field for the weight of an item. */
     private double weight;
+    /** A field for if an item is equipped. */
+    private boolean isEquipped;
+    /** A field for if you can equip an item. */
+    private boolean canEquip;
     
     /**
      * Constructor for an item.
@@ -30,6 +34,7 @@ public class Item {
         description = descriptionValue;
         points = pointsValue;
         weight = weightValue;
+        canEquip = false;
     }
     
     /**
@@ -102,5 +107,15 @@ public class Item {
             answer += " and is light.";
         }
         return answer;
+    }
+    
+    @Override
+    public void makeEquippable(){
+        canEquip = true;
+    }
+    
+    @Override
+    public boolean isEquippable() {
+        return canEquip;
     }
 }

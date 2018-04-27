@@ -7,9 +7,16 @@ Main Room :
 The room is big and open. You don't see much here but an altar in the center, and a door in each cardinal direction. The door to the west pops open from the shock wave of you hitting the ground. 
 Exits: east, south, north, west, 
 Items:Broom, Altar, Backpack, Super Puzzle Piece, 
-> fart
-I don't know what you mean...
+> go north
+Northern Door :
+You look at the door. There seem to be three different sized cut outs on the door. There is nothing on the ground around. 
+Exits: south, north, 
+Items:
+> unlock north
+With what?
+fart
+You don't have that.
 > quit
 It looks like your Legend of Cliff will end here.
-You have earned 0 points in 1 turns.
+You have earned 0 points in 2 turns.
 Thank you for playing.  Good bye.

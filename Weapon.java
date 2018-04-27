@@ -20,6 +20,5 @@ public class Weapon extends Item{
     public Weapon (String nameValue, String descriptionValue, int pointsValue, double weightValue, int damageDoneValue) {
         super(nameValue, descriptionValue, pointsValue, weightValue);
         damageDone = damageDoneValue;
-        
     }
 }

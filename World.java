@@ -310,6 +310,8 @@ public class World {
         Container invisibleContainer = new Container("Invisible Container", "", 0, 0);
         rooms.get("southern door").addItem(invisibleContainer);
         invisibleContainer.addItem(hammer);
+        invisibleContainer.setLocked(true);
+        invisibleContainer.setKey(cinderBlock);
         
         Food cannedFood = new Food("Canned Food", "This canned food doesn't look that good but it should restore some health...", 0, 2, 25);
         rooms.get("the trapping chamber").addItem(cannedFood);

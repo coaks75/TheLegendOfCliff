@@ -700,6 +700,33 @@ public class Game {
      * @param commandValue The command to be processed.
      */
     private void place (Command commandValue) {
+        boolean hasWord = false;
+        String itemName = null;
+        Item itemValue = null;
+        Item beingPlacedOn = null;
+        String beingPlacedOnName = null;
+        boolean itemExists = false;
         
+        if (!commandValue.hasSecondWord()) {
+            Writer.println("Place what?");
+        }
+        else {
+            hasWord = true;
+            itemName = commandValue.getRestOfLine();
+        }
+        if (hasWord) {
+            if (player.getItem(itemName) == null) {
+                Writer.println("You do not have " + itemName);
+            }
+            else {
+                itemValue = player.getItem(itemName);
+                Writer.println("What would you like to place this on?");
+                beingPlacedOnName = Reader.getResponse();
+                itemExists = true;
+            }
+        }
+        if (itemExists) {
+            
+        }
     }
 }

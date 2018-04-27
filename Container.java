@@ -6,9 +6,13 @@ import java.util.ArrayList;
  * @author Chris Coakley
  * @version 16 April 2018
  */
-public class Container extends Item{
+public class Container extends Item implements Lockable{
     /** A field for the items in the container. */
     private ArrayList<Item> items;
+    /** Whether this container is locked. */
+    private boolean locked;
+    /** The key to the container. */
+    private Item key;
 
     /**
      * Constructor for a container.
@@ -22,7 +26,7 @@ public class Container extends Item{
         super(nameValue, descriptionValue, pointsValue,weightValue);
         items = new ArrayList<Item>();
     }
-
+    
     /**
      * A method used to add an item to the container.
      * 
@@ -74,7 +78,7 @@ public class Container extends Item{
         }
         return answer;
     }
-
+    
     /**
      * The to string method of the container class.
      * 
@@ -92,6 +96,26 @@ public class Container extends Item{
             answer += "Nothing right now";
         }
         return answer;
+    }
+    
+    @Override
+    public boolean isLocked() {
+        return locked;
+    }
+
+    @Override
+    public void setLocked(boolean locked) {
+        this.locked = locked;
+    }
+
+    @Override
+    public Item getKey() {
+        return key;
+    }
+
+    @Override
+    public void setKey(Item keyValue) {
+        key = keyValue;
     }
 
 }

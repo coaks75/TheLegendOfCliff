@@ -304,9 +304,12 @@ public class World {
         rooms.get("sir sean fortevir's room").getExit("east").setKey(cinderBlock);
         
         Item hammer = new Item("Hammer", "This hammer is very dusty, but seems like it was never used.", 0, 3);
-        rooms.get("southern door").addItem(hammer);
         rooms.get("southern door").getExit("south").setLocked(true);
         rooms.get("southern door").getExit("south").setKey(hammer);
+        
+        Container invisibleContainer = new Container("Invisible Container", "", 0, 0);
+        rooms.get("southern door").addItem(invisibleContainer);
+        invisibleContainer.addItem(hammer);
         
         Food cannedFood = new Food("Canned Food", "This canned food doesn't look that good but it should restore some health...", 0, 2, 25);
         rooms.get("the trapping chamber").addItem(cannedFood);

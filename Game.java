@@ -668,6 +668,9 @@ public class Game {
     private void hit(Command commandValue) {
         boolean hasWord = false;
         String targetName = null;
+        Item target = null;
+        String weaponName = null;
+        Item weapon = null;
         
         if (!commandValue.hasSecondWord()) {
             Writer.println("Hit what?");
@@ -677,7 +680,26 @@ public class Game {
             targetName = commandValue.getRestOfLine();
         }
         if (hasWord) {
-            
+            if (player.getRoom().getItem(targetName) == null) {
+                Writer.println(targetName + " is not here.");
+            }
+            else {
+                target = player.getRoom().getItem(targetName);
+            }
         }
+        if (target != null) {
+            Writer.println("What would you like to hit " + targetName + " with?");
+            weaponName = Reader.getResponse();
+        }
+        //not completed yet
+    }
+    
+    /**
+     * A method used to place an item on top of something.
+     * 
+     * @param commandValue The command to be processed.
+     */
+    private void place (Command commandValue) {
+        
     }
 }

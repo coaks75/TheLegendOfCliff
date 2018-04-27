@@ -12,8 +12,7 @@
  * @author Chris Coakley
  * @version 2015.02.01
  */
-public class Door {
-
+public class Door implements Lockable{
     /** The room that this door leads to. */
     private Room destination;
     /** Whether this door is locked. */
@@ -38,36 +37,22 @@ public class Door {
         return destination;
     }
     
-    /**
-     * A getter for whether this door is locked.
-     * @return Whether this door is locked
-     */
+    @Override
     public boolean isLocked() {
         return locked;
     }
 
-    /**
-     * A setter for whether this door is locked.
-     * @param locked Whether this door is locked.
-     */
+    @Override
     public void setLocked(boolean locked) {
         this.locked = locked;
     }
 
-    /**
-     * A method to get the key to the door.
-     * 
-     * @return The key
-     */
+    @Override
     public Item getKey() {
         return key;
     }
 
-    /**
-     * A mthod to set the key to a door.
-     * 
-     * @param keyValue The key to the door.
-     */
+    @Override
     public void setKey(Item keyValue) {
         key = keyValue;
     }

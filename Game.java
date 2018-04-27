@@ -726,7 +726,12 @@ public class Game {
             }
         }
         if (itemExists) {
-            
+            if (player.getRoom().getItem(beingPlacedOnName) == null) {
+                Writer.println(beingPlacedOnName + " is not here.");
+            }
+            else {
+                
+            }
         }
     }
 }

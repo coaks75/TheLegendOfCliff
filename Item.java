@@ -20,6 +20,8 @@ public class Item implements Equippable{
     private boolean isEquipped;
     /** A field for if you can equip an item. */
     private boolean canEquip;
+    /**  A field for the item this is on top of. */
+    private Item onTopOf;
     
     /**
      * Constructor for an item.

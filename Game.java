@@ -722,6 +722,7 @@ public class Game {
                 itemValue = player.getItem(itemName);
                 Writer.println("What would you like to place this on?");
                 beingPlacedOnName = Reader.getResponse();
+                beingPlacedOn = player.getRoom().getItem(beingPlacedOnName);
                 itemExists = true;
             }
         }
@@ -730,7 +731,8 @@ public class Game {
                 Writer.println(beingPlacedOnName + " is not here.");
             }
             else {
-                
+                beingPlacedOn.setOnTopOf(itemValue);
+                Writer.println("You placed " + itemName + " on top of " + beingPlacedOnName + ".");
             }
         }
     }

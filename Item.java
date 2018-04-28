@@ -117,6 +117,24 @@ public class Item implements Equippable{
         return answer;
     }
     
+    /**
+     * Accessor method for on top of.
+     * 
+     * @return What this is on top of.
+     */
+    public Item getOnTopOf() {
+        return onTopOf;
+    }
+    
+    /**
+     * Mutator method for on top of.
+     * 
+     * @param onTopOfValue The new item on this is on top of.
+     */
+    public void setOnTopOf(Item onTopOfValue) {
+        onTopOf = onTopOfValue;
+    }
+    
     @Override
     public void makeEquippable(){
         canEquip = true;

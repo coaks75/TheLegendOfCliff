@@ -20,7 +20,7 @@ public class Item implements Equippable{
     private boolean isEquipped;
     /** A field for if you can equip an item. */
     private boolean canEquip;
-    /**  A field for the item this is on top of. */
+    /** A field for the item this is on top of. */
     private Item onTopOf;
     
     /**
@@ -37,6 +37,7 @@ public class Item implements Equippable{
         points = pointsValue;
         weight = weightValue;
         canEquip = false;
+        onTopOf = null;
     }
     
     /**
@@ -107,6 +108,11 @@ public class Item implements Equippable{
         }
         else {
             answer += " and is light.";
+        }
+        if (onTopOf != null) {
+            answer += "And is also on top of ";
+            answer += onTopOf.getName();
+            answer += ".";
         }
         return answer;
     }

@@ -27,6 +27,15 @@ public class Container extends Item implements Lockable{
         items = new ArrayList<Item>();
     }
     
+    @Override
+    public double getWeight() {
+        double answer = super.getWeight();
+        for (Item element : items) {
+            answer += element.getWeight();
+        }
+        return answer;
+    }
+    
     /**
      * A method used to add an item to the container.
      * 
@@ -34,8 +43,6 @@ public class Container extends Item implements Lockable{
      */
     public void addItem(Item itemValue) {
         items.add(itemValue);
-        double itemWeight = itemValue.getWeight();
-        this.setWeight(super.getWeight() + itemWeight);
     }
 
     /**

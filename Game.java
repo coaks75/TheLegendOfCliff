@@ -281,7 +281,18 @@ public class Game {
             else {
                 itemValue = player.getRoom().getItem(commandValue.getRestOfLine());
             }
-            Writer.println(itemValue.toString());
+            if (itemValue instanceof Container) {
+                Container using = (Container)itemValue;
+                if (!using.isLocked()) {
+                    Writer.println(using.getName() + " is locked.");
+                }
+                else {
+                    Writer.println(using.toString());
+                }
+            }
+            else {
+                Writer.println(itemValue.toString());
+            }
         }
     }
 
@@ -329,7 +340,7 @@ public class Game {
     }
 
     /**
-     * A method used to lock a door.
+     * A method used to lock a something.
      * 
      * @param commandValue The command to be processed.
      */
@@ -378,7 +389,7 @@ public class Game {
     }
 
     /**
-     * A method used to unlock a door.
+     * A method used to unlock a something.
      * 
      * @param commandValue The command to be processed.
      */
@@ -433,6 +444,7 @@ public class Game {
         Item toPack = null;
         String containerUsing = null;
         Item packing = null;
+        boolean isContainer = false;
         boolean canPack = false;
         boolean exists = false;
         if (!commandValue.hasSecondWord()) {
@@ -475,11 +487,19 @@ public class Game {
             if (!(packing instanceof Container)) {
                 Writer.println("That isn't a container.\n" + packing.toString());
             }
+            else {
+                isContainer = true;
+            }
+        }
+        if (isContainer) {
+            Container using = (Container)packing;
+            if (!using.isLocked()) {
+                Writer.println(using.getName() + " is locked.");
+            }
             else if (!(player.canAdd(player.getRoom().getItem(itemName)))) {
                 Writer.println("You're carrying too much already!");
             }
             else {
-                Container using = (Container)packing;
                 if (player.getRoom().getItem(itemName) != null) {
                     toPack = player.getRoom().getItem(itemName);
                     player.getRoom().removeItem(itemName);
@@ -534,11 +554,16 @@ public class Game {
                 Writer.println("Woah buddy, thats not a container.");
             }
             else {
-                Writer.println("What would you like to unpack from this?");
                 Container using = (Container)unpacking;
-                Writer.println(using.getName() + " contains: \n\t" + using.toString());
-                toUnpackName = Reader.getResponse();
-                isContainer = true;
+                if (!using.isLocked()) {
+                    Writer.println(using.getName() + " is locked.");
+                }
+                else {
+                    Writer.println("What would you like to unpack from this?");
+                    Writer.println(using.getName() + " contains: \n\t" + using.toString());
+                    toUnpackName = Reader.getResponse();
+                    isContainer = true;
+                }
             }
         }
         if (isContainer) {
@@ -660,7 +685,7 @@ public class Game {
             }
         }
     }
-    
+
     /**
      * A method used to hit a target.
      * 
@@ -672,7 +697,7 @@ public class Game {
         Item target = null;
         String weaponName = null;
         Item weapon = null;
-        
+
         if (!commandValue.hasSecondWord()) {
             Writer.println("Hit what?");
         }
@@ -694,7 +719,7 @@ public class Game {
         }
         //not completed yet
     }
-    
+
     /**
      * A method used to place an item on top of something.
      * 
@@ -707,7 +732,7 @@ public class Game {
         Item beingPlacedOn = null;
         String beingPlacedOnName = null;
         boolean itemExists = false;
-        
+
         if (!commandValue.hasSecondWord()) {
             Writer.println("Place what?");
         }

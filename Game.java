@@ -714,10 +714,10 @@ public class Game {
             }
         }
         if (exists) {
-            if (equipping instanceof Weapon) {
-                Weapon using = (Weapon)equipping;
+            if (equipping instanceof Equippable) {
+                Equippable using = (Equippable)equipping;
                 if (inRoom) {
-                    if (!player.canAdd(using)) {
+                    if (!player.canAdd(equipping)) {
                         Writer.println("You're already carrying too much.");
                     }
                     else {
@@ -725,13 +725,7 @@ public class Game {
                     }
                 }
                 if (canHold) {
-                    if (!using.equip(player)) {
-                        Writer.println("Woah, you don't have that many hands...");
-                    }
-                    else {
-                        Writer.println("You have " + using.getName() + " equipped.");
-                        using.equip(player);
-                    }
+                    using.equip(player);
                 }
             }
             else {

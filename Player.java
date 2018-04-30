@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Player {
     /** A field for the players max carry weight. */
     private static final int MAX_WEIGHT = 25;
-    /** A field for the players max equipped. */
+    /** A field foe the max equippable. */
     private static final int MAX_EQUIPPABLE = 2;
     /**  Afield for the players max health. */
     private static final int MAX_HEALTH = 100;
@@ -19,7 +19,7 @@ public class Player {
     private Room previousRoom;
     /** A field for the players inventory. */
     private ArrayList<Item> inventory;
-    /** A field for the items equipped. */
+    /** A field for the items equipped . */
     private ArrayList<Item> itemsEquipped;
     /** A field for the players health. */
     private double health;
@@ -189,35 +189,34 @@ public class Player {
     }
     
     /**
-     * Accessor method for the items equipped.
+     * Mutatotoe mthod for the item equipped.
      * 
-     * @return The number of items the player has equipped.
+     * @param itemValue The item we wish to equip.
      */
-    public int getNumItemsEquipped() {
-        return itemsEquipped.size();
-    }
-    
-    /**
-     * Mutator method for the items equipped.
-     */
-    public void addOneEquipped(Item itemValue) {
+    public void addEquipped(Item itemValue) {
         itemsEquipped.add(itemValue);
     }
     
     /**
-     * A method used to drop one equipped.
+     * Mutator method for the items equipped.
+     * 
+     * @param itemValue The item we wis to remove.
      */
-    public void minusOneEquipped(Item itemValue) {
+    public void minusEquipped(Item itemValue) {
         itemsEquipped.remove(itemValue);
     }
     
     /**
-     * A method that returns the max equippable.
+     * A field for the max equippable.
      * 
-     * @return The max equippable for the player.
+     * @return The max equippable.
      */
-    public int getMaxEquippable() {
-        return MAX_EQUIPPABLE;
+    public boolean canEquip() {
+        boolean answer = false;
+        if (MAX_EQUIPPABLE > itemsEquipped.size()) {
+            answer = true;
+        }
+        return answer;
     }
     
     /**

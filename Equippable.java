@@ -12,7 +12,7 @@ public interface Equippable {
      * @param playerValue The player were equipping this item.
      * @return If it was equipped.
      */
-    public abstract boolean equip(Player playerValue);
+    public abstract String equip(Player playerValue);
     
     /**
      * A method used to unequip something
@@ -20,5 +20,5 @@ public interface Equippable {
      * @param playerValue The player were equipping this item.
      * @return If it was unequipped.
      */
-    public abstract boolean unequip(Player playerValue);
+    public abstract String unequip(Player playerValue);
 }

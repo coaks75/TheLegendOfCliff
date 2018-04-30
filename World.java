@@ -411,11 +411,18 @@ public class World {
         Item royalSword = new Item("Royal Sword", "This looks like a sword used by the Royal Guard.", 0, 15);
         rooms.get("the royal tool room").addItem(royalSword);
         
-        Item queensChest = new Item("Queen's Chest", "This chest at the foot of Queen Isa's bed.", 0, 100);
-        rooms.get("the queen's hidden room").addItem(queensChest);
+        BuildableItem ultimateKey = new BuildableItem("Ultimate Key", "This looks like a roayl key.", 0, 2);
+        ultimateKey.addItemNeeded(superPuzzlePiece);
+        ultimateKey.addItemNeeded(superKey);
         
         Item gem = new Item("Valentinian Gem", "This is the fabled Valentinian Gem...", 25, 5);
-        rooms.get("the queen's hidden room").addItem(gem);
+        
+        Container queensChest = new Container("Queen's Chest", "This chest at the foot of Queen Isa's bed.", 0, 100);
+        rooms.get("the queen's hidden room").addItem(queensChest);
+        queensChest.setLocked(true);
+        queensChest.setKey(ultimateKey);
+        queensChest.addItem(gem);
+        
         
     }
 }

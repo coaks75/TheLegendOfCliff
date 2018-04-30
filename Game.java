@@ -131,6 +131,9 @@ public class Game {
                 case BUILD:
                 build();
                 break;
+                case DISMANTLE:
+                dismantle(command);
+                break;
                 default:
                 Writer.println(commandWord + " is not implemented yet!");
                 break;
@@ -821,12 +824,6 @@ public class Game {
         String keepBuilding = null;
         String itemName = null;
         Item itemUsing= null;
-        Writer.println("Would you like to build something?(y/n)");
-        keepBuilding = Reader.getResponse();
-        if (keepBuilding.equalsIgnoreCase("n")) {
-            done = true;
-            Writer.println("You didn't build anything.");
-        }
         while (!done) {
             Writer.println("What item would you like to build with?");
             itemName = Reader.getResponse();
@@ -869,9 +866,34 @@ public class Game {
      */
     private void dismantle(Command commandValue) {
         boolean hasWord = false;
-        
+        String itemName = null;
+        Item toRemove = null;
+        String itemsRemoved = "";
+
         if (!commandValue.hasSecondWord()) {
-            
+            Writer.println("Dismantle what?");
+        }
+        else {
+            hasWord = true;
+            itemName = commandValue.getRestOfLine();
+            toRemove = player.getItem(itemName);
+        }
+        if (hasWord) {
+            if (toRemove == null) {
+                Writer.println("You do not have " + itemName);
+            }
+            else if (!(toRemove instanceof BuildableItem)) {
+                Writer.println(itemName + " is not able to be dismantled.");
+            }
+            else {
+                player.removeItem(itemName);
+                BuildableItem removing = (BuildableItem)toRemove;
+                for (Item element : removing.getItemsNeeded()) {
+                    player.addToInventory(element);
+                    itemsRemoved += element.getName() + ", ";
+                }
+                Writer.println("You dismantled " + itemName + ", and gained: " + itemsRemoved + ".");
+            }
         }
     }
 }

@@ -43,7 +43,9 @@ public enum CommandEnum {
     /** A command used to equip something. */
     EQUIP("equip"),
     /** A command use to build something. */
-    BUILD("build");
+    BUILD("build"),
+    /** A command used to dismantle something. */
+    DISMANTLE("dismantle");
     
     /** A field for the text that would be entered by the person playing the game.*/
     private final String text;

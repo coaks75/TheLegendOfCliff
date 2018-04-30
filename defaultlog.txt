@@ -14,10 +14,13 @@ You took the Blue Key.
 > take yellow key
 You took the Yellow Key.
 > build
-Would you like to build something?(y/n)
-y
 What item would you like to build with?
 red key
+Would you like to keep building?(y/n)
+y
+What item would you like to build with?
+blue  key
+You do not have blue  key
 Would you like to keep building?(y/n)
 y
 What item would you like to build with?
@@ -27,8 +30,8 @@ y
 What item would you like to build with?
 yellow key
 Congratulations, you built Super Key!
-> inventory
-super key, 
+> dismantle super key
+You dismantled super key, and gained: Red Key, Blue Key, Yellow Key, .
 > quit
 It looks like your Legend of Cliff will end here.
 You have earned 0 points in 5 turns.

@@ -26,7 +26,7 @@ public class Container extends Item implements Lockable{
         super(nameValue, descriptionValue, pointsValue,weightValue);
         items = new ArrayList<Item>();
     }
-    
+
     @Override
     public double getWeight() {
         double answer = super.getWeight();
@@ -35,7 +35,7 @@ public class Container extends Item implements Lockable{
         }
         return answer;
     }
-    
+
     /**
      * A method used to add an item to the container.
      * 
@@ -85,7 +85,7 @@ public class Container extends Item implements Lockable{
         }
         return answer;
     }
-    
+
     /**
      * The to string method of the container class.
      * 
@@ -93,18 +93,23 @@ public class Container extends Item implements Lockable{
      */
     public String toString() {
         String answer = super.toString();
-        answer += "\nContains\n\t";
-        if (items.size() > 0) {
-            for (Item element : items) {
-                answer += element.getName() + ", ";
+        if (!locked) {
+            answer += "\nContains\n\t";
+            if (items.size() > 0) {
+                for (Item element : items) {
+                    answer += element.getName() + ", ";
+                }
+            }
+            else {
+                answer += "Nothing right now";
             }
         }
         else {
-            answer += "Nothing right now";
+            answer += " is locked right now.";
         }
         return answer;
     }
-    
+
     @Override
     public boolean isLocked() {
         return locked;

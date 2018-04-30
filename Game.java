@@ -283,12 +283,7 @@ public class Game {
             }
             if (itemValue instanceof Container) {
                 Container using = (Container)itemValue;
-                if (!using.isLocked()) {
-                    Writer.println(using.getName() + " is locked.");
-                }
-                else {
-                    Writer.println(using.toString());
-                }
+                Writer.println(using.toString());
             }
             else {
                 Writer.println(itemValue.toString());
@@ -346,8 +341,10 @@ public class Game {
      */
     private void lock(Command commandValue) {
         boolean hasWord = false;
-        Door doorValue = null;
-        Container containerValue = null;
+        String secondWord = null;
+        boolean isDoor = false;
+        boolean isContainer = false;
+        Lockable thing = null;
         String keyCommand = null;
         boolean canLock = false;
         String inventory = player.getInventory();
@@ -356,21 +353,47 @@ public class Game {
         }
         else {
             hasWord = true;
-            doorValue = player.getRoom().getExit(commandValue.getRestOfLine());
+            secondWord = commandValue.getRestOfLine();
         }
         if (hasWord) {
-            if (doorValue == null) {
-                Writer.println("There is no door this direction.");
+            if (player.getRoom().getExit(secondWord) != null) {
+                isDoor = true;
+                thing = player.getRoom().getExit(secondWord);
             }
-            else if (doorValue.isLocked()) {
-                Writer.println("Door is already locked.");
+            else if (player.getRoom().getItem(secondWord) != null) {
+                if (player.getRoom().getItem(secondWord) instanceof Container) {
+                    Container using = (Container)player.getRoom().getItem(secondWord);
+                    thing = using;
+                    isContainer = true;
+                }
+                else {
+                    Writer.println(secondWord + " is not a container.");
+                }
             }
-            else if (doorValue.getKey() == null) {
-                Writer.println("Door cannot be locked.");
+            else if (player.getItem(secondWord) != null) {
+                if (player.getItem(secondWord) instanceof Container) {
+                    Container using = (Container)player.getItem(secondWord);
+                    thing = using;
+                    isContainer = true;
+                }
+                else {
+                    Writer.println(secondWord + " is not a container.");
+                }
             }
-            else if (!doorValue.isLocked()) {
-                Writer.println("With what?");
+            else {
+                Writer.println("Can't find " + secondWord + ".");
+            }
+        }
+        if (isDoor || isContainer) {
+            if (thing.isLocked()) {
+                Writer.println(secondWord + " is already locked.");
+            }
+            else if (thing.getKey() == null) {
+                Writer.println(secondWord + " cannot be locked.");
+            }
+            else {
                 canLock = true;
+                Writer.println("What would you like to unlock this with?");
                 keyCommand = Reader.getResponse();
             }
         }
@@ -378,11 +401,11 @@ public class Game {
             if (!(inventory.contains(keyCommand))) {
                 Writer.println("You do not have that key.");
             }
-            else if ((!doorValue.getKey().getName().equalsIgnoreCase(keyCommand))) {
+            else if ((!thing.getKey().getName().equalsIgnoreCase(keyCommand))) {
                 Writer.println("Wrong key.");
             }
             else  {
-                doorValue.setLocked(true);
+                thing.setLocked(true);
                 Writer.println("You locked the door.");
             }
         }
@@ -395,7 +418,10 @@ public class Game {
      */
     private void unlock(Command commandValue) {
         boolean hasWord = false;
-        Door doorValue = null;
+        boolean isDoor = false;
+        boolean isContainer = false;
+        Lockable thing = null;
+        String secondWord = null;
         String keyCommand = null;
         boolean canUnlock = false;
         String inventory = player.getInventory();
@@ -404,18 +430,44 @@ public class Game {
         }
         else {
             hasWord = true;
-            doorValue = player.getRoom().getExit(commandValue.getRestOfLine());
+            secondWord = commandValue.getRestOfLine();
         }
         if (hasWord) {
-            if (doorValue == null) {
-                Writer.println("There is no door.");
+            if (player.getRoom().getExit(secondWord) != null) {
+                isDoor = true;
+                thing = player.getRoom().getExit(secondWord);
             }
-            else if (!(doorValue.isLocked())) {
-                Writer.println("Door is not locked.");
+            else if (player.getRoom().getItem(secondWord) != null) {
+                if (player.getRoom().getItem(secondWord) instanceof Container) {
+                    Container using = (Container)player.getRoom().getItem(secondWord);
+                    thing = using;
+                    isContainer = true;
+                }
+                else {
+                    Writer.println(secondWord + " is not a container.");
+                }
+            }
+            else if (player.getItem(secondWord) != null) {
+                if (player.getItem(secondWord) instanceof Container) {
+                    Container using = (Container)player.getItem(secondWord);
+                    thing = using;
+                    isContainer = true;
+                }
+                else {
+                    Writer.println(secondWord + " is not a container.");
+                }
             }
             else {
-                Writer.println("With what?");
+                Writer.println("Can't find " + secondWord + ".");
+            }
+        }
+        if (isDoor || isContainer) {
+            if (!thing.isLocked()) {
+                Writer.println(secondWord + " is already unlocked.");
+            }
+            else {
                 canUnlock = true;
+                Writer.println("What would you like to unlock " + secondWord + " with.");
                 keyCommand = Reader.getResponse();
             }
         }
@@ -423,12 +475,12 @@ public class Game {
             if (!(inventory.contains(keyCommand))) {
                 Writer.println("You don't have that.");
             }
-            else if (!(doorValue.getKey().getName().equalsIgnoreCase(keyCommand))) {
+            else if (!(thing.getKey().getName().equalsIgnoreCase(keyCommand))) {
                 Writer.println("That key doesn't seem to work on this door...");
             }
             else {
-                doorValue.setLocked(false);
-                Writer.println("You have unlocked the door.");
+                thing.setLocked(false);
+                Writer.println("You have unlocked " + secondWord + ".");
             }
         }
     }
@@ -493,7 +545,7 @@ public class Game {
         }
         if (isContainer) {
             Container using = (Container)packing;
-            if (!using.isLocked()) {
+            if (using.isLocked()) {
                 Writer.println(using.getName() + " is locked.");
             }
             else if (!(player.canAdd(player.getRoom().getItem(itemName)))) {
@@ -550,7 +602,7 @@ public class Game {
             }
         }
         if (exists) {
-            if (!(unpacking instanceof Container)) {
+            if (unpacking instanceof Container) {
                 Writer.println("Woah buddy, thats not a container.");
             }
             else {

@@ -281,13 +281,7 @@ public class Game {
             else {
                 itemValue = player.getRoom().getItem(commandValue.getRestOfLine());
             }
-            if (itemValue instanceof Container) {
-                Container using = (Container)itemValue;
-                Writer.println(using.toString());
-            }
-            else {
-                Writer.println(itemValue.toString());
-            }
+            Writer.println(itemValue.toString());
         }
     }
 

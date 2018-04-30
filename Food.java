@@ -5,7 +5,7 @@
  * @author Chris Coakley
  * @version 24 April 2018
  */
-public class Food extends Item{
+public class Food extends Item implements Edible{
     /** A field for the health gained form eating this. */
     private int healthGained;
     
@@ -22,20 +22,12 @@ public class Food extends Item{
         healthGained = healthGainedValue;
     }
     
-    /**
-     * Accessor method for the healthGained
-     * 
-     * @return The health gained
-     */
+    @Override
     public int getHealthGained() {
         return healthGained;
     }
     
-    /**
-     * Mutator method for the health gained from this food
-     * 
-     * @param healthGainedValue The health you will gain from eating this.
-     */
+    @Override
     public void setHealthgained(int healthGainedValue) {
         healthGained = healthGainedValue;
     }

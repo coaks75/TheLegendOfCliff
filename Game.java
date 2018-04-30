@@ -336,6 +336,7 @@ public class Game {
     private void lock(Command commandValue) {
         boolean hasWord = false;
         Door doorValue = null;
+        Container containerValue = null;
         String keyCommand = null;
         boolean canLock = false;
         String inventory = player.getInventory();

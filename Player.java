@@ -17,9 +17,9 @@ public class Player {
     private Room previousRoom;
     /** A field for the players inventory. */
     private ArrayList<Item> inventory;
-    /** A field for the total number of items equipped. */
-    private int itemsEquipped;
-
+    /** A field for the items equipped. */
+    private ArrayList<Item> itemsEquipped;
+    
     /**
      * Constructor for the player class.
      * 
@@ -29,7 +29,7 @@ public class Player {
         room = roomValue;
         previousRoom = roomValue;
         inventory = new ArrayList<Item>();
-        itemsEquipped = 0;
+        itemsEquipped = new ArrayList<Item>();
     }
 
     /**
@@ -188,22 +188,22 @@ public class Player {
      * 
      * @return The number of items the player has equipped.
      */
-    public int getItemsEquipped() {
-        return itemsEquipped;
+    public int getNumItemsEquipped() {
+        return itemsEquipped.size();
     }
     
     /**
      * Mutator method for the items equipped.
      */
-    public void addOneEquipped() {
-        itemsEquipped++;
+    public void addOneEquipped(Item itemValue) {
+        itemsEquipped.add(itemValue);
     }
     
     /**
      * A method used to drop one equipped.
      */
-    public void minusOneEquipped() {
-        itemsEquipped--;
+    public void minusOneEquipped(Item itemValue) {
+        itemsEquipped.remove(itemValue);
     }
     
     /**

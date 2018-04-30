@@ -25,8 +25,8 @@ public class Weapon extends Item implements Equippable{
     @Override
     public boolean equip(Player playerValue) {
         boolean answer = false;
-        if (playerValue.getItemsEquipped() < playerValue.getMaxEquippable()) {
-            playerValue.addOneEquipped();
+        if (playerValue.getNumItemsEquipped() < playerValue.getMaxEquippable()) {
+            //playerValue.addOneEquipped();
             answer = true;
         }
         return answer;
@@ -34,7 +34,7 @@ public class Weapon extends Item implements Equippable{
 
     @Override
     public boolean unequip(Player playerValue) {
-        playerValue.minusOneEquipped();
+        //playerValue.minusOneEquipped();
         return true;
     }
 }

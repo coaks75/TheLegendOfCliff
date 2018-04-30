@@ -11,6 +11,8 @@ public class Player {
     private static final int MAX_WEIGHT = 25;
     /** A field for the players max equipped. */
     private static final int MAX_EQUIPPABLE = 2;
+    /**  Afield for the players max health. */
+    private static final int MAX_HEALTH = 100;
     /** A field for the room that the player is currently in. */
     private Room room;
     /** A field for the previous room. */
@@ -19,6 +21,8 @@ public class Player {
     private ArrayList<Item> inventory;
     /** A field for the items equipped. */
     private ArrayList<Item> itemsEquipped;
+    /** A field for the players health. */
+    private double health;
     
     /**
      * Constructor for the player class.
@@ -30,6 +34,7 @@ public class Player {
         previousRoom = roomValue;
         inventory = new ArrayList<Item>();
         itemsEquipped = new ArrayList<Item>();
+        health = MAX_HEALTH;
     }
 
     /**
@@ -214,4 +219,26 @@ public class Player {
     public int getMaxEquippable() {
         return MAX_EQUIPPABLE;
     }
+    
+    /**
+     * Accessor method for the players health.
+     * 
+     * @return The players current health.
+     */
+    public double getHealth() {
+        return health;
+    }
+    
+    /**
+     * Mutator method for the players health.
+     * 
+     * @param healthValue The health being added.
+     */
+    public void setHealth(double healthValue) {
+        health += healthValue;
+        if (health > MAX_HEALTH) {
+            health = MAX_HEALTH;
+        }
+    }
+    
 }

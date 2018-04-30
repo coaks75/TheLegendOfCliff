@@ -643,7 +643,7 @@ public class Game {
         String foodName = null;
         boolean hasWord = false;
         Item theFood = null;
-        boolean isFood = false;
+        Edible thing = null;
         boolean exists = false;
         if (!commandValue.hasSecondWord()) {
             Writer.println("Eat what?");
@@ -668,12 +668,13 @@ public class Game {
             }
         }
         if (exists) {
-            if (!(theFood instanceof Food)) {
+            if (!(theFood instanceof Edible)) {
                 Writer.println("This doesn't look like it would taste good...");
             }
             else {
-                Food using = (Food)theFood;
-                Writer.println("You ate " + using.getName() + " and gained " + using.getHealthGained() + " health.");
+                thing = (Edible)theFood;
+                Writer.println("You ate " + foodName + " and gained " + thing.getHealthGained() + " health.");
+                player.setHealth(thing.getHealthGained());
             }
         }
     }

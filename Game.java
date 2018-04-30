@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * This class is the main class of the "Campus of Kings" application.
@@ -125,6 +127,9 @@ public class Game {
                 break;
                 case EAT:
                 eat(command);
+                break;
+                case BUILD:
+                build();
                 break;
                 default:
                 Writer.println(commandWord + " is not implemented yet!");
@@ -802,6 +807,71 @@ public class Game {
                 beingPlacedOn.setOnTopOf(itemValue);
                 Writer.println("You placed " + itemName + " on top of " + beingPlacedOnName + ".");
             }
+        }
+    }
+
+    /**
+     * A method used to build an item.
+     */
+    private void build() {
+        HashSet<Item> buildingWith = new HashSet<Item>();
+        boolean done = false;
+        boolean isBuilt = false;
+        BuildableItem building = null;
+        String keepBuilding = null;
+        String itemName = null;
+        Item itemUsing= null;
+        Writer.println("Would you like to build something?(y/n)");
+        keepBuilding = Reader.getResponse();
+        if (keepBuilding.equalsIgnoreCase("n")) {
+            done = true;
+            Writer.println("You didn't build anything.");
+        }
+        while (!done) {
+            Writer.println("What item would you like to build with?");
+            itemName = Reader.getResponse();
+            if (player.getItem(itemName) != null) {
+                itemUsing = player.getItem(itemName);
+                buildingWith.add(itemUsing);
+            }
+            else {
+                Writer.println("You do not have " + itemName);
+            }
+            for (BuildableItem element : world.getBuildables()) {
+                if (buildingWith.containsAll(element.getItemsNeeded())) {
+                    isBuilt = true;
+                    building = element;
+                    for (Item current : buildingWith) {
+                        player.removeItem(current.getName());
+                    }
+                    player.addToInventory(building);
+                }
+            }
+            if (isBuilt) {
+                done = true;
+                Writer.println("Congratulations, you built " + building.getName() + "!");
+            }
+            else {
+                Writer.println("Would you like to keep building?(y/n)");
+                keepBuilding = Reader.getResponse();
+                if (keepBuilding.equalsIgnoreCase("n")) {
+                    done = true;
+                    Writer.println("You didn't build anything.");
+                }
+            }
+        }
+    }
+
+    /**
+     * A method used to dismantle sonething.
+     * 
+     * @param commandValue The command to be processed.
+     */
+    private void dismantle(Command commandValue) {
+        boolean hasWord = false;
+        
+        if (!commandValue.hasSecondWord()) {
+            
         }
     }
 }

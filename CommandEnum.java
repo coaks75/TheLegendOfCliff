@@ -39,7 +39,11 @@ public enum CommandEnum {
     /** A command to unpack a container. */
     UNPACK("unpack"),
     /** A command to eat food. */
-    EAT("eat");
+    EAT("eat"),
+    /** A command used to equip something. */
+    EQUIP("equip"),
+    /** A command use to build something. */
+    BUILD("build");
     
     /** A field for the text that would be entered by the person playing the game.*/
     private final String text;

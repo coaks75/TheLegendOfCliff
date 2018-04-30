@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * This class represents the entire world that makes up the "Campus of Kings"
@@ -15,6 +16,8 @@ import java.util.HashMap;
 public class World {
     /** The rooms in the world. */
     private HashMap<String, Room> rooms;
+    /** All of the buildable items in the game. */
+    private HashMap<String, BuildableItem> buildables;
     
     /**
      * Constructor for the world.
@@ -35,6 +38,19 @@ public class World {
      */
     public Room getRoom(String name) {
         return rooms.get(name.toLowerCase());
+    }
+    
+    /**
+     * A method used to get all the buildableItems.
+     * 
+     * @return A string of all of the buildable items in the game.
+     */
+    public ArrayList<BuildableItem> getBuildables() {
+        ArrayList<BuildableItem> buildablesList = new ArrayList<BuildableItem>();
+        for (String element : buildables.keySet()) {
+            buildablesList.add(buildables.get(element));
+        }
+        return buildablesList;
     }
     
     /////////////////////////////////////////////////////////////////////////////////////
@@ -271,6 +287,8 @@ public class World {
      * A method used to create all the items of the world.
      */
     private void createItems() {
+        buildables = new HashMap<String, BuildableItem>();
+        
         Item broom = new Item("Broom", "The broom is ratty and old.", 0, 3);
         rooms.get("main room").addItem(broom);
         Item altar = new Item("Altar", "The Altar is in the center of the room. There's a little divot in the center...", 0, 100);
@@ -296,7 +314,8 @@ public class World {
         //Create easter egg
         
         Item redKey = new Item("Red Key", "This key is a standard wooden key with three bumps in it.", 5, 1);
-        rooms.get("end of forked passage").addItem(redKey);
+        //rooms.get("end of forked passage").addItem(redKey);
+        rooms.get("main room").addItem(redKey);
         
         Item cinderBlock = new Item("Cinderblock", "This cinderblock is about a foot tall.", 0, 10);
         rooms.get("end of forked passage").addItem(cinderBlock);
@@ -320,7 +339,8 @@ public class World {
         rooms.get("equipment room").addItem(pinkKey);
         
         Item yellowKey = new Item("Yellow Key", "This yellow key has a few divots in it.", 0, 1);
-        rooms.get("equipment room").addItem(yellowKey);
+        //rooms.get("equipment room").addItem(yellowKey);
+        rooms.get("main room").addItem(yellowKey);
         
         Item keyTable = new Item("Table", "This table is very sturdy.", 0, 100);
         rooms.get("equipment room").addItem(keyTable);
@@ -334,11 +354,16 @@ public class World {
         rooms.get("the hallway's end").getExit("south").setKey(pickaxe);
         
         Item blueKey = new Item("Blue Key", "Thiis blue key has a few divots in it.", 0, 1);
-        rooms.get("hidden tool room").addItem(blueKey);
+        //rooms.get("hidden tool room").addItem(blueKey);
+        rooms.get("main room").addItem(blueKey);
         
-        Item superKey = new Item("Super Key", "This is the combinaion of all the keys, in correct order", 0, 3);
+        BuildableItem superKey = new BuildableItem("Super Key", "This is the combinaion of all the keys.", 0, 3);
         rooms.get("eastern door").getExit("east").setLocked(true);
         rooms.get("eastern door").getExit("east").setKey(superKey);
+        buildables.put("Super Key", superKey);
+        superKey.addItemNeeded(redKey);
+        superKey.addItemNeeded(blueKey);
+        superKey.addItemNeeded(yellowKey);
         
         Item apology = new Item("Plato's 'Apology'", "This old dusty book looks like its Plato's Apology", 0, 5);
         rooms.get("end of southern basement").addItem(apology);
@@ -369,10 +394,13 @@ public class World {
         Item largePuzzlePiece = new Item("Large Puzzle Piece", "This puzzle piece looks rather large. About 4 inces in diameter.", 0, 1);
         rooms.get("sir sean fortevir's secret room").addItem(largePuzzlePiece);
         
-        Item superPuzzlePiece = new Item("Super Puzzle Piece", "This is a combination of the puzzle pieces, in correct order.", 0, 3);
+        BuildableItem superPuzzlePiece = new BuildableItem("Super Puzzle Piece", "This is a combination of the puzzle pieces.", 0, 3);
         rooms.get("northern door").getExit("north").setLocked(true);
         rooms.get("northern door").getExit("north").setKey(superPuzzlePiece);
-        rooms.get("main room").addItem(superPuzzlePiece);
+        buildables.put("Super Puzzle Piece", superPuzzlePiece);
+        superPuzzlePiece.addItemNeeded(smallPuzzlePiece);
+        superPuzzlePiece.addItemNeeded(mediumPuzzlePiece);
+        superPuzzlePiece.addItemNeeded(largePuzzlePiece);
         
         Item royalArmor = new Item("Royal Armor", "This looks like the armor worn by the Royal Guard.", 0, 15);
         rooms.get("the royal equipment room").addItem(royalArmor);

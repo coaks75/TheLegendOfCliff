@@ -661,9 +661,10 @@ public class Game {
             }
         }
         if (exists) {
-            if (equipping.isEquippable()) {
+            if (equipping instanceof Weapon) {
+                Weapon using = (Weapon)equipping;
                 if (inRoom) {
-                    if (!player.canAdd(equipping)) {
+                    if (!player.canAdd(using)) {
                         Writer.println("You're already carrying too much.");
                     }
                     else {
@@ -671,12 +672,12 @@ public class Game {
                     }
                 }
                 if (canHold) {
-                    if (player.getMaxEquippable() == player.getItemsEquipped()) {
+                    if (!using.equip(player)) {
                         Writer.println("Woah, you don't have that many hands...");
                     }
                     else {
-                        Writer.println("You have " + equipping.getName() + " equipped.");
-                        player.addOneEquipped();
+                        Writer.println("You have " + using.getName() + " equipped.");
+                        using.equip(player);
                     }
                 }
             }

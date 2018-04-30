@@ -5,10 +5,10 @@
  * @author Chris Coakley
  * @version 27 April 2018
  */
-public class Weapon extends Item{
+public class Weapon extends Item implements Equippable{
     /** A field for the damage this weapon does. */
     private int damageDone;
-    
+
     /**
      * Constructor for the weapon class.
      * 
@@ -20,5 +20,21 @@ public class Weapon extends Item{
     public Weapon (String nameValue, String descriptionValue, int pointsValue, double weightValue, int damageDoneValue) {
         super(nameValue, descriptionValue, pointsValue, weightValue);
         damageDone = damageDoneValue;
+    }
+
+    @Override
+    public boolean equip(Player playerValue) {
+        boolean answer = false;
+        if (playerValue.getItemsEquipped() < playerValue.getMaxEquippable()) {
+            playerValue.addOneEquipped();
+            answer = true;
+        }
+        return answer;
+    }
+
+    @Override
+    public boolean unequip(Player playerValue) {
+        playerValue.minusOneEquipped();
+        return true;
     }
 }

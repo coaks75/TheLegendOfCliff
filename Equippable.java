@@ -7,12 +7,18 @@
  */
 public interface Equippable {
     /**
-     * A method which says if you can equip an item.
+     * A method used to equip something for a player.
+     * 
+     * @param playerValue The player were equipping this item.
+     * @return If it was equipped.
      */
-    public abstract void makeEquippable();
+    public abstract boolean equip(Player playerValue);
     
     /**
-     * A method to get if the item is equippable or not.
+     * A method used to unequip something
+     * 
+     * @param playerValue The player were equipping this item.
+     * @return If it was unequipped.
      */
-    public abstract boolean isEquippable();
+    public abstract boolean unequip(Player playerValue);
 }

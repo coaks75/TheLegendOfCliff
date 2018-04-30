@@ -200,6 +200,13 @@ public class Player {
     }
     
     /**
+     * A method used to drop one equipped.
+     */
+    public void minusOneEquipped() {
+        itemsEquipped--;
+    }
+    
+    /**
      * A method that returns the max equippable.
      * 
      * @return The max equippable for the player.

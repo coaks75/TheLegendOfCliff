@@ -703,7 +703,7 @@ public class Game {
             else {
                 thing = (Edible)theFood;
                 Writer.println("You ate " + foodName + " and gained " + thing.getHealthGained() + " health.");
-                player.setHealth(thing.getHealthGained());
+                player.addHealth(thing.getHealthGained());
             }
         }
     }
@@ -954,11 +954,11 @@ public class Game {
             if (hit < monster.getHitProbability()) {
                 double damageDone = monster.getDamageDone();
                 if (player.getShield() >= damageDone) {
-                    player.setShield(-1 * damageDone);
+                    player.addShield(-1 * damageDone);
                 }
                 else {
                     remainder = damageDone - player.getShield();
-                    player.setHealth(-1 * remainder);
+                    player.addHealth(-1 * remainder);
                 }
                 Writer.println(monster.getName() + " just did " + damageDone + " damage to you.");
                 if (player.getHealth() <= 0) {

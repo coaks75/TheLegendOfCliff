@@ -46,7 +46,7 @@ public class Armor extends Item implements Equippable{
         if (playerValue.getArmorEquipped() == null) {
             playerValue.setArmorEquipped(this);
             answer = "You equipped " + this.getName();
-            playerValue.setShield(this.getShieldValue());
+            playerValue.addShield(this.getShieldValue());
         }
         else {
             answer = "Woah, you can't equip " + this.getName() + " if you already have other armor equipped.";

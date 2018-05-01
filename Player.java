@@ -233,7 +233,7 @@ public class Player {
      * 
      * @param healthValue The health being added.
      */
-    public void setHealth(double healthValue) {
+    public void addHealth(double healthValue) {
         health += healthValue;
         if (health > MAX_HEALTH) {
             health = MAX_HEALTH;
@@ -278,7 +278,7 @@ public class Player {
      * 
      * @param shieldValue The shield being added.
      */
-    public void setShield(double shieldValue) {
+    public void addShield(double shieldValue) {
         shield += shieldValue;
     }
 

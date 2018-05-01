@@ -34,19 +34,19 @@ public class Weapon extends Item implements Equippable{
     @Override
     public String equip(Player playerValue) {
         String answer = "";
-        if (playerValue.canEquip()) {
-            playerValue.addEquipped(this);
+        if (playerValue.getItemEquipped() != null) {
+            playerValue.setItemEquipped(this);
             answer = "You equipped " + this.getName();
         }
         else {
-            answer = "Woah, you don't have enough hands to equip " + this.getName();
+            answer = "Woah, you can't equip " + this.getName() + " if you already have something else equipped.";
         }
         return answer;
     }
 
     @Override
     public String unequip(Player playerValue) {
-        playerValue.minusEquipped(this);
+        playerValue.setItemEquipped(null);
         String answer = "You unequipped " + this.getName();
         return answer;
     }

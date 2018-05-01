@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 
 /**
  * This class is the main class of the "Campus of Kings" application.
@@ -25,6 +26,10 @@ public class Game {
     private int turnCounter;
     /** The character controlled by the player. */
     private Player player;
+    /** A field saying if the character is currently in battle. */
+    private boolean inBattle;
+    /** A field to store a random int. */
+    private Random rand;
 
     /**
      * Create the game and initialize its internal map.
@@ -33,6 +38,8 @@ public class Game {
         world = new World();
         score = 0;
         turnCounter = -1;
+        inBattle = false;
+        rand = new Random();
         // set the starting room
         player = new Player(world.getRoom("Main Room"));
     }
@@ -51,6 +58,10 @@ public class Game {
             turnCounter++;
             wantToQuit = processCommand(command);
             // other stuff that needs to happen every turn can be added here.
+            int randomBattle = rand.nextInt(99);
+            if (randomBattle <= 13 ) {
+                
+            }
         }
         printGoodbye();
     }
@@ -764,10 +775,8 @@ public class Game {
             }
         }
         if (target != null) {
-            Writer.println("What would you like to hit " + targetName + " with?");
-            weaponName = Reader.getResponse();
+            
         }
-        //not completed yet
     }
 
     /**
@@ -895,5 +904,12 @@ public class Game {
                 Writer.println("You dismantled " + itemName + ", and gained: " + itemsRemoved + ".");
             }
         }
+    }
+    
+    /**
+     * A method for a snake attack
+     */
+    private void snakeAttack() {
+       
     }
 }

@@ -296,7 +296,7 @@ public class World {
         Container backpack = new Container("Backpack", "This backpack will be useful to carry items.", 0, 0);
         rooms.get("main room").addItem(backpack);
         
-        Item weakSword = new Item("Sword", "This sword seems heavy but useful.", 0, 8);
+        Weapon weakSword = new Weapon("Sword", "This sword seems heavy but useful.", 0, 8, 1);
         rooms.get("sleeping chamber").addItem(weakSword);
 
         Item bone = new Item("Bone", "This is a skeletons bone.", 0, 2);
@@ -379,7 +379,7 @@ public class World {
         Item guardHelmet = new Item("Sleeping Guard Helmet", "This is the helmet worn by the sleeping guard. It is in good condition.", 0, 5);
         rooms.get("the break room").addItem(guardHelmet);
         
-        Item guardSword = new Item("Sleeping Guard Sword", "This is the sword used by the sleeping guard. It is a little beat up but it is an advanced sword.", 0, 15);
+        Weapon guardSword = new Weapon("Sleeping Guard Sword", "This is the sword used by the sleeping guard. It is a little beat up but it is an advanced sword.", 0, 15, 2);
         rooms.get("the break room").addItem(guardSword);
         
         Food dinnerFood = new Food("The Guards Dinner", "This food looks decently appetizing.", 0, 3, 35);

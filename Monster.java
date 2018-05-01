@@ -36,7 +36,43 @@ public class Monster {
      * @return The name of this monster.
      */
     public String getName() {
-
-        return name;        }
+        return name;
+    }
+    
+    /**
+     * Accessor for the health of the monster.
+     * 
+     * @return The health the monster currently has.
+     */
+    public double getHealth() {
+        return health;
+    }
+    
+    /**
+     * Mutator method for the health of the monster.
+     * 
+     * @param healthValue The new health of the monster.
+     */
+    public void setHealth(double healthValue) {
+        health = healthValue;
+    }
+    
+    /**
+     * Accessor method for the damage done
+     * 
+     * @return The damage done per hit.
+     */
+    public double getDamageDone() {
+        return damageDone;
+    }
+    
+    /**
+     * Accessor method for the hit probability
+     * 
+     * @return The hit probability of this monster.
+     */
+    public double getHitProbability() {
+        return hitProbability;
+    }
 
 }

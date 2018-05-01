@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * A class for the player.
@@ -9,10 +10,10 @@ import java.util.ArrayList;
 public class Player {
     /** A field for the players max carry weight. */
     private static final int MAX_WEIGHT = 25;
-    /** A field foe the max equippable. */
-    private static final int MAX_EQUIPPABLE = 2;
     /**  Afield for the players max health. */
     private static final int MAX_HEALTH = 100;
+    /** A field for the players hit probability. */
+    private static final int HIT_PROBABILITY = 75;
     /** A field for the room that the player is currently in. */
     private Room room;
     /** A field for the previous room. */
@@ -20,10 +21,12 @@ public class Player {
     /** A field for the players inventory. */
     private ArrayList<Item> inventory;
     /** A field for the items equipped . */
-    private ArrayList<Item> itemsEquipped;
+    private Weapon weapon;
     /** A field for the players health. */
     private double health;
-    
+    /** A field for the random int. */
+    private Random rand;
+
     /**
      * Constructor for the player class.
      * 
@@ -33,8 +36,9 @@ public class Player {
         room = roomValue;
         previousRoom = roomValue;
         inventory = new ArrayList<Item>();
-        itemsEquipped = new ArrayList<Item>();
+        weapon = null;
         health = MAX_HEALTH;
+        rand = new Random();
     }
 
     /**
@@ -187,38 +191,25 @@ public class Player {
     public int getMaxWeight() {
         return MAX_WEIGHT;
     }
-    
+
     /**
-     * Mutatotoe mthod for the item equipped.
+     * Mutator method for the item equipped.
      * 
-     * @param itemValue The item we wish to equip.
+     * @param equipping The item we are equipping
      */
-    public void addEquipped(Item itemValue) {
-        itemsEquipped.add(itemValue);
+    public void setItemEquipped(Weapon equipping) {
+        weapon = equipping;
     }
-    
+
     /**
-     * Mutator method for the items equipped.
+     * A method that returns the items equipped
      * 
-     * @param itemValue The item we wis to remove.
+     * @return All of the items equipped.
      */
-    public void minusEquipped(Item itemValue) {
-        itemsEquipped.remove(itemValue);
+    public Equippable getItemEquipped() {
+        return weapon;
     }
-    
-    /**
-     * A field for the max equippable.
-     * 
-     * @return The max equippable.
-     */
-    public boolean canEquip() {
-        boolean answer = false;
-        if (MAX_EQUIPPABLE > itemsEquipped.size()) {
-            answer = true;
-        }
-        return answer;
-    }
-    
+
     /**
      * Accessor method for the players health.
      * 
@@ -227,7 +218,7 @@ public class Player {
     public double getHealth() {
         return health;
     }
-    
+
     /**
      * Mutator method for the players health.
      * 
@@ -239,5 +230,28 @@ public class Player {
             health = MAX_HEALTH;
         }
     }
-    
+
+    /**
+     * A method that returns how much damage the player inflicts.
+     * 
+     * @return How much damage the player will inflict.
+     */
+    public double getDamageDone() {
+        double damageFactor = .5;
+        double damageDone = rand.nextInt(99);
+        if (weapon != null) {
+            damageFactor = weapon.getDamageFactor();
+        }
+        return damageFactor * damageDone;
+    }
+
+    /**
+     * Accessor for the players hit probability.
+     * 
+     * @return The players hit probability.
+     */
+    public int getHitProbability() {
+        return HIT_PROBABILITY;
+    }
+
 }

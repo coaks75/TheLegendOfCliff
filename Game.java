@@ -135,7 +135,7 @@ public class Game {
                 dismantle(command);
                 break;
                 default:
-                Writer.println(commandWord + " is not implemented yet!");
+                Writer.println(commandWord + " is not a command in 'The Legend of Cliff'!");
                 break;
             }
         }
@@ -853,7 +853,7 @@ public class Game {
                 keepBuilding = Reader.getResponse();
                 if (keepBuilding.equalsIgnoreCase("n")) {
                     done = true;
-                    Writer.println("You didn't build anything.");
+                    Writer.println("You couldn't build anything by combining these items.");
                 }
             }
         }

@@ -65,13 +65,19 @@ public class Game {
                 inBattle = true;
             }
             while (inBattle && player.getRoom().getMonster() != null) {
-                monsterAttack(player.getRoom().getMonster());
-                command = Reader.getCommand();;
-                wantToQuit = processCommand(command);
+                if (monsterAttack(player.getRoom().getMonster()) != true) {
+                    command = Reader.getCommand();
+                    wantToQuit = processCommand(command);
+                }
+                else {
+                    wantToQuit = true;
+                }
             }
-            command = Reader.getCommand();
-            wantToQuit = processCommand(command);
-            turnCounter++;
+            if (!wantToQuit) {
+                command = Reader.getCommand();
+                wantToQuit = processCommand(command);
+                turnCounter++;
+            }
             // other stuff that needs to happen every turn can be added here.
         }
         printGoodbye();

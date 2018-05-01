@@ -49,7 +49,7 @@ public enum CommandEnum {
     /** A command to hit something. */
     HIT("hit"),
     /** A cheat code command for full health and shield. */
-    CHEAT("cheat");
+    ISABELLA("isabella");
     
     /** A field for the text that would be entered by the person playing the game.*/
     private final String text;

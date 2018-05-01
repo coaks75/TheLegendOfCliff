@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class Player {
     /** A field for the players max carry weight. */
-    private static final int MAX_WEIGHT = 25;
+    private static final int MAX_WEIGHT = 35;
     /**  Afield for the players max health. */
     private static final int MAX_HEALTH = 100;
     /** A field for the players hit probability. */

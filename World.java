@@ -91,20 +91,20 @@ public class World {
         Room diningChamber = new Room("Dining Chamber", "This looks like it was a once a small dining chamber for the queen's Royal Guard. Someone must have been stuck in here, because it looks like there is a skeleton in the chair.");
         Room endOfWesternHallway = new Room("End of Western Hallway", "This looks like the end of this small hallway. There are stairs going down, but its very dark and eerie sounding down there...");
         Room southWestBasement = new Room("South-West Basement", "This is very deep into the caverns. You are at the beginning of a long hallway. You can see things down the hall, but not clearly.");
-        Room forkedPassage = new Room("Forked Passage", "The hallway seems to fork here. To your west on the wall is a painting. Straight ahead is the rest of the hallway. It doesn't look like anyhting is down there. To your right is another short hallway. it looks like there's something shiny down there...");
-        Room endOfForkedPassage = new Room("End of Forked Passage", "Oh no! There's a big hole in the ground so you can't walk across! On the other side of the hole i a key resting on a cinderblock. Should you attempt the jump?");
-        Room theHallwaysEnd = new Room("The Hallway's End", "There doesn't seem to be anything over here. Just an iron wall here instead of cobblestone like the rest.");
-        Room southernDoor = new Room("Southern Door", "You look at the door. The door has no lock, but there are a few slightly cracked, and rusty, iron bars in front of the door. You see something shiny on top of the door frame, but you can't reach it. If only there was something to reach this with...");
+        Room forkedPassage = new Room("Forked Passage", "The hallway seems to fork here. To your west on the wall is a painting. Straight ahead is the rest of the hallway. It doesn't look like anyhting is down there. To your south-west is another long hallway.");
+        Room endOfForkedPassage = new Room("End of Forked Passage", "Oh no! There's a big hole in the ground so you can't walk any further!");
+        Room theHallwaysEnd = new Room("The Hallway's End", "There doesn't seem to be anything over here. Just a dusty cavern like the rest.");
+        Room southernDoor = new Room("Southern Door", "You look at the door. It looks like the lock is made out of wood so the key can'y possibly be metal...");
         Room southernHallway = new Room("Southern Hallway", "You walk into the beginning of a long passageway. You can't see all the way down the hallway. Slightly down the hall however; you see two doors. One to the east and west.");
         Room theQueensArtChamber = new Room("The Queen's Art Chamber", "Here is where the queen's most precious art is kept. DO NOT ENTER if you aren't of her Royal Guard.");
         Room theTrappingChamber = new Room("The Trapping Chamber", "It doesn't look like there's much in here besides some canned food.");
         Room endOfSouthernHallway = new Room("End of Southern Hallway", "This looks like the end of this small hallway. There are stairs going down, but it's very dark and eerie sounding down there...");
-        Room southernBasement = new Room("SouthernBasement", "This is very deep into the caverns. You are at the beginning of a long hallway. You can see things down the hall, nut not clearly.");
+        Room southernBasement = new Room("SouthernBasement", "This is very deep into the caverns. You are at the beginning of a long hallway. You can see things down the hall, but not clearly.");
         Room equipmentRoom = new Room("Equipment Room", "This looks like an old equipment rooom for the guards. It appears that everything was taken besides some things on the table.");
-        Room theOldLibrary = new Room("The Old Library", "This looks like it was once a library. There's bookshelves all over the wall, but one book shelf is missing a book...");
-        Room hiddenToolRoom = new Room("Hidden Tool Room", "This room looks ransacked as well. The only thing left is a big heavy chest that's being held shut with rope.");
+        Room theOldLibrary = new Room("The Old Library", "This looks like it was once a library. There's bookshelves all over the wall, but one book shelf to the north is missing a book...");
+        Room hiddenToolRoom = new Room("Hidden Tool Room", "This room looks ransacked as well. The only thing left is a big heavy chest with a broken lock");
         Room southernBasementBend = new Room("Southern bsaement bend", "This straight hallway has come to an end. There's a short hallway to the west. There doesn't seem to be much over there.");
-        Room endOfSouthernBasement = new Room("End of Southern Basement", "On the floor is a copy of Plato's 'Apology'. This wall here is made of iron and seems to be pretty beat up because there's some holes in it...");
+        Room endOfSouthernBasement = new Room("End of Southern Basement", "On the floor is some weird book...");
         Room hiddenPuzzleRoom = new Room("Hidden Puzzle Room", " Oh look! It's a piece to a puzzle!");
         Room easternDoor = new Room("Eastern Door", "You look at the door. There is a key hole to unlock the door.");
         Room easternHallway = new Room("Eastern Hallway", "You walk into the beginning of a long passageway. You can't see all the way down the hallway. Slightly down the hall however; you see metal bars on the wall to the south and hear a feint mumbling, and a painting to the north.");
@@ -190,10 +190,7 @@ public class World {
 
         this.createDoor(forkedPassage, "south", theHallwaysEnd);
         this.createDoor(theHallwaysEnd, "north", forkedPassage);
-
-        this.createDoor(theHallwaysEnd, "south", hiddenPuzzleRoom);
-        this.createDoor(hiddenPuzzleRoom, "north", theHallwaysEnd);
-
+        
         this.createDoor(mainRoom, "south", southernDoor);
         this.createDoor(southernDoor, "north", mainRoom);
 
@@ -299,8 +296,10 @@ public class World {
         Weapon weakSword = new Weapon("Sword", "This sword seems heavy but useful.", 0, 8, 1);
         rooms.get("sleeping chamber").addItem(weakSword);
 
-        Item bone = new Item("Bone", "This is a skeletons bone.", 0, 2);
-        rooms.get("sleeping chamber").addItem(bone);
+        Item bone = new Item("Bone", "This is a skeletons bone, it's broken and shaped like a key.", 0, 2);
+        rooms.get("the hallway's end").addItem(bone);
+        rooms.get("southern door").getExit("south").setLocked(true);
+        rooms.get("southern door").getExit("south").setKey(bone);
 
         Armor weakArmor = new Armor("Armor", "This armor is heavy and thick.", 0, 10, 15);
         rooms.get("dining chamber").addItem(weakArmor);
@@ -314,61 +313,50 @@ public class World {
         //Create easter egg
         
         Item redKey = new Item("Red Key", "This key is a standard wooden key with three bumps in it.", 5, 1);
-        //rooms.get("end of forked passage").addItem(redKey);
-        rooms.get("main room").addItem(redKey);
+        rooms.get("end of forked passage").addItem(redKey);
         
         Item cinderBlock = new Item("Cinderblock", "This cinderblock is about a foot tall.", 0, 10);
         rooms.get("end of forked passage").addItem(cinderBlock);
-        rooms.get("sir sean fortevir's room").getExit("east").setLocked(true);
-        rooms.get("sir sean fortevir's room").getExit("east").setKey(cinderBlock);
+        redKey.setOnTopOf(cinderBlock);
         
-        Item hammer = new Item("Hammer", "This hammer is very dusty, but seems like it was never used.", 0, 3);
-        rooms.get("southern door").getExit("south").setLocked(true);
-        rooms.get("southern door").getExit("south").setKey(hammer);
-        
-        Container invisibleContainer = new Container("Invisible Container", "", 0, 0);
-        rooms.get("southern door").addItem(invisibleContainer);
-        invisibleContainer.addItem(hammer);
-        invisibleContainer.setLocked(true);
-        invisibleContainer.setKey(cinderBlock);
+        Weapon hammer = new Weapon("Hammer", "This hammer is very dusty, but seems like it was never used.", 0, 3, 1.5);
+        rooms.get("southern door").addItem(hammer);
         
         Food cannedFood = new Food("Canned Food", "This canned food doesn't look that good but it should restore some health...", 0, 2, 25);
         rooms.get("the trapping chamber").addItem(cannedFood);
         
         Item pinkKey = new Item("Pink Key", "This pink key has a few divots in it.", 0, 1);
         rooms.get("equipment room").addItem(pinkKey);
+        rooms.get("sir sean fortevir's room").getExit("east").setLocked(true);
+        rooms.get("sir sean fortevir's room").getExit("east").setKey(pinkKey);
         
         Item yellowKey = new Item("Yellow Key", "This yellow key has a few divots in it.", 0, 1);
-        //rooms.get("equipment room").addItem(yellowKey);
-        rooms.get("main room").addItem(yellowKey);
+        rooms.get("equipment room").addItem(yellowKey);
         
         Item keyTable = new Item("Table", "This table is very sturdy.", 0, 100);
         rooms.get("equipment room").addItem(keyTable);
+        yellowKey.setOnTopOf(keyTable);
+        pinkKey.setOnTopOf(keyTable);
         
-        Item toolChest = new Item("Chest", "This chest is big, heavy, and being held shut by a rope.", 0, 100);
+        Container toolChest = new Container("Chest", "This chest is big, heavy, and being held shut by a rope.", 0, 100);
         rooms.get("hidden tool room").addItem(toolChest);
-        
-        Item pickaxe = new Item("Pickaxe", "This pickaxe looks like it could be useful.", 10, 15);
-        rooms.get("hidden tool room").addItem(pickaxe);
-        rooms.get("the hallway's end").getExit("south").setLocked(true);
-        rooms.get("the hallway's end").getExit("south").setKey(pickaxe);
-        
+        Weapon pickaxe = new Weapon("Pickaxe", "This pickaxe looks like it could be useful.", 10, 15, 2);     
         Item blueKey = new Item("Blue Key", "Thiis blue key has a few divots in it.", 0, 1);
-        //rooms.get("hidden tool room").addItem(blueKey);
-        rooms.get("main room").addItem(blueKey);
+        toolChest.addItem(pickaxe);
+        toolChest.addItem(blueKey);
         
         BuildableItem superKey = new BuildableItem("Super Key", "This is the combinaion of all the keys.", 0, 3);
         rooms.get("eastern door").getExit("east").setLocked(true);
-        rooms.get("northern door").getExit("north").setKey(superKey);
+        rooms.get("eastern door").getExit("east").setKey(superKey);
         buildables.put("Super Key", superKey);
         superKey.addItemNeeded(redKey);
         superKey.addItemNeeded(blueKey);
         superKey.addItemNeeded(yellowKey);
         
-        Item apology = new Item("Plato's 'Apology'", "This old dusty book looks like its Plato's Apology", 0, 5);
-        rooms.get("end of southern basement").addItem(apology);
+        Item bookKey = new Item("Book of Keys", "This old dusty book looks like it's filled with a bunch of old keys. They must not be used for anything too important.", 0, 5);
+        rooms.get("end of southern basement").addItem(bookKey);
         rooms.get("the old library").getExit("north").setLocked(true);
-        rooms.get("the old library").getExit("north").setKey(apology);
+        rooms.get("the old library").getExit("north").setKey(bookKey);
         
         Item smallPuzzlePiece = new Item("Small Puzzle Piece", "This looks like a small puzzle piece. About one inch wide.", 0, 1);
         rooms.get("hidden puzzle room").addItem(smallPuzzlePiece);
@@ -385,8 +373,13 @@ public class World {
         Food dinnerFood = new Food("The Guards Dinner", "This food looks decently appetizing.", 0, 3, 35);
         rooms.get("sir sean fortevir's room").addItem(dinnerFood);
         
-        Item necklace = new Item("Necklace", "This is the necklace that was around Maximus's neck", 0, 1);
+        Item necklace = new Item("Key Necklace", "This is the necklace that was around Maximus's neck, it has a key on it.", 0, 1);
         rooms.get("maximus' den").addItem(necklace);
+        
+        BuildableItem secretRoomKey = new BuildableItem("Secret Room Key", "This key looks very unlike a key. It must bee for something secret.", 0, 2);
+        buildables.put("Secret Room Key", secretRoomKey);
+        secretRoomKey.addItemNeeded(bookKey);
+        secretRoomKey.addItemNeeded(necklace);
         
         Item mediumPuzzlePiece = new Item("Medium Puzzle Piece", "This puzzle piece looks medium sized. About 2 inches wide", 0, 1);
         rooms.get("maximus' den").addItem(mediumPuzzlePiece);
@@ -396,7 +389,7 @@ public class World {
         
         BuildableItem superPuzzlePiece = new BuildableItem("Super Puzzle Piece", "This is a combination of the puzzle pieces.", 0, 3);
         rooms.get("northern door").getExit("north").setLocked(true);
-        //rooms.get("northern door").getExit("north").setKey(superPuzzlePiece);
+        rooms.get("northern door").getExit("north").setKey(superPuzzlePiece);
         buildables.put("Super Puzzle Piece", superPuzzlePiece);
         superPuzzlePiece.addItemNeeded(smallPuzzlePiece);
         superPuzzlePiece.addItemNeeded(mediumPuzzlePiece);
@@ -411,11 +404,9 @@ public class World {
         Weapon royalSword = new Weapon("Royal Sword", "This looks like a sword used by the Royal Guard.", 0, 15, 2);
         rooms.get("the royal tool room").addItem(royalSword);
         
-        //BuildableItem ultimateKey = new BuildableItem("Ultimate Key", "This looks like a roayl key.", 0, 2);
-        //ultimateKey.addItemNeeded(superPuzzlePiece);
-        //ultimateKey.addItemNeeded(superKey);
-        Item ultimateKey = new Item("Ultimate Key", "", 0, 2);
-        rooms.get("main room").addItem(ultimateKey);
+        BuildableItem ultimateKey = new BuildableItem("Ultimate Key", "This looks like a roayl key.", 0, 2);
+        ultimateKey.addItemNeeded(superPuzzlePiece);
+        ultimateKey.addItemNeeded(superKey);;
         
         Item gem = new Item("Valentinian Gem", "This is the fabled Valentinian Gem...", 25, 5);
         

@@ -52,9 +52,6 @@ public class Game {
 
         // Enter the main game loop. Here we repeatedly read commands and
         // execute them until the game is over.
-        // build super key with colored keys in first room to unlock north, testing only
-        // ultimate key is supposed to be buildable, but in main room for testing only, unlocks queens chest
-        // when in main room && have gem, you fight sir sean
 
         boolean wantToQuit = false;
         boolean won = false;
@@ -63,7 +60,9 @@ public class Game {
         while (!wantToQuit) {
             int snakeProb = rand.nextInt(99);
             Monster snake = new Monster("Snake", .5, 2.5, 80);
-            Monster sirSean = new Monster("Sir Sean Fortevir", 100, 15, 80);
+            Monster sirSean = new Monster("Sir Sean Fortevir", 100, 22.5, 80);
+            Monster threeHeadedLion = new Monster("Three-Headed Lion", 50, 10, 80);
+            world.getRoom("The Queen's Art Chamber").setMonster(threeHeadedLion);
             if (snakeProb <= 13) {
                 player.getRoom().setMonster(snake);
             }
@@ -190,8 +189,8 @@ public class Game {
                 case HIT:
                 wantToQuit = hit(command);
                 break;
-                case CHEAT:
-                cheat();
+                case ISABELLA:
+                cheatCode();
                 break;
                 default:
                 Writer.println(commandWord + " is not a command in 'The Legend of Cliff'!");
@@ -391,6 +390,7 @@ public class Game {
                 player.getRoom().removeItem(itemValue.getName());
                 player.addToInventory(itemValue);
                 Writer.println("You took the " + itemValue.getName() + ".");
+                itemValue.setOnTopOf(null);
             }
         }
     }
@@ -714,7 +714,7 @@ public class Game {
             foodName = commandValue.getRestOfLine();
         }
         if (hasWord) {
-            if (player.getRoom().getItem(foodName) == null && player.getInventory().contains(foodName)) {
+            if (player.getRoom().getItem(foodName) == null && !(player.getInventory().contains(foodName))) {
                 Writer.println("Hmmm, don't see that here...");
             }
             else {
@@ -1026,9 +1026,10 @@ public class Game {
     /**
      * Cheat code.
      */
-    private void cheat() {
+    private void cheatCode() {
         player.addHealth(100);
         player.addShield(100);
+        Writer.println("You have " + player.getShield() + " shield, and " + player.getHealth() + " health.");
     }
 
 }

@@ -6,7 +6,7 @@ You light the lantern on your backpack.
 Main Room :
 The room is big and open. You don't see much here but an altar in the center, and a door in each cardinal direction. The door to the west pops open from the shock wave of you hitting the ground. 
      Exits: east, south, north, west, 
-     Items: Broom, Altar, Backpack, Red Key, Yellow Key, Blue Key, Ultimate Key, 
+     Items: Broom, Altar, Backpack, 
      There is currently no monster in the room.
 > go west
 Western Door :
@@ -24,179 +24,150 @@ You walk into the begginning of a long passageway. You can't see all the way dow
 Sleeping Chamber :
 This looks like it was a sleeping chamber for the queen's Royal Guard. Someone must have been stuck in here, because it looks like there is a skeleton in the corner. 
      Exits: south, 
-     Items: Sword, Bone, 
+     Items: Sword, 
      There is currently no monster in the room.
-> take sword
-You took the Sword.
 
 AH! Snake is attacking!
 Snake just did 2.5 damage to you.
 	You have 0.0 shield left, and 97.5 health left.
+> hit snake
+You did 10.5 damage to snake with your fists.
+You killed snake.
+> take sword
+You took the Sword.
+> equip sword
+You equipped Sword
 > go south
 Western Hallway :
 You walk into the begginning of a long passageway. You can't see all the way down the hallway. Slightly down the hall however; you see two doors. One to the north and one to the south. 
      Exits: east, south, north, west, 
      Items: Currently nothing.
      There is currently no monster in the room.
-> equip sword
-You equipped Sword
+> go south
+Dining Chamber :
+This looks like it was a once a small dining chamber for the queen's Royal Guard. Someone must have been stuck in here, because it looks like there is a skeleton in the chair. 
+     Exits: north, 
+     Items: Armor, Helmet, 
+     There is currently no monster in the room.
+> take armor
+You took the Armor.
+> equip armor
+You equipped Armor
+> take helmet
+You took the Helmet.
+> equip helmet
+You equipped Helmet
+> go north
+Western Hallway :
+You walk into the begginning of a long passageway. You can't see all the way down the hallway. Slightly down the hall however; you see two doors. One to the north and one to the south. 
+     Exits: east, south, north, west, 
+     Items: Currently nothing.
+     There is currently no monster in the room.
+> go west
+End of Western Hallway :
+This looks like the end of this small hallway. There are stairs going down, but its very dark and eerie sounding down there... 
+     Exits: east, down, 
+     Items: Currently nothing.
+     There is currently no monster in the room.
+
+AH! Snake is attacking!
+Snake just did 2.5 damage to you.
+	You have 22.5 shield left, and 97.5 health left.
+> go down
+South-West Basement :
+This is very deep into the caverns. You are at the beginning of a long hallway. You can see things down the hall, but not clearly. 
+     Exits: south, up, 
+     Items: Currently nothing.
+     There is currently no monster in the room.
+> go south
+Forked Passage :
+The hallway seems to fork here. To your west on the wall is a painting. Straight ahead is the rest of the hallway. It doesn't look like anyhting is down there. To your south-west is another long hallway. 
+     Exits: south, north, south-west, 
+     Items: Painting, 
+     There is currently no monster in the room.
+> go south-west
+End of Forked Passage :
+Oh no! There's a big hole in the ground so you can't walk any further! 
+     Exits: north-east, 
+     Items: Red Key, Cinderblock, 
+     There is currently no monster in the room.
+> take red key
+You took the Red Key.
+> go north-east
+Forked Passage :
+The hallway seems to fork here. To your west on the wall is a painting. Straight ahead is the rest of the hallway. It doesn't look like anyhting is down there. To your south-west is another long hallway. 
+     Exits: south, north, south-west, 
+     Items: Painting, 
+     There is currently no monster in the room.
+> go south
+The Hallway's End :
+There doesn't seem to be anything over here. Just a dusty cavern like the rest. 
+     Exits: north, 
+     Items: Bone, 
+     There is currently no monster in the room.
+> take bone
+You took the Bone.
+> go north
+Forked Passage :
+The hallway seems to fork here. To your west on the wall is a painting. Straight ahead is the rest of the hallway. It doesn't look like anyhting is down there. To your south-west is another long hallway. 
+     Exits: south, north, south-west, 
+     Items: Painting, 
+     There is currently no monster in the room.
+> go north
+South-West Basement :
+This is very deep into the caverns. You are at the beginning of a long hallway. You can see things down the hall, but not clearly. 
+     Exits: south, up, 
+     Items: Currently nothing.
+     There is currently no monster in the room.
+> go up
+End of Western Hallway :
+This looks like the end of this small hallway. There are stairs going down, but its very dark and eerie sounding down there... 
+     Exits: east, down, 
+     Items: Currently nothing.
+     There is currently Snake in End of Western Hallway.
+
+AH! Snake is attacking!
+Snake just did 2.5 damage to you.
+	You have 20.0 shield left, and 97.5 health left.
+> go east
+Western Hallway :
+You walk into the begginning of a long passageway. You can't see all the way down the hallway. Slightly down the hall however; you see two doors. One to the north and one to the south. 
+     Exits: east, south, north, west, 
+     Items: Currently nothing.
+     There is currently no monster in the room.
 > go east
 Western Door :
 This door is open. There is a carving on the door that reads 'Turn around! Don't do it! save yourself! They've come afte...' It ends there 
      Exits: east, west, 
      Items: Currently nothing.
      There is currently no monster in the room.
-
-AH! Snake is attacking!
-Snake just did 2.5 damage to you.
-	You have 0.0 shield left, and 95.0 health left.
 > go east
-Main Room :
-The room is big and open. You don't see much here but an altar in the center, and a door in each cardinal direction. The door to the west pops open from the shock wave of you hitting the ground. 
-     Exits: east, south, north, west, 
-     Items: Broom, Altar, Backpack, Red Key, Yellow Key, Blue Key, Ultimate Key, 
-     There is currently no monster in the room.
-> take red key 
-You took the Red Key.
-> take blue key
-You took the Blue Key.
-
-AH! Snake is attacking!
-Snake missed the attack.
-> hit snake
-You missed your attack!
-
-AH! Snake is attacking!
-Snake just did 2.5 damage to you.
-	You have 0.0 shield left, and 92.5 health left.
-> hit snake
-You did 94.0 damage to snake with Sword.
-You killed snake.
-> take yellow key
-You took the Yellow Key.
-> build
-What item would you like to build with?
-red key
-Would you like to keep building?(y/n)
-y
-What item would you like to build with?
-yellow key
-Would you like to keep building?(y/n)
-y
-What item would you like to build with?
-blue key
-Congratulations, you built Super Key!
-> take ultimate key
-You took the Ultimate Key.
-> go north
-Northern Door :
-You look at the door. There seem to be three different sized cut outs on the door. There is nothing on the ground around. 
-     Exits: south, north, 
-     Items: Currently nothing.
-     There is currently no monster in the room.
-> unlock north
-What would you like to unlock north with?
-super key
-You have unlocked north.
-> go north
-Northern Hallway :
-You walk into the beginning of a long hallway. This hallway has gold walls and a shiny floor. There must be somthing good here... Slightly down the hall there are doors to the east and west. 
-     Exits: east, south, north, west, 
-     Items: Currently nothing.
-     There is currently no monster in the room.
-> go north
-End of Northern Hallway :
-This looks like the end of the northern hallway. There's a big gold plated door here. 
-     Exits: south, north, 
-     Items: Currently nothing.
-     There is currently no monster in the room.
-> go norht
-There is no door!
-> go north
-The Queen's Hidden Room :
-This must be a room for the Queen! There seems to be everything in here. There's a chest at the foot of the bed, a closet, and diamonds and gold everywhere. 
-     Exits: south, 
-     Items: Queen's Chest, 
-     There is currently no monster in the room.
-> unlock queen's chest
-What would you like to unlock queen's chest with?
-ultimate key
-You have unlocked queen's chest.
-> unpack queen's chest
-What would you like to unpack from this?
-Queen's Chest contains: 
-	Valentinian Gem, 
-valentinian gem
-You unpacked Valentinian Gem from Queen's Chest
-> go south
-End of Northern Hallway :
-This looks like the end of the northern hallway. There's a big gold plated door here. 
-     Exits: south, north, 
-     Items: Currently nothing.
-     There is currently no monster in the room.
-> go south
-Northern Hallway :
-You walk into the beginning of a long hallway. This hallway has gold walls and a shiny floor. There must be somthing good here... Slightly down the hall there are doors to the east and west. 
-     Exits: east, south, north, west, 
-     Items: Currently nothing.
-     There is currently no monster in the room.
-> go south
-Northern Door :
-You look at the door. There seem to be three different sized cut outs on the door. There is nothing on the ground around. 
-     Exits: south, north, 
-     Items: Currently nothing.
-     There is currently no monster in the room.
-> cheat
-
-AH! Snake is attacking!
-Snake just did 2.5 damage to you.
-	You have 97.5 shield left, and 100.0 health left.
-> hit snake
-You missed your attack!
-
-AH! Snake is attacking!
-Snake just did 2.5 damage to you.
-	You have 95.0 shield left, and 100.0 health left.
-> hit snake
-You missed your attack!
-
-AH! Snake is attacking!
-Snake missed the attack.
-> hit snake
-You did 44.0 damage to snake with Sword.
-You killed snake.
-> go south
 Main Room :
 The room is big and open. You don't see much here but an altar in the center, and a door in each cardinal direction. The door to the west pops open from the shock wave of you hitting the ground. 
      Exits: east, south, north, west, 
      Items: Broom, Altar, Backpack, 
      There is currently no monster in the room.
 
-AH! Sir Sean Fortevir is attacking!
-Sir Sean Fortevir just did 15.0 damage to you.
-	You have 80.0 shield left, and 100.0 health left.
-> hit snake
-snake is not here.
-
-AH! Sir Sean Fortevir is attacking!
-Sir Sean Fortevir just did 15.0 damage to you.
-	You have 65.0 shield left, and 100.0 health left.
-> hit sir sean fortevir
-You did 78.0 damage to sir sean fortevir with Sword.
-sir sean fortevir has 22.0 health left.
-
-AH! Sir Sean Fortevir is attacking!
-Sir Sean Fortevir missed the attack.
-> hit sir sean fortevir
-You did 14.0 damage to sir sean fortevir with Sword.
-sir sean fortevir has 8.0 health left.
-
-AH! Sir Sean Fortevir is attacking!
-Sir Sean Fortevir missed the attack.
-> hit sir sean fortevir
-You did 22.0 damage to sir sean fortevir with Sword.
-You killed sir sean fortevir.
-	Congratulations!
-	You beat 'The Legend of Cliff' by obtaining the Valentinian Gem and defeating Sir Sean Fortevir!
-You have earned 20 points in 22 turns.
+AH! Snake is attacking!
+Snake just did 2.5 damage to you.
+	You have 17.5 shield left, and 97.5 health left.
+> go south
+Southern Door :
+You look at the door. It looks like the lock is made out of wood so the key can'y possibly be metal... 
+     Exits: south, north, 
+     Items: Hammer, 
+     There is currently no monster in the room.
+> unlock south
+What would you like to unlock south with?
+bone
+You have unlocked south.
+> go south
+Southern Hallway :
+You walk into the beginning of a long passageway. You can't see all the way down the hallway. Slightly down the hall however; you see two doors. One to the east and west. 
+     Exits: east, south, north, west, 
+     Items: Currently nothing.
+     There is currently no monster in the room.
+> quit
+It looks like your Legend of Cliff will end here.
+You have earned 20 points in 25 turns.
 Thank you for playing.  Good bye.

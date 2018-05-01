@@ -302,10 +302,10 @@ public class World {
         Item bone = new Item("Bone", "This is a skeletons bone.", 0, 2);
         rooms.get("sleeping chamber").addItem(bone);
 
-        Item weakArmor = new Item("Armor", "This armor is heavy and thick.", 0, 10);
+        Armor weakArmor = new Armor("Armor", "This armor is heavy and thick.", 0, 10, 15);
         rooms.get("dining chamber").addItem(weakArmor);
 
-        Item weakHelmet = new Item("Helmet", "This helmet is big and clunky.", 0, 5);
+        Helmet weakHelmet = new Helmet("Helmet", "This helmet is big and clunky.", 0, 5, 10);
         rooms.get("dining chamber").addItem(weakHelmet);
 
         Item forkedPainting = new Item("Painting", "This painting is very interesting looking.", 0, 2);
@@ -402,13 +402,13 @@ public class World {
         superPuzzlePiece.addItemNeeded(mediumPuzzlePiece);
         superPuzzlePiece.addItemNeeded(largePuzzlePiece);
         
-        Item royalArmor = new Item("Royal Armor", "This looks like the armor worn by the Royal Guard.", 0, 15);
+        Armor royalArmor = new Armor("Royal Armor", "This looks like the armor worn by the Royal Guard.", 0, 15, 25);
         rooms.get("the royal equipment room").addItem(royalArmor);
         
-        Item royalHelmet = new Item("Royal Helmet", "This looks like the helmets worn by the Royal Guard.", 0, 5);
+        Helmet royalHelmet = new Helmet("Royal Helmet", "This looks like the helmets worn by the Royal Guard.", 0, 5, 20);
         rooms.get("the royal equipment room").addItem(royalHelmet);
         
-        Item royalSword = new Item("Royal Sword", "This looks like a sword used by the Royal Guard.", 0, 15);
+        Weapon royalSword = new Weapon("Royal Sword", "This looks like a sword used by the Royal Guard.", 0, 15, 2);
         rooms.get("the royal tool room").addItem(royalSword);
         
         BuildableItem ultimateKey = new BuildableItem("Ultimate Key", "This looks like a roayl key.", 0, 2);

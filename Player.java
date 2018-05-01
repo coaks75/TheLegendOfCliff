@@ -24,6 +24,12 @@ public class Player {
     private Weapon equipped;
     /** A field for the players health. */
     private double health;
+    /** A field for the players shield. */
+    private double shield;
+    /** A field for the players armor. */
+    private Armor armor;
+    /** A field for the players helmet. */
+    private Helmet helmet;
     /** A field for the random int. */
     private Random rand;
 
@@ -37,7 +43,10 @@ public class Player {
         previousRoom = roomValue;
         inventory = new ArrayList<Item>();
         equipped = null;
+        armor = null;
+        helmet = null;
         health = MAX_HEALTH;
+        shield = 0;
         rand = new Random();
     }
 
@@ -254,5 +263,58 @@ public class Player {
     public int getHitProbability() {
         return HIT_PROBABILITY;
     }
+    
+    /**
+     * Accessor method for the players shield
+     * 
+     * @return The amount of shield the player has.
+     */
+    public double getShield() {
+        return shield;
+    }
+    
+    /**
+     * Mutator method for the players shield.
+     * 
+     * @param shieldValue The shield being added.
+     */
+    public void setShield(double shieldValue) {
+        shield += shieldValue;
+    }
 
+    /**
+     * Mutator method for the armor equipped.
+     * 
+     * @param equipping The armor we are equipping
+     */
+    public void setArmorEquipped(Armor equipping) {
+        armor = equipping;
+    }
+
+    /**
+     * A method that returns the items equipped
+     * 
+     * @return The item equipped.
+     */
+    public Armor getArmorEquipped() {
+        return armor;
+    }
+    
+    /**
+     * Mutator method for the armor equipped.
+     * 
+     * @param equipping The armor we are equipping
+     */
+    public void setHelmetEquipped(Helmet equipping) {
+        helmet = equipping;
+    }
+
+    /**
+     * A method that returns the items equipped
+     * 
+     * @return The item equipped.
+     */
+    public Helmet getHelmetEquipped() {
+        return helmet;
+    }
 }

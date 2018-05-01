@@ -39,7 +39,7 @@ public class Weapon extends Item implements Equippable{
             answer = "You equipped " + this.getName();
         }
         else {
-            answer = "Woah, you can't equip " + this.getName() + " if you already have something else equipped.";
+            answer = "Woah, you can't equip " + this.getName() + " if you already have another weapon equipped.";
         }
         return answer;
     }

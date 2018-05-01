@@ -950,7 +950,13 @@ public class Game {
             int hit = rand.nextInt(99);
             if (hit < monster.getHitProbability()) {
                 double damageDone = monster.getDamageDone();
-                player.setHealth(-1 * damageDone);
+                player.setShield(-1 * damageDone);
+                if (player.getShield() < 0) {
+                    player.setHealth(player.getShield());
+                }
+                else {
+                    player.setHealth(-1 * damageDone);
+                }
                 Writer.println(monster.getName() + " just did " + damageDone + " damage to you.");
                 if (player.getHealth() <= 0) {
                     Writer.println(monster.getName() + " killed you.");
@@ -958,7 +964,12 @@ public class Game {
                     inBattle = false;
                 }
                 else {
-                    Writer.println("\tYou have " + player.getHealth() +  " health left.");
+                    if (player.getShield() >= 0) {
+                        Writer.println("\tYou have " + player.getShield() + " shield left, and " + player.getHealth() +  " health left.");
+                    }
+                    else {
+                        Writer.println("\tYou have 0 shield left, and " + player.getHealth() + " health left.");
+                    }
                 }
             }
             else {

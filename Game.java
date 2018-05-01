@@ -835,7 +835,7 @@ public class Game {
                 Writer.println("You do not have " + itemName);
             }
             for (BuildableItem element : world.getBuildables()) {
-                if (buildingWith.containsAll(element.getItemsNeeded())) {
+                if (buildingWith.containsAll(element.getItemsNeeded()) && element.getItemsNeeded().containsAll(buildingWith)) {
                     isBuilt = true;
                     building = element;
                     for (Item current : buildingWith) {

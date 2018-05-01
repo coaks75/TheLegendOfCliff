@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.HashSet;
 /**
  * An item that can be built.
  *
@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class BuildableItem extends Item {
     /** A field for the items needed to build this. */
-    private ArrayList<Item> itemsNeeded;
+    private HashSet<Item> itemsNeeded;
     /** A field saying if its built. */
     private boolean isBuilt;
     
@@ -21,7 +21,7 @@ public class BuildableItem extends Item {
      */
     public BuildableItem(String nameValue, String descriptionValue, int pointsValue, double weightValue) {
         super(nameValue, descriptionValue, pointsValue, weightValue);
-        itemsNeeded = new ArrayList<Item>();
+        itemsNeeded = new HashSet<Item>();
         isBuilt = false;
     }
     
@@ -30,7 +30,7 @@ public class BuildableItem extends Item {
      * 
      * @return Names of the items neeeded to build this.
      */
-    public ArrayList<Item> getItemsNeeded() {
+    public HashSet<Item> getItemsNeeded() {
         return itemsNeeded;
     }
     

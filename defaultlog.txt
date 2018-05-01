@@ -7,6 +7,10 @@ Main Room :
 The room is big and open. You don't see much here but an altar in the center, and a door in each cardinal direction. The door to the west pops open from the shock wave of you hitting the ground. 
 Exits: east, south, north, west, 
 Items:Broom, Altar, Backpack, Red Key, Yellow Key, Blue Key, 
+> take brom
+No such item in the room.
+> take broom
+You took the Broom.
 > take red key
 You took the Red Key.
 > take blue key
@@ -15,24 +19,39 @@ You took the Blue Key.
 You took the Yellow Key.
 > build
 What item would you like to build with?
+broom
+Would you like to keep building?(y/n)
+y
+What item would you like to build with?
 red key
 Would you like to keep building?(y/n)
 y
 What item would you like to build with?
-blue  key
-You do not have blue  key
+yellow key
 Would you like to keep building?(y/n)
 y
 What item would you like to build with?
 blue key
 Would you like to keep building?(y/n)
+n
+You didn't build anything.
+> inventory
+broom, red key, blue key, yellow key, 
+> build
+What item would you like to build with?
+red key
+Would you like to keep building?(y/n)
 y
 What item would you like to build with?
 yellow key
+Would you like to keep building?(y/n)
+y
+What item would you like to build with?
+blue key
 Congratulations, you built Super Key!
-> dismantle super key
-You dismantled super key, and gained: Red Key, Blue Key, Yellow Key, .
+> inventory
+broom, super key, 
 > quit
 It looks like your Legend of Cliff will end here.
-You have earned 0 points in 5 turns.
+You have earned 0 points in 9 turns.
 Thank you for playing.  Good bye.

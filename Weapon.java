@@ -7,7 +7,7 @@
  */
 public class Weapon extends Item implements Equippable{
     /** A field for the damage this weapon does. */
-    private int damageDone;
+    private int damageFactor;
 
     /**
      * Constructor for the weapon class.
@@ -17,9 +17,9 @@ public class Weapon extends Item implements Equippable{
      * @param pointsValue The points associated with an item.
      * @param weightValue he weight of an item.
      */
-    public Weapon (String nameValue, String descriptionValue, int pointsValue, double weightValue, int damageDoneValue) {
+    public Weapon (String nameValue, String descriptionValue, int pointsValue, double weightValue, int damageFactorValue) {
         super(nameValue, descriptionValue, pointsValue, weightValue);
-        damageDone = damageDoneValue;
+        damageFactor = damageFactorValue;
     }
 
     @Override

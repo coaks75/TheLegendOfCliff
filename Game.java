@@ -119,6 +119,7 @@ public class Game {
                 case STATUS:
                 Writer.println("Your current score is " + score);
                 Writer.println("The current number of turns you've taken are " + turnCounter);
+                Writer.println("You have " + player.getShield() + " shield, and " + player.getHealth() + " health.");
                 Writer.println(player.getRoom().toString());
                 break;
                 case INVENTORY:
@@ -944,18 +945,20 @@ public class Game {
      */
     private boolean monsterAttack(Monster monster) {
         boolean playerDied = false;
+        Writer.println("");
         Writer.println("AH! " + monster.getName() + " is attacking!");
         if (monster.getHealth() > 0) {
             inBattle = true;
             int hit = rand.nextInt(99);
+            double remainder = 0;
             if (hit < monster.getHitProbability()) {
                 double damageDone = monster.getDamageDone();
-                player.setShield(-1 * damageDone);
-                if (player.getShield() < 0) {
-                    player.setHealth(player.getShield());
+                if (player.getShield() >= damageDone) {
+                    player.setShield(-1 * damageDone);
                 }
                 else {
-                    player.setHealth(-1 * damageDone);
+                    remainder = damageDone - player.getShield();
+                    player.setHealth(-1 * remainder);
                 }
                 Writer.println(monster.getName() + " just did " + damageDone + " damage to you.");
                 if (player.getHealth() <= 0) {

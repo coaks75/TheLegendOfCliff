@@ -17,27 +17,36 @@ Western Hallway :
 You walk into the begginning of a long passageway. You can't see all the way down the hallway. Slightly down the hall however; you see two doors. One to the north and one to the south. 
 Exits: east, south, north, west, 
 Items:
-> go north
-Sleeping Chamber :
-This looks like it was a sleeping chamber for the queen's Royal Guard. Someone must have been stuck in here, because it looks like there is a skeleton in the corner. 
-Exits: south, 
-Items:Sword, Bone, 
-> take sword
-You took the Sword.
-> equip sword
-You equipped Sword
+
 AH! Snake is attacking!
-Snake just did 2.5 damage to you.
-	You have 0 shield left, and 97.5 health left.
+Snake missed the attack.
 > hit snake
 You missed your attack!
+
 AH! Snake is attacking!
 Snake just did 2.5 damage to you.
-	You have 0 shield left, and 92.5 health left.
+	You have 0.0 shield left, and 97.5 health left.
 > hit snake
-You did 30.0 damage to snake with Sword.
+You missed your attack!
+
+AH! Snake is attacking!
+Snake missed the attack.
+> hit snake
+You missed your attack!
+
+AH! Snake is attacking!
+Snake just did 2.5 damage to you.
+	You have 0.0 shield left, and 95.0 health left.
+> hit snake
+You missed your attack!
+
+AH! Snake is attacking!
+Snake just did 2.5 damage to you.
+	You have 0.0 shield left, and 92.5 health left.
+> hit snake
+You did 21.5 damage to snake with your fists.
 You killed snake.
-> go south
+> look
 Western Hallway :
 You walk into the begginning of a long passageway. You can't see all the way down the hallway. Slightly down the hall however; you see two doors. One to the north and one to the south. 
 Exits: east, south, north, west, 
@@ -49,42 +58,53 @@ Exits: north,
 Items:Armor, Helmet, 
 > take armor
 You took the Armor.
-> take helmet
-You took the Helmet.
+
+AH! Snake is attacking!
+Snake just did 2.5 damage to you.
+	You have 0.0 shield left, and 90.0 health left.
+> hit snake
+You missed your attack!
+
+AH! Snake is attacking!
+Snake just did 2.5 damage to you.
+	You have 0.0 shield left, and 87.5 health left.
+> hit snake
+You missed your attack!
+
+AH! Snake is attacking!
+Snake just did 2.5 damage to you.
+	You have 0.0 shield left, and 85.0 health left.
+> hit snake
+You missed your attack!
+
+AH! Snake is attacking!
+Snake just did 2.5 damage to you.
+	You have 0.0 shield left, and 82.5 health left.
+> hit snake
+You missed your attack!
+
+AH! Snake is attacking!
+Snake just did 2.5 damage to you.
+	You have 0.0 shield left, and 80.0 health left.
+> hit snake
+You did 22.0 damage to snake with your fists.
+You killed snake.
 > equip armor
 You equipped Armor
-> equip helmet
-You equipped Helmet
-> go north
-Western Hallway :
-You walk into the begginning of a long passageway. You can't see all the way down the hallway. Slightly down the hall however; you see two doors. One to the north and one to the south. 
-Exits: east, south, north, west, 
-Items:
-> go west
-End of Western Hallway :
-This looks like the end of this small hallway. There are stairs going down, but its very dark and eerie sounding down there... 
-Exits: east, down, 
-Items:
-> go down
-South-West Basement :
-This is very deep into the caverns. You are at the beginning of a long hallway. You can see things down the hall, but not clearly. 
-Exits: south, up, 
-Items:
-> go south
-Forked Passage :
-The hallway seems to fork here. To your west on the wall is a painting. Straight ahead is the rest of the hallway. It doesn't look like anyhting is down there. To your right is another short hallway. it looks like there's something shiny down there... 
-Exits: south, north, south-west, 
-Items:Painting, 
-> go west
-There is no door!
-> go south-west
-End of Forked Passage :
-Oh no! There's a big hole in the ground so you can't walk across! On the other side of the hole i a key resting on a cinderblock. Should you attempt the jump? 
-Exits: north-east, 
-Items:Cinderblock, 
-> take cinderblock
-Carrying too much.
+
+AH! Snake is attacking!
+Snake just did 2.5 damage to you.
+	You have 12.5 shield left, and 80.0 health left.
+> hit snake
+You missed your attack!
+
+AH! Snake is attacking!
+Snake just did 2.5 damage to you.
+	You have 10.0 shield left, and 80.0 health left.
+> hit snake
+You did 3.0 damage to snake with your fists.
+You killed snake.
 > quit
 It looks like your Legend of Cliff will end here.
-You have earned 0 points in 18 turns.
+You have earned 0 points in 6 turns.
 Thank you for playing.  Good bye.

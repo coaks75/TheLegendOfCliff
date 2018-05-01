@@ -52,14 +52,23 @@ public class Game {
 
         // Enter the main game loop. Here we repeatedly read commands and
         // execute them until the game is over.
+        // build super key with colored keys in first room to unlock north, testing only
+        // ultimate key is supposed to be buildable, but in main room for testing only, unlocks queens chest
+        // when in main room && have gem, you fight sir sean
+
         boolean wantToQuit = false;
+        boolean won = false;
         Command command = Reader.getCommand();
         wantToQuit = processCommand(command);
         while (!wantToQuit) {
             int snakeProb = rand.nextInt(99);
             Monster snake = new Monster("Snake", .5, 2.5, 80);
+            Monster sirSean = new Monster("Sir Sean Fortevir", 100, 15, 80);
             if (snakeProb <= 13) {
                 player.getRoom().setMonster(snake);
+            }
+            if (player.getRoom() == world.getRoom("Main Room") && player.getItem("Valentinian Gem") != null) {
+                player.getRoom().setMonster(sirSean);
             }
             if (player.getRoom().getMonster() != null) {
                 inBattle = true;
@@ -67,7 +76,10 @@ public class Game {
             while (inBattle && player.getRoom().getMonster() != null) {
                 if (monsterAttack(player.getRoom().getMonster()) != true) {
                     command = Reader.getCommand();
-                    wantToQuit = processCommand(command);
+                    if (processCommand(command)) {
+                        won = true;
+                        wantToQuit = true;
+                    }
                 }
                 else {
                     wantToQuit = true;
@@ -80,7 +92,16 @@ public class Game {
             }
             // other stuff that needs to happen every turn can be added here.
         }
-        printGoodbye();
+        if (won) {
+            Writer.println("");
+            Writer.println("\tCongratulations!");
+            Writer.println("\tYou beat 'The Legend of Cliff' by obtaining the Valentinian Gem \n   and defeating Sir Sean Fortevir!");
+            Writer.println("You have earned " + score + " points in " + turnCounter + " turns.");
+            Writer.println("Thank you for playing.  Good bye.");
+        }
+        else {
+            printGoodbye();
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -167,7 +188,10 @@ public class Game {
                 dismantle(command);
                 break;
                 case HIT:
-                hit(command);
+                wantToQuit = hit(command);
+                break;
+                case CHEAT:
+                cheat();
                 break;
                 default:
                 Writer.println(commandWord + " is not a command in 'The Legend of Cliff'!");
@@ -504,7 +528,7 @@ public class Game {
             }
             else {
                 canUnlock = true;
-                Writer.println("What would you like to unlock " + secondWord + " with.");
+                Writer.println("What would you like to unlock " + secondWord + " with?");
                 keyCommand = Reader.getResponse();
             }
         }
@@ -639,17 +663,17 @@ public class Game {
             }
         }
         if (exists) {
-            if (unpacking instanceof Container) {
+            if (!(unpacking instanceof Container)) {
                 Writer.println("Woah buddy, thats not a container.");
             }
             else {
                 Container using = (Container)unpacking;
-                if (!using.isLocked()) {
+                if (using.isLocked()) {
                     Writer.println(using.getName() + " is locked.");
                 }
                 else {
                     Writer.println("What would you like to unpack from this?");
-                    Writer.println(using.getName() + " contains: \n\t" + using.toString());
+                    Writer.println(using.getName() + " contains: \n\t" + using.getItemString());
                     toUnpackName = Reader.getResponse();
                     isContainer = true;
                 }
@@ -776,8 +800,9 @@ public class Game {
      * 
      * @param commandValue The command to be processed.
      */
-    private void hit(Command commandValue) {
+    private boolean hit(Command commandValue) {
         boolean hasWord = false;
+        boolean killedSirSean = false;
         String targetName = null;
         Monster target = null;
         String weaponName = null;
@@ -814,12 +839,19 @@ public class Game {
                     inBattle = false;
                     Writer.println("You killed " + targetName + ".");
                     player.getRoom().setMonster(null);
+                    if (targetName.equalsIgnoreCase("sir sean fortevir")) {
+                        killedSirSean = true;
+                    }
+                }
+                else {
+                    Writer.println(targetName + " has " + target.getHealth() + " health left.");
                 }
             }
             else {
                 Writer.println("You missed your attack!");
             }
         }
+        return killedSirSean;
     }
 
     /**
@@ -989,6 +1021,14 @@ public class Game {
             }
         }
         return playerDied;
+    }
+    
+    /**
+     * Cheat code.
+     */
+    private void cheat() {
+        player.addHealth(100);
+        player.addShield(100);
     }
 
 }

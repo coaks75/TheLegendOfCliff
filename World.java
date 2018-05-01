@@ -359,7 +359,7 @@ public class World {
         
         BuildableItem superKey = new BuildableItem("Super Key", "This is the combinaion of all the keys.", 0, 3);
         rooms.get("eastern door").getExit("east").setLocked(true);
-        rooms.get("eastern door").getExit("east").setKey(superKey);
+        rooms.get("northern door").getExit("north").setKey(superKey);
         buildables.put("Super Key", superKey);
         superKey.addItemNeeded(redKey);
         superKey.addItemNeeded(blueKey);
@@ -396,7 +396,7 @@ public class World {
         
         BuildableItem superPuzzlePiece = new BuildableItem("Super Puzzle Piece", "This is a combination of the puzzle pieces.", 0, 3);
         rooms.get("northern door").getExit("north").setLocked(true);
-        rooms.get("northern door").getExit("north").setKey(superPuzzlePiece);
+        //rooms.get("northern door").getExit("north").setKey(superPuzzlePiece);
         buildables.put("Super Puzzle Piece", superPuzzlePiece);
         superPuzzlePiece.addItemNeeded(smallPuzzlePiece);
         superPuzzlePiece.addItemNeeded(mediumPuzzlePiece);
@@ -411,9 +411,11 @@ public class World {
         Weapon royalSword = new Weapon("Royal Sword", "This looks like a sword used by the Royal Guard.", 0, 15, 2);
         rooms.get("the royal tool room").addItem(royalSword);
         
-        BuildableItem ultimateKey = new BuildableItem("Ultimate Key", "This looks like a roayl key.", 0, 2);
-        ultimateKey.addItemNeeded(superPuzzlePiece);
-        ultimateKey.addItemNeeded(superKey);
+        //BuildableItem ultimateKey = new BuildableItem("Ultimate Key", "This looks like a roayl key.", 0, 2);
+        //ultimateKey.addItemNeeded(superPuzzlePiece);
+        //ultimateKey.addItemNeeded(superKey);
+        Item ultimateKey = new Item("Ultimate Key", "", 0, 2);
+        rooms.get("main room").addItem(ultimateKey);
         
         Item gem = new Item("Valentinian Gem", "This is the fabled Valentinian Gem...", 25, 5);
         

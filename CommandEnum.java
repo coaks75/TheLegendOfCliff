@@ -47,7 +47,9 @@ public enum CommandEnum {
     /** A command used to dismantle something. */
     DISMANTLE("dismantle"),
     /** A command to hit something. */
-    HIT("hit");
+    HIT("hit"),
+    /** A cheat code command for full health and shield. */
+    CHEAT("cheat");
     
     /** A field for the text that would be entered by the person playing the game.*/
     private final String text;

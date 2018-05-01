@@ -109,6 +109,26 @@ public class Container extends Item implements Lockable{
         }
         return answer;
     }
+    
+    /**
+     * A method used to get a string of the items inhere
+     * 
+     * @return A string of all the items in this container.
+     */
+    public String getItemString() {
+        String answer = "";
+        
+        if (items.size() == 0) {
+            answer += "currently nothing";
+        }
+        else {
+            for (Item element : items) {
+                answer += element.getName() + ", ";
+            }
+        }
+        
+        return answer;
+    }
 
     @Override
     public boolean isLocked() {

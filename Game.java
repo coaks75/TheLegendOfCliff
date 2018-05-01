@@ -58,9 +58,18 @@ public class Game {
             turnCounter++;
             wantToQuit = processCommand(command);
             // other stuff that needs to happen every turn can be added here.
-            int randomBattle = rand.nextInt(99);
-            if (randomBattle <= 13 ) {
-                
+            if (!(command.getCommandWord().getText().equalsIgnoreCase("quit"))){
+                int snakeProb = rand.nextInt(99);
+                if (snakeProb <= 13) {
+                    Monster snake = new Monster("Snake", .5, 5, 80);
+                    player.getRoom().addMonster(snake);
+                    inBattle = true;
+                    while (inBattle) {
+                        monsterAttack(snake);
+                        command = Reader.getCommand();
+                        wantToQuit = processCommand(command);
+                    }
+                }
             }
         }
         printGoodbye();
@@ -144,6 +153,9 @@ public class Game {
                 break;
                 case DISMANTLE:
                 dismantle(command);
+                break;
+                case HIT:
+                hit(command);
                 break;
                 default:
                 Writer.println(commandWord + " is not a command in 'The Legend of Cliff'!");
@@ -755,27 +767,46 @@ public class Game {
     private void hit(Command commandValue) {
         boolean hasWord = false;
         String targetName = null;
-        Item target = null;
+        Monster target = null;
         String weaponName = null;
-        Item weapon = null;
 
         if (!commandValue.hasSecondWord()) {
             Writer.println("Hit what?");
         }
         else {
-            hasWord = false;
+            hasWord = true;
             targetName = commandValue.getRestOfLine();
         }
         if (hasWord) {
-            if (player.getRoom().getItem(targetName) == null) {
+            if (player.getRoom().getMonster(targetName) == null) {
                 Writer.println(targetName + " is not here.");
             }
             else {
-                target = player.getRoom().getItem(targetName);
+                target = player.getRoom().getMonster(targetName);
             }
         }
         if (target != null) {
-            
+            inBattle = true;
+            int hitting = rand.nextInt();
+            if (hitting < player.getHitProbability()) {
+                double damageDone = player.getDamageDone();
+                target.setHealth(-1 * damageDone);
+                if(player.getItemEquipped() != null) {
+                    weaponName = player.getItemEquipped().getName() + ".";
+                }
+                else {
+                    weaponName = "your fists.";
+                }
+                Writer.println("You did " + damageDone + " damage to " + targetName + " with " + weaponName);
+                if (target.getHealth() <= 0) {
+                    inBattle = false;
+                    Writer.println("You killed " + targetName + ".");
+                }
+                Writer.println(target.getHealth());
+            }
+            else {
+                Writer.println("You missed your attack!");
+            }
         }
     }
 
@@ -905,11 +936,34 @@ public class Game {
             }
         }
     }
-    
+
     /**
-     * A method for a snake attack
+     * A method used for a snake attack.
      */
-    private void snakeAttack() {
-       
+    private boolean monsterAttack(Monster monster) {
+        boolean playerDied = false;
+        Writer.println("AH! " + monster.getName() + " is attacking!");
+        if (monster.getHealth() > 0) {
+            inBattle = true;
+            int hit = rand.nextInt(99);
+            if (hit < monster.getHitProbability()) {
+                double damageDone = monster.getDamageDone();
+                player.setHealth(-1 * damageDone);
+                Writer.println(monster.getName() + " just did " + damageDone + " damage to you.");
+                if (player.getHealth() <= 0) {
+                    Writer.println(monster.getName() + " killed you.");
+                    playerDied = true;
+                    inBattle = false;
+                }
+                else {
+                    Writer.println("\tYou have " + player.getHealth() + "health left.");
+                }
+            }
+            else {
+                Writer.println(monster.getName() + " missed the attack.");
+            }
+        }
+        return playerDied;
     }
+
 }

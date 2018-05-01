@@ -30,7 +30,7 @@ public class World {
 
     /**
      * This method takes care of creating all of the aspects of the world for
-     * the "Campus of Kings" application.
+     * the "The Legend of Cliff" application.
      * 
      * @param name
      *            The provided name of the room.
@@ -108,12 +108,12 @@ public class World {
         Room hiddenPuzzleRoom = new Room("Hidden Puzzle Room", " Oh look! It's a piece to a puzzle!");
         Room easternDoor = new Room("Eastern Door", "You look at the door. There is a key hole to unlock the door.");
         Room easternHallway = new Room("Eastern Hallway", "You walk into the beginning of a long passageway. You can't see all the way down the hallway. Slightly down the hall however; you see metal bars on the wall to the south and hear a feint mumbling, and a painting to the north.");
-        Room theJailcell = new Room("The Jailcell", "Help help!! The Queen had me sentencde here long ago... Release me from this jailcell and I can definitely help you escape from here...");
+        Room theJailcell = new Room("The Jailcell", "Woah, Queen Isa really kept prisoners down here in the caverns.");
         Room endOfEasternHallway = new Room("End of Eastern Hallway", "There's a door here... The sign on the door reads 'If the doors are closed, it means stay out.'");
         Room theBreakRoom = new Room("The Break Room", "There are two doors here.One to the south which has a sign that says 'Meal times are 10am and 5pm'. The door to the north has a sign that reads 'DO NOT ENTER'.");
         Room corneliusDen = new Room("Cornelius' Den", "There doesn't seem to be anthing here.");
         Room sirSeanFortevirsRoom = new Room("Sir Sean Fortevir's Room", "This looks like it could be someone's own kitchen. in big letters on the wall it says 'Sir Sean Fortevir'. There are cabinets on the wall. There are doors to the north and east");
-        Room maximusDen = new Room("Maximus' Den", "AH! Another three headed lion??? This time with a necklace around its middle head.");
+        Room maximusDen = new Room("Maximus' Den", "Ah, so Maximus must be a royal pet...");
         Room sirSeanFortevirsSecretDoor = new Room("Sir Sean Fortevir's Secret Door", "There's something odd about this door...");
         Room sirSeanFortevirsSecretRoom = new Room("Sir Sean Fortevir's Secret Room", "This room is empty except for someting in the corner...");
         Room northernDoor = new Room("Northern Door", "You look at the door. There seem to be three different sized cut outs on the door. There is nothing on the ground around.");
@@ -425,4 +425,5 @@ public class World {
         
         
     }
+    
 }

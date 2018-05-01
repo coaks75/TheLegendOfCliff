@@ -45,7 +45,9 @@ public enum CommandEnum {
     /** A command use to build something. */
     BUILD("build"),
     /** A command used to dismantle something. */
-    DISMANTLE("dismantle");
+    DISMANTLE("dismantle"),
+    /** A command to hit something. */
+    HIT("hit");
     
     /** A field for the text that would be entered by the person playing the game.*/
     private final String text;

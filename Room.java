@@ -31,6 +31,8 @@ public class Room {
 
     /** A field for the items in a room. */
     private ArrayList<Item> items;
+    /** A field for the monsters in the room. */
+    private ArrayList<Monster> monsters;
 
     /**
      * Static initializer.
@@ -52,6 +54,7 @@ public class Room {
         roomMap = new HashMap<String, Door>();
         counter++;
         items = new ArrayList<Item>();
+        monsters = new ArrayList<Monster>();
     }
 
     /**
@@ -190,4 +193,43 @@ public class Room {
         }
         items.remove(removing);
     }
+    
+    /**
+     * A method to add a monster to a room.
+     * 
+     * @param monsterValue The monster to add.
+     */
+    public void addMonster(Monster monsterValue) {
+        monsters.add(monsterValue);
+    }
+    
+    /**
+     * A field to remove a monster from a room.
+     * 
+     * @param monsterValue The monster we are removing
+     */
+    public void removeMonster(Monster monsterValue) {
+        monsters.remove(monsterValue);
+    }
+    
+    /**
+     * A method used to get a mnster from a room.
+     * 
+     * @param monsterName Tthe name of the monster we are looking for.
+     * @return The monster
+     */
+    public Monster getMonster(String monsterName) {
+        Monster answer = null;
+        boolean done = false;
+        int index = 0;
+        while (index < monsters.size() && done == false) {
+            if (monsters.get(index).getName().equalsIgnoreCase(monsterName)) {
+                answer = monsters.get(index);
+                done = true;
+            }
+            index++;
+        }
+        return answer;
+    }
+    
 }

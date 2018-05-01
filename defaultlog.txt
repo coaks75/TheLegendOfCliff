@@ -7,51 +7,36 @@ Main Room :
 The room is big and open. You don't see much here but an altar in the center, and a door in each cardinal direction. The door to the west pops open from the shock wave of you hitting the ground. 
 Exits: east, south, north, west, 
 Items:Broom, Altar, Backpack, Red Key, Yellow Key, Blue Key, 
-> take brom
-No such item in the room.
-> take broom
-You took the Broom.
-> take red key
-You took the Red Key.
-> take blue key
-You took the Blue Key.
-> take yellow key
-You took the Yellow Key.
-> build
-What item would you like to build with?
-broom
-Would you like to keep building?(y/n)
-y
-What item would you like to build with?
-red key
-Would you like to keep building?(y/n)
-y
-What item would you like to build with?
-yellow key
-Would you like to keep building?(y/n)
-y
-What item would you like to build with?
-blue key
-Would you like to keep building?(y/n)
-n
-You didn't build anything.
-> inventory
-broom, red key, blue key, yellow key, 
-> build
-What item would you like to build with?
-red key
-Would you like to keep building?(y/n)
-y
-What item would you like to build with?
-yellow key
-Would you like to keep building?(y/n)
-y
-What item would you like to build with?
-blue key
-Congratulations, you built Super Key!
-> inventory
-broom, super key, 
+> go north
+Northern Door :
+You look at the door. There seem to be three different sized cut outs on the door. There is nothing on the ground around. 
+Exits: south, north, 
+Items:
+> go south
+Main Room :
+The room is big and open. You don't see much here but an altar in the center, and a door in each cardinal direction. The door to the west pops open from the shock wave of you hitting the ground. 
+Exits: east, south, north, west, 
+Items:Broom, Altar, Backpack, Red Key, Yellow Key, Blue Key, 
+AH! Snake is attacking!
+Snake just did 5.0 damage to you.
+	You have 95.0health left.
+> hit snake
+You did 38.5 damage to snake withyour fists.
+You killed snake.
+-38.0
+> go south
+Southern Door :
+You look at the door. The door has no lock, but there are a few slightly cracked, and rusty, iron bars in front of the door. You see something shiny on top of the door frame, but you can't reach it. If only there was something to reach this with... 
+Exits: south, north, 
+Items:Invisible Container, 
+AH! Snake is attacking!
+Snake just did 5.0 damage to you.
+	You have 90.0health left.
+> hit snake
+You did 35.0 damage to snake withyour fists.
+You killed snake.
+-34.5
 > quit
 It looks like your Legend of Cliff will end here.
-You have earned 0 points in 9 turns.
+You have earned 0 points in 3 turns.
 Thank you for playing.  Good bye.

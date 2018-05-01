@@ -51,10 +51,10 @@ public class Monster {
     /**
      * Mutator method for the health of the monster.
      * 
-     * @param healthValue The new health of the monster.
+     * @param healthValue The health being added.
      */
     public void setHealth(double healthValue) {
-        health = healthValue;
+        health += healthValue;
     }
     
     /**

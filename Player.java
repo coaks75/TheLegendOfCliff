@@ -204,9 +204,9 @@ public class Player {
     /**
      * A method that returns the items equipped
      * 
-     * @return All of the items equipped.
+     * @return The item equipped.
      */
-    public Equippable getItemEquipped() {
+    public Weapon getItemEquipped() {
         return weapon;
     }
 

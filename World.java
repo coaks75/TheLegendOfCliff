@@ -106,17 +106,17 @@ public class World {
         Room southernBasementBend = new Room("Southern bsaement bend", "This straight hallway has come to an end. There's a short hallway to the west. There doesn't seem to be much over there.");
         Room endOfSouthernBasement = new Room("End of Southern Basement", "On the floor is some weird book...");
         Room hiddenPuzzleRoom = new Room("Hidden Puzzle Room", " Oh look! It's a piece to a puzzle!");
-        Room easternDoor = new Room("Eastern Door", "You look at the door. There is a key hole to unlock the door.");
+        Room easternDoor = new Room("Eastern Door", "You look at the door. There is a shiny key hole to unlock the door.");
         Room easternHallway = new Room("Eastern Hallway", "You walk into the beginning of a long passageway. You can't see all the way down the hallway. Slightly down the hall however; you see metal bars on the wall to the south and hear a feint mumbling, and a painting to the north.");
         Room theJailcell = new Room("The Jailcell", "Woah, Queen Isa really kept prisoners down here in the caverns.");
         Room endOfEasternHallway = new Room("End of Eastern Hallway", "There's a door here... The sign on the door reads 'If the doors are closed, it means stay out.'");
         Room theBreakRoom = new Room("The Break Room", "There are two doors here.One to the south which has a sign that says 'Meal times are 10am and 5pm'. The door to the north has a sign that reads 'DO NOT ENTER'.");
         Room corneliusDen = new Room("Cornelius' Den", "There doesn't seem to be anthing here.");
         Room sirSeanFortevirsRoom = new Room("Sir Sean Fortevir's Room", "This looks like it could be someone's own kitchen. in big letters on the wall it says 'Sir Sean Fortevir'. There are cabinets on the wall. There are doors to the north and east");
-        Room maximusDen = new Room("Maximus' Den", "Ah, so Maximus must be a royal pet...");
-        Room sirSeanFortevirsSecretDoor = new Room("Sir Sean Fortevir's Secret Door", "There's something odd about this door...");
+        Room maximusDen = new Room("Maximus' Den", "Ah, so Maximus must be a royal pet... Theres some sort of fur everywhere, along with blood.");
+        Room sirSeanFortevirsSecretDoor = new Room("Sir Sean Fortevir's Secret Door", "There's something odd about this wall... There must be some sort of key for it.");
         Room sirSeanFortevirsSecretRoom = new Room("Sir Sean Fortevir's Secret Room", "This room is empty except for someting in the corner...");
-        Room northernDoor = new Room("Northern Door", "You look at the door. There seem to be three different sized cut outs on the door. There is nothing on the ground around.");
+        Room northernDoor = new Room("Northern Door", "You look at the door. There is a huge puzzle piece shaped cut out on the door.");
         Room northernHallway = new Room("Northern Hallway", "You walk into the beginning of a long hallway. This hallway has gold walls and a shiny floor. There must be somthing good here... Slightly down the hall there are doors to the east and west.");
         Room theRoyalEquipmentRoom = new Room("The Royal Equipment Room", "This must be where the royal guards get their armour from. This room is filled with armour.");
         Room theRoyalToolRoom = new Room("The Royal Tool Room", "This must be where the guards get their swords from. This room is filled with swords.");
@@ -361,10 +361,10 @@ public class World {
         Item smallPuzzlePiece = new Item("Small Puzzle Piece", "This looks like a small puzzle piece. About one inch wide.", 0, 1);
         rooms.get("hidden puzzle room").addItem(smallPuzzlePiece);
         
-        Item guardArmor = new Item("Sleeping Guard Armor", "This is the armor worn by the sleeping guard. It is a little beat up but it is advanced armor.", 0, 15);
+        Armor guardArmor = new Armor("Sleeping Guard Armor", "This is the armor worn by the sleeping guard. It is a little beat up but it is advanced armor.", 0, 15, 25);
         rooms.get("the break room").addItem(guardArmor);
         
-        Item guardHelmet = new Item("Sleeping Guard Helmet", "This is the helmet worn by the sleeping guard. It is in good condition.", 0, 5);
+        Helmet guardHelmet = new Helmet("Sleeping Guard Helmet", "This is the helmet worn by the sleeping guard. It is in good condition.", 0, 5, 15);
         rooms.get("the break room").addItem(guardHelmet);
         
         Weapon guardSword = new Weapon("Sleeping Guard Sword", "This is the sword used by the sleeping guard. It is a little beat up but it is an advanced sword.", 0, 15, 2);
@@ -395,10 +395,10 @@ public class World {
         superPuzzlePiece.addItemNeeded(mediumPuzzlePiece);
         superPuzzlePiece.addItemNeeded(largePuzzlePiece);
         
-        Armor royalArmor = new Armor("Royal Armor", "This looks like the armor worn by the Royal Guard.", 0, 15, 25);
+        Armor royalArmor = new Armor("Royal Armor", "This looks like the armor worn by the Royal Guard.", 0, 15, 50);
         rooms.get("the royal equipment room").addItem(royalArmor);
         
-        Helmet royalHelmet = new Helmet("Royal Helmet", "This looks like the helmets worn by the Royal Guard.", 0, 5, 20);
+        Helmet royalHelmet = new Helmet("Royal Helmet", "This looks like the helmets worn by the Royal Guard.", 0, 5, 25);
         rooms.get("the royal equipment room").addItem(royalHelmet);
         
         Weapon royalSword = new Weapon("Royal Sword", "This looks like a sword used by the Royal Guard.", 0, 15, 2);

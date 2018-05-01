@@ -61,7 +61,7 @@ public class Game {
             if (!(command.getCommandWord().getText().equalsIgnoreCase("quit"))){
                 int snakeProb = rand.nextInt(99);
                 if (snakeProb <= 13) {
-                    Monster snake = new Monster("Snake", .5, 5, 80);
+                    Monster snake = new Monster("Snake", .5, 2.5, 80);
                     player.getRoom().addMonster(snake);
                     inBattle = true;
                     while (inBattle) {
@@ -147,6 +147,9 @@ public class Game {
                 break;
                 case EAT:
                 eat(command);
+                break;
+                case EQUIP:
+                equip(command);
                 break;
                 case BUILD:
                 build();
@@ -750,7 +753,7 @@ public class Game {
                     }
                 }
                 if (canHold) {
-                    using.equip(player);
+                    Writer.println(using.equip(player));
                 }
             }
             else {
@@ -802,7 +805,6 @@ public class Game {
                     inBattle = false;
                     Writer.println("You killed " + targetName + ".");
                 }
-                Writer.println(target.getHealth());
             }
             else {
                 Writer.println("You missed your attack!");
@@ -956,7 +958,7 @@ public class Game {
                     inBattle = false;
                 }
                 else {
-                    Writer.println("\tYou have " + player.getHealth() + "health left.");
+                    Writer.println("\tYou have " + player.getHealth() +  " health left.");
                 }
             }
             else {

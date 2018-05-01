@@ -21,7 +21,7 @@ public class Player {
     /** A field for the players inventory. */
     private ArrayList<Item> inventory;
     /** A field for the items equipped . */
-    private Weapon weapon;
+    private Weapon equipped;
     /** A field for the players health. */
     private double health;
     /** A field for the random int. */
@@ -36,7 +36,7 @@ public class Player {
         room = roomValue;
         previousRoom = roomValue;
         inventory = new ArrayList<Item>();
-        weapon = null;
+        equipped = null;
         health = MAX_HEALTH;
         rand = new Random();
     }
@@ -198,7 +198,7 @@ public class Player {
      * @param equipping The item we are equipping
      */
     public void setItemEquipped(Weapon equipping) {
-        weapon = equipping;
+        equipped = equipping;
     }
 
     /**
@@ -207,7 +207,7 @@ public class Player {
      * @return The item equipped.
      */
     public Weapon getItemEquipped() {
-        return weapon;
+        return equipped;
     }
 
     /**
@@ -238,9 +238,10 @@ public class Player {
      */
     public double getDamageDone() {
         double damageFactor = .5;
-        double damageDone = rand.nextInt(99);
-        if (weapon != null) {
-            damageFactor = weapon.getDamageFactor();
+        double damageDone = rand.nextInt(49);
+        if (equipped != null) {
+            damageFactor = equipped.getDamageFactor();
+            damageDone = damageDone * 2;
         }
         return damageFactor * damageDone;
     }

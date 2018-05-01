@@ -6,105 +6,38 @@ You light the lantern on your backpack.
 Main Room :
 The room is big and open. You don't see much here but an altar in the center, and a door in each cardinal direction. The door to the west pops open from the shock wave of you hitting the ground. 
 Exits: east, south, north, west, 
-Items:Broom, Altar, Backpack, Red Key, Yellow Key, Blue Key, 
-> go west
-Western Door :
-This door is open. There is a carving on the door that reads 'Turn around! Don't do it! save yourself! They've come afte...' It ends there 
-Exits: east, west, 
-Items:
-> go west
-Western Hallway :
-You walk into the begginning of a long passageway. You can't see all the way down the hallway. Slightly down the hall however; you see two doors. One to the north and one to the south. 
+Items: Broom, Altar, Backpack, Red Key, Yellow Key, Blue Key, 
+Monsters: Currently none.
+> go north
+Northern Door :
+You look at the door. There seem to be three different sized cut outs on the door. There is nothing on the ground around. 
+Exits: south, north, 
+Items: Currently nothing.
+Monsters: Currently none.
+> go south
+Main Room :
+The room is big and open. You don't see much here but an altar in the center, and a door in each cardinal direction. The door to the west pops open from the shock wave of you hitting the ground. 
 Exits: east, south, north, west, 
-Items:
-
-AH! Snake is attacking!
-Snake missed the attack.
-> hit snake
-You missed your attack!
+Items: Broom, Altar, Backpack, Red Key, Yellow Key, Blue Key, 
+Monsters: Currently none.
 
 AH! Snake is attacking!
 Snake just did 2.5 damage to you.
 	You have 0.0 shield left, and 97.5 health left.
-> hit snake
-You missed your attack!
-
-AH! Snake is attacking!
-Snake missed the attack.
-> hit snake
-You missed your attack!
+> look
+Main Room :
+The room is big and open. You don't see much here but an altar in the center, and a door in each cardinal direction. The door to the west pops open from the shock wave of you hitting the ground. 
+Exits: east, south, north, west, 
+Items: Broom, Altar, Backpack, Red Key, Yellow Key, Blue Key, 
+Monsters: Snake, 
 
 AH! Snake is attacking!
 Snake just did 2.5 damage to you.
 	You have 0.0 shield left, and 95.0 health left.
 > hit snake
-You missed your attack!
-
-AH! Snake is attacking!
-Snake just did 2.5 damage to you.
-	You have 0.0 shield left, and 92.5 health left.
-> hit snake
-You did 21.5 damage to snake with your fists.
-You killed snake.
-> look
-Western Hallway :
-You walk into the begginning of a long passageway. You can't see all the way down the hallway. Slightly down the hall however; you see two doors. One to the north and one to the south. 
-Exits: east, south, north, west, 
-Items:
-> go south
-Dining Chamber :
-This looks like it was a once a small dining chamber for the queen's Royal Guard. Someone must have been stuck in here, because it looks like there is a skeleton in the chair. 
-Exits: north, 
-Items:Armor, Helmet, 
-> take armor
-You took the Armor.
-
-AH! Snake is attacking!
-Snake just did 2.5 damage to you.
-	You have 0.0 shield left, and 90.0 health left.
-> hit snake
-You missed your attack!
-
-AH! Snake is attacking!
-Snake just did 2.5 damage to you.
-	You have 0.0 shield left, and 87.5 health left.
-> hit snake
-You missed your attack!
-
-AH! Snake is attacking!
-Snake just did 2.5 damage to you.
-	You have 0.0 shield left, and 85.0 health left.
-> hit snake
-You missed your attack!
-
-AH! Snake is attacking!
-Snake just did 2.5 damage to you.
-	You have 0.0 shield left, and 82.5 health left.
-> hit snake
-You missed your attack!
-
-AH! Snake is attacking!
-Snake just did 2.5 damage to you.
-	You have 0.0 shield left, and 80.0 health left.
-> hit snake
-You did 22.0 damage to snake with your fists.
-You killed snake.
-> equip armor
-You equipped Armor
-
-AH! Snake is attacking!
-Snake just did 2.5 damage to you.
-	You have 12.5 shield left, and 80.0 health left.
-> hit snake
-You missed your attack!
-
-AH! Snake is attacking!
-Snake just did 2.5 damage to you.
-	You have 10.0 shield left, and 80.0 health left.
-> hit snake
-You did 3.0 damage to snake with your fists.
+You did 11.0 damage to snake with your fists.
 You killed snake.
 > quit
 It looks like your Legend of Cliff will end here.
-You have earned 0 points in 6 turns.
+You have earned 0 points in 2 turns.
 Thank you for playing.  Good bye.

@@ -118,11 +118,21 @@ public class Room {
                 line3 += element + ", ";
             }
         }
-        String line4 = ("\nItems:");
+        String line4 = ("\nItems: ");
         for (Item element : items) {
             line4 += element.getName() + ", ";
         }
-        String answer = String.format("%s%s%s%s", line1, line2, line3, line4);
+        if (items.size() == 0) {
+            line4 += ("Currently nothing.");
+        }
+        String line5 = ("\nMonsters: ");
+        for (Monster element : monsters) {
+            line5 += element.getName() + ", ";
+        }
+        if (monsters.size() == 0) {
+            line5 += ("Currently none.");
+        }
+        String answer = String.format("%s%s%s%s%s", line1, line2, line3, line4, line5);
         return answer;
     }
 

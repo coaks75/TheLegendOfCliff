@@ -58,6 +58,7 @@ public class Game {
         Command command = Reader.getCommand();
         wantToQuit = processCommand(command);
         while (!wantToQuit) {
+            turnCounter++;
             int snakeProb = rand.nextInt(99);
             Monster snake = new Monster("Snake", .5, 2.5, 80);
             Monster sirSean = new Monster("Sir Sean Fortevir", 100, 25, 80);
@@ -828,7 +829,7 @@ public class Game {
         }
         if (target != null) {
             inBattle = true;
-            int hitting = rand.nextInt();
+            int hitting = rand.nextInt(99);
             if (hitting < player.getHitProbability()) {
                 double damageDone = player.getDamageDone();
                 target.setHealth(-1 * damageDone);

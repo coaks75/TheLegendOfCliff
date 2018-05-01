@@ -53,24 +53,26 @@ public class Game {
         // Enter the main game loop. Here we repeatedly read commands and
         // execute them until the game is over.
         boolean wantToQuit = false;
+        Command command = Reader.getCommand();
+        wantToQuit = processCommand(command);
         while (!wantToQuit) {
-            Command command = Reader.getCommand();
-            turnCounter++;
-            wantToQuit = processCommand(command);
-            // other stuff that needs to happen every turn can be added here.
-            if (!(command.getCommandWord().getText().equalsIgnoreCase("quit"))){
-                int snakeProb = rand.nextInt(99);
-                if (snakeProb <= 13) {
-                    Monster snake = new Monster("Snake", .5, 2.5, 80);
-                    player.getRoom().addMonster(snake);
-                    inBattle = true;
-                    while (inBattle) {
-                        monsterAttack(snake);
-                        command = Reader.getCommand();
-                        wantToQuit = processCommand(command);
-                    }
-                }
+            int snakeProb = rand.nextInt(99);
+            Monster snake = new Monster("Snake", .5, 2.5, 80);
+            if (snakeProb <= 13) {
+                player.getRoom().setMonster(snake);
             }
+            if (player.getRoom().getMonster() != null) {
+                inBattle = true;
+            }
+            while (inBattle && player.getRoom().getMonster() != null) {
+                monsterAttack(player.getRoom().getMonster());
+                command = Reader.getCommand();;
+                wantToQuit = processCommand(command);
+            }
+            command = Reader.getCommand();
+            wantToQuit = processCommand(command);
+            turnCounter++;
+            // other stuff that needs to happen every turn can be added here.
         }
         printGoodbye();
     }
@@ -782,11 +784,11 @@ public class Game {
             targetName = commandValue.getRestOfLine();
         }
         if (hasWord) {
-            if (player.getRoom().getMonster(targetName) == null) {
+            if (!(player.getRoom().getMonster().getName().equalsIgnoreCase(targetName))) {
                 Writer.println(targetName + " is not here.");
             }
             else {
-                target = player.getRoom().getMonster(targetName);
+                target = player.getRoom().getMonster();
             }
         }
         if (target != null) {
@@ -805,6 +807,7 @@ public class Game {
                 if (target.getHealth() <= 0) {
                     inBattle = false;
                     Writer.println("You killed " + targetName + ".");
+                    player.getRoom().setMonster(null);
                 }
             }
             else {

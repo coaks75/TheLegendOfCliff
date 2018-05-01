@@ -32,7 +32,7 @@ public class Room {
     /** A field for the items in a room. */
     private ArrayList<Item> items;
     /** A field for the monsters in the room. */
-    private ArrayList<Monster> monsters;
+    private Monster monster;
 
     /**
      * Static initializer.
@@ -54,7 +54,7 @@ public class Room {
         roomMap = new HashMap<String, Door>();
         counter++;
         items = new ArrayList<Item>();
-        monsters = new ArrayList<Monster>();
+        monster = null;
     }
 
     /**
@@ -112,25 +112,25 @@ public class Room {
     public String toString() {
         String line1 = String.format("%s :\n", name);
         String line2 = String.format("%s \n", description);
-        String line3 = ("Exits: ");
+        String line3 = ("     Exits: ");
         for (String element : roomMap.keySet()) {
             if (roomMap.get(element) != null) {
                 line3 += element + ", ";
             }
         }
-        String line4 = ("\nItems: ");
+        String line4 = ("\n     Items: ");
         for (Item element : items) {
             line4 += element.getName() + ", ";
         }
         if (items.size() == 0) {
             line4 += ("Currently nothing.");
         }
-        String line5 = ("\nMonsters: ");
-        for (Monster element : monsters) {
-            line5 += element.getName() + ", ";
+        String line5 = ("\n     ");
+        if (monster != null) {
+            line5 += ("There is currently " + monster.getName() + " in " + this.getName() + ".");
         }
-        if (monsters.size() == 0) {
-            line5 += ("Currently none.");
+        else {
+            line5 += ("There is currently no monster in the room.");
         }
         String answer = String.format("%s%s%s%s%s", line1, line2, line3, line4, line5);
         return answer;
@@ -209,17 +209,8 @@ public class Room {
      * 
      * @param monsterValue The monster to add.
      */
-    public void addMonster(Monster monsterValue) {
-        monsters.add(monsterValue);
-    }
-    
-    /**
-     * A field to remove a monster from a room.
-     * 
-     * @param monsterValue The monster we are removing
-     */
-    public void removeMonster(Monster monsterValue) {
-        monsters.remove(monsterValue);
+    public void setMonster(Monster monsterValue) {
+        monster = monsterValue;
     }
     
     /**
@@ -228,16 +219,19 @@ public class Room {
      * @param monsterName Tthe name of the monster we are looking for.
      * @return The monster
      */
-    public Monster getMonster(String monsterName) {
-        Monster answer = null;
-        boolean done = false;
-        int index = 0;
-        while (index < monsters.size() && done == false) {
-            if (monsters.get(index).getName().equalsIgnoreCase(monsterName)) {
-                answer = monsters.get(index);
-                done = true;
-            }
-            index++;
+    public Monster getMonster() {
+        return monster;
+    }
+    
+    /**
+     * A method that returns the name of the monster in the room.
+     * 
+     * @return The name of the monster in the room, if any.
+     */
+    public String getMonsterName() {
+        String answer = null;
+        if (monster != null) {
+            answer = monster.getName();
         }
         return answer;
     }

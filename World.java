@@ -340,12 +340,12 @@ public class World {
         
         Container toolChest = new Container("Chest", "This chest is big, heavy, and being held shut by a rope.", 0, 100);
         rooms.get("hidden tool room").addItem(toolChest);
-        Weapon pickaxe = new Weapon("Pickaxe", "This pickaxe looks like it could be useful.", 10, 15, 2);     
-        Item blueKey = new Item("Blue Key", "Thiis blue key has a few divots in it.", 0, 1);
+        Weapon pickaxe = new Weapon("Pickaxe", "This pickaxe looks like it could be useful.", 0, 15, 2);     
+        Item blueKey = new Item("Blue Key", "This blue key has a few divots in it.", 0, 1);
         toolChest.addItem(pickaxe);
         toolChest.addItem(blueKey);
         
-        BuildableItem superKey = new BuildableItem("Super Key", "This is the combinaion of all the keys.", 0, 3);
+        BuildableItem superKey = new BuildableItem("Super Key", "This is the combinaion of all the keys.", 10, 3);
         rooms.get("eastern door").getExit("east").setLocked(true);
         rooms.get("eastern door").getExit("east").setKey(superKey);
         buildables.put("Super Key", superKey);
@@ -376,7 +376,7 @@ public class World {
         Item necklace = new Item("Key Necklace", "This is the necklace that was around Maximus's neck, it has a key on it.", 0, 1);
         rooms.get("maximus' den").addItem(necklace);
         
-        BuildableItem secretRoomKey = new BuildableItem("Secret Room Key", "This key looks very unlike a key. It must bee for something secret.", 0, 2);
+        BuildableItem secretRoomKey = new BuildableItem("Secret Room Key", "This key looks very unlike a key. It must bee for something secret.", 10, 2);
         buildables.put("Secret Room Key", secretRoomKey);
         secretRoomKey.addItemNeeded(bookKey);
         secretRoomKey.addItemNeeded(necklace);
@@ -387,7 +387,7 @@ public class World {
         Item largePuzzlePiece = new Item("Large Puzzle Piece", "This puzzle piece looks rather large. About 4 inces in diameter.", 0, 1);
         rooms.get("sir sean fortevir's secret room").addItem(largePuzzlePiece);
         
-        BuildableItem superPuzzlePiece = new BuildableItem("Super Puzzle Piece", "This is a combination of the puzzle pieces.", 0, 3);
+        BuildableItem superPuzzlePiece = new BuildableItem("Super Puzzle Piece", "This is a combination of the puzzle pieces.", 10, 3);
         rooms.get("northern door").getExit("north").setLocked(true);
         rooms.get("northern door").getExit("north").setKey(superPuzzlePiece);
         buildables.put("Super Puzzle Piece", superPuzzlePiece);
@@ -404,7 +404,7 @@ public class World {
         Weapon royalSword = new Weapon("Royal Sword", "This looks like a sword used by the Royal Guard.", 0, 15, 2);
         rooms.get("the royal tool room").addItem(royalSword);
         
-        BuildableItem ultimateKey = new BuildableItem("Ultimate Key", "This looks like a roayl key.", 0, 2);
+        BuildableItem ultimateKey = new BuildableItem("Ultimate Key", "This looks like a roayl key.", 10, 2);
         ultimateKey.addItemNeeded(superPuzzlePiece);
         ultimateKey.addItemNeeded(superKey);;
         
@@ -415,7 +415,6 @@ public class World {
         queensChest.setLocked(true);
         queensChest.setKey(ultimateKey);
         queensChest.addItem(gem);
-        
         
     }
     

@@ -12,8 +12,10 @@ public class Player {
     private static final int MAX_WEIGHT = 35;
     /**  Afield for the players max health. */
     private static final int MAX_HEALTH = 100;
+    /** A field for the max shield. */
+    private static final int MAX_SHIELD = 75;
     /** A field for the players hit probability. */
-    private static final int HIT_PROBABILITY = 75;
+    private static final int HIT_PROBABILITY = 85;
     /** A field for the room that the player is currently in. */
     private Room room;
     /** A field for the previous room. */
@@ -280,6 +282,9 @@ public class Player {
      */
     public void addShield(double shieldValue) {
         shield += shieldValue;
+        if (shield > MAX_SHIELD) {
+            shield = MAX_SHIELD;
+        }
     }
 
     /**

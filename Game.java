@@ -18,6 +18,8 @@ import java.util.Random;
  */
 
 public class Game {
+    /** A field for the max points. */
+    private static final int MAX_POINTS = 225;
     /** The world where the game takes place. */
     private World world;
     /** The The score the player currently has. */
@@ -57,17 +59,17 @@ public class Game {
         boolean won = false;
         Command command = Reader.getCommand();
         wantToQuit = processCommand(command);
+        Monster sirSean = new Monster("Sir Sean Fortevir", 100, 25, 80);
+        Monster threeHeadedLion = new Monster("Three-Headed Lion", 50, 10, 80);
+        world.getRoom("The Queen's Art Chamber").setMonster(threeHeadedLion);
+        Monster sleepingGuard = new Monster("Guard", 100, 15, 80);
+        world.getRoom("The Break Room").setMonster(sleepingGuard);
+        Monster cornelius = new Monster("Cornelius", 50, 15, 80);
+        world.getRoom("cornelius' den").setMonster(cornelius);
         while (!wantToQuit) {
             turnCounter++;
             int snakeProb = rand.nextInt(99);
             Monster snake = new Monster("Snake", .5, 2.5, 80);
-            Monster sirSean = new Monster("Sir Sean Fortevir", 100, 25, 80);
-            Monster threeHeadedLion = new Monster("Three-Headed Lion", 50, 10, 80);
-            world.getRoom("The Queen's Art Chamber").setMonster(threeHeadedLion);
-            Monster sleepingGuard = new Monster("Guard", 100, 15, 80);
-            world.getRoom("The Break Room").setMonster(sleepingGuard);
-            Monster cornelius = new Monster("Cornelius", 50, 15, 80);
-            world.getRoom("cornelius' den").setMonster(cornelius);
             if (snakeProb <= 13) {
                 player.getRoom().setMonster(snake);
             }
@@ -83,6 +85,7 @@ public class Game {
                     if (processCommand(command)) {
                         won = true;
                         wantToQuit = true;
+                        score += Math.round(player.getHealth());
                     }
                 }
                 else {
@@ -100,7 +103,7 @@ public class Game {
             Writer.println("");
             Writer.println("\tCongratulations!");
             Writer.println("\tYou beat 'The Legend of Cliff' by obtaining the Valentinian Gem \n   and defeating Sir Sean Fortevir!");
-            Writer.println("You have earned " + score + " points in " + turnCounter + " turns.");
+            Writer.println("You have earned " + score + " points out of " + MAX_POINTS + " in " + turnCounter + " turns.");
             Writer.println("Thank you for playing.  Good bye.");
         }
         else {
@@ -250,7 +253,7 @@ public class Game {
      */
     private void printGoodbye() {
         Writer.println("It looks like your Legend of Cliff will end here.");
-        Writer.println("You have earned " + score + " points in " + turnCounter + " turns.");
+        Writer.println("You have earned " + score + " points out of " + MAX_POINTS + " in " + turnCounter + " turns.");
         Writer.println("Thank you for playing.  Good bye.");
     }
 
@@ -542,7 +545,7 @@ public class Game {
                 Writer.println("You don't have that.");
             }
             else if (!(thing.getKey().getName().equalsIgnoreCase(keyCommand))) {
-                Writer.println("That key doesn't seem to work on this door...");
+                Writer.println("That key doesn't seem to fit in here...");
             }
             else {
                 thing.setLocked(false);
@@ -1027,7 +1030,7 @@ public class Game {
         }
         return playerDied;
     }
-    
+
     /**
      * Cheat code.
      */

@@ -166,34 +166,39 @@ LOCK Scenario #1: No direction specified
     WHEN : "lock" is entered
     THEN : appropriate message is displayed (lock what?)
 
-LOCK Scenario #2: No Door
+LOCK Scenario #2: No Door in direction
    GIVEN : there is no door in that direction
     WHEN : "lock direction" is entered
-    THEN : appropriate message is displayed (no door)
+    THEN : appropriate message is displayed (dont see that)
 
-LOCK Scenario #3: Door is locked
-   GIVEN : door in "direction" is locked
+LOCK Scenario #3: Check if it is a regular item, a door, or a container
+   GIVEN : There is a door in the direction or an item
+    WHEN : lock someting entered.
+    THEN : make whatever into a lockable variable.
+
+LOCK Scenario #4: thing is locked
+   GIVEN : thing in "direction" is locked
     WHEN : "lock direction" is entered
-    THEN : appropriate message is displayed (door is already locked)
+    THEN : appropriate message is displayed (thing is already locked)
 
-LOCK Scenario #4: Door cannot be locked
-   GIVEN : door in "direction" has no associated key
+LOCK Scenario #5: thing cannot be locked
+   GIVEN : thing in "direction" has no associated key
     WHEN : "lock direction" is entered
-    THEN : appropriate message is displayed (door cannot be locked)
+    THEN : appropriate message is displayed (thing cannot be locked)
 
-LOCK Scenario #5: Door can be locked
-   GIVEN : door in "direction" is unlocked
-     and : door in "direction" can be locked
+LOCK Scenario #6: thing can be locked
+   GIVEN : thing in "direction" is unlocked
+     and : thing in "direction" can be locked
     WHEN : "lock direction" is entered
     THEN : user is prompted for key
 
-LOCK Scenario #6: Player does not have the key
+LOCK Scenario #7: Player does not have the key
    GIVEN : player does not have specific key in inventory
     WHEN : "lock direction" had been entered
      and : user has been prompted for specific key
     THEN : appropriate message is displayed (you do not have it)
 
-LOCK Scenario #7: Incorrect key specified
+LOCK Scenario #8: Incorrect key specified
    GIVEN : player's inventory has the specific key
      and : specified key is not the correct key
     WHEN : "lock direction" had been entered
@@ -285,28 +290,33 @@ UNLOCK Scenario #2: No door in that direction
     WHEN : "unlock direction" is entered
     THEN : appropriate message is displayed (there is no door)
 
-UNLOCK Scenario #3: Direction is specified and is not locked
-   GIVEN : there is a door in the "direction"
-     and : door in "direction" is NOT locked
-    WHEN : "unlock direction" is entered
-    THEN : appropriate message is displayed (door is not locked)
+UNLOCK Scenario #3: Check if its a door or a container.
+   GIVEN : There is a second word
+    WHEN : "unlock ____" entered
+    THEN : make varibale of type lockable.
+
+UNLOCK Scenario #3: thing is specified and is not locked
+   GIVEN : there is a lockable thing in the "direction"
+     and : thing is NOT locked
+    WHEN : "unlock thing" is entered
+    THEN : appropriate message is displayed (thing is not locked)
 
 UNLOCK Scenario #4: Direction is specified and is locked
-   GIVEN : there is a door in the "direction"
-     and : door in "direction" is locked
-    WHEN : "unlock direction" is entered
+   GIVEN : there is a lockable thing
+     and : lockable thing is locked
+    WHEN : "unlock thing" is entered
     THEN : user is prompted for key
 
 UNLOCK Scenario #5: Player missing specified key
    GIVEN : player's inventory does NOT have the specific key
-    WHEN : "unlock direction" had been entered
+    WHEN : "unlock thing" had been entered
      and : user has been prompted for specific key
     THEN : appropriate message is displayed (you don't have it)
 
 UNLOCK Scenario #6: Incorrect key
    GIVEN : player's inventory has the specific key
      and : specified key is incorrect item
-    WHEN : "unlock direction" had been entered
+    WHEN : "unlock thing" had been entered
      and : user has been prompted for specific key
     THEN : appropriate message is displayed (that doesn't fit)
 
@@ -385,19 +395,19 @@ EAT Scenario #2: Specified food is not in the current room or inventory
     WHEN : "eat food" is entered
     THEN : appropriate message displayed, "dont see it"
 
-EAT Scenario #3: Specified food is not food
-   GIVEN : Specified food is in the current room
-      or : Specified food is in the players inventory
-     and : Specified food is not food
-    WHEN : "eat food" entered
-    THEN : appropriate message displayed, "not food"
+EAT Scenario #3: Specified item is not edible
+   GIVEN : Specified item is in the current room
+      or : Specified item is in the players inventory
+     and : Specified item is not edible
+    WHEN : "eat item" entered
+    THEN : appropriate message displayed, "not edible"
 
-EAT Scenario #4: Specified food is food
-   GIVEN : Specified food is in the current room
-      or : Specified food is in the players inventory
-     and : Specified food is food
+EAT Scenario #4: Specified item is edible
+   GIVEN : Specified item is in the current room
+      or : Specified item is in the players inventory
+     and : Specified item is edible
     WHEN : "eat food" entered
-    THEN : appropriate message displayed, "you ate food"
+    THEN : appropriate message displayed, "you ate item"
      and : players health is restored
 
 
@@ -414,19 +424,20 @@ EQUIP Scenario #2: specified item to equip is not in the current room or invento
     WHEN : "equip item" is entered
     THEN : appropriate message displayed, "dont see it"
 
-EQUIP Scenario #3: specified item is not an item
+EQUIP Scenario #3: player can't hold the item
+   GIVEN : Specified item is in the curren room
+     and : player can't hold it
+    WHEN : "equip item" entered
+    THEN : approprite message displayed, "cant hold"
+
+
+EQUIP Scenario #4: specified item is not an item
    GIVEN : Specified item is in the current room
       or : Specified item is in the players inventory
      and : Specified item is not food
     WHEN : "equip item" entered
     THEN : appropriate message displayed, "not an item"
 
-EQUIP Scenario #4: the player already has the the max number of items equipped
-   GIVEN : Specified item is in the current room
-      or : Specified item is in the players inventory
-     and : player has the max amount of items equipped already
-    WHEN : "equip item" entered
-    THEN : appropriate message displayed, "woah, you dont have that many hands"
 
 EQUIP Scenario #5: the player can equip the item
    GIVEN : Specified item is in the current room

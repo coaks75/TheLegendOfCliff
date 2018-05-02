@@ -424,22 +424,28 @@ EQUIP Scenario #2: specified item to equip is not in the current room or invento
     WHEN : "equip item" is entered
     THEN : appropriate message displayed, "dont see it"
 
-EQUIP Scenario #3: player can't hold the item
-   GIVEN : Specified item is in the curren room
+EQUIP Scenario #3: Item is in the room or inventory
+   GIVEN : Specified item is in the current room
+      or : Specified item is in the players inventory
+    WHEN : equip something entered
+    THEN : item is set to a equippable variable
+
+EQUIP Scenario #4: player can't hold the thing
+   GIVEN : Specified thing is in the curren room
      and : player can't hold it
     WHEN : "equip item" entered
     THEN : approprite message displayed, "cant hold"
 
 
-EQUIP Scenario #4: specified item is not an item
+EQUIP Scenario #5: specified item is not an equippable
    GIVEN : Specified item is in the current room
       or : Specified item is in the players inventory
      and : Specified item is not food
     WHEN : "equip item" entered
-    THEN : appropriate message displayed, "not an item"
+    THEN : appropriate message displayed, "not an euippable"
 
 
-EQUIP Scenario #5: the player can equip the item
+EQUIP Scenario #6: the player can equip the item
    GIVEN : Specified item is in the current room
       or : Specified item is in the players inventory
      and : item does not exceed max carrying limit
@@ -461,22 +467,10 @@ HIT Scenario #2: specified target is not in the current room
     THEN : appropriate message displayed, "not here"
 
 HIT Scenario #3: specified target is in the current room
-   GIVEN : Specified item is in the current room
+   GIVEN : Specified target is in the current room
     WHEN : "hit target" entered 
-    THEN : user is prompted for the weapon to hit with
-
-HIT Scenario #4: specified weapon is not a weapon
-   GIVEN : Specified weapon is not a weapon
-    WHEN : "hit target" entered
-    THEN : appropriate message displayed, "you can't hit with this"
-
-HIT Scenario #5: specified weapon is a weapon
-   GIVEN : Specified weapon is a weapon
-     and : target was in the current room
-    WHEN : "hit target" was entered
-    THEN : rng used to decide the damage
-     and : damage is done to the target
-     and : appropriate message displayed, "you did _____ to ___"
+    THEN : enemie is hit using the random hit algorithm
+     and : user is told what happened.
 
 
 
@@ -508,6 +502,53 @@ PLACE Scenario #5: item to be placed on is in the room
     THEN : item is added on top of the item
      and : item is added to the room
      and : appropriate message displayed, "you placed ___ on ___"
+
+
+BUILD Scenario #1: build entered
+   GIVEN : 
+    WHEN : "build" entered
+    THEN : User is prompted for the to build with.
+
+BUILD Scenario #2: specified item to build with is not in the players inventory
+   GIVEN : itemis not in players inventory
+    WHEN : "build" entered
+    THEN : display message "you do not have item"
+
+BUILD Scenario #3: user has item
+   GIVEN : item is in the players inventory
+    WHEN : "build" is entered
+    THEN : item is added to the set of items building with
+
+BUILD Scenario #4: set of items is equal to the set of items needed
+   GIVEN : items needed is equal to items building with
+    WHEN : "build" enetered
+    THEN : built item is added to players inventory.
+     and : items building with are all removed
+     and : user is told he/she built it.
+
+
+DISMANTLE Scenario #1: no item specified
+   GIVEN : 
+    WHEN : "dismantle " entered
+    THEN : appropriate message "dismantle what?"
+
+DISMANTLE Scenario #2: player does not have the item
+   GIVEN : item specified is not in the players inventory
+    WHEN : "dismantle item" entered
+    THEN : appropriate message diaplaye " you dont have that'
+
+DISMANTLE Scenario #3: item is not buildable
+   GIVEN : item specified is not of type BuildableItem
+    WHEN : "dismantle item" enetered
+    THEN : apropriate message displayed "cant dismantle this."
+
+DISMANTLE Scenario #4: item is dismantled
+   GIVEN : item is of type BuildableItem 
+    WHEN : "dismantle item" entered
+    THEN : item is removed from the players inventory
+     and : items needed to build it are added to the players inventory
+     and : user is told what happened
+
 
 
 

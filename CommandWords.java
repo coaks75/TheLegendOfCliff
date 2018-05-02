@@ -25,7 +25,7 @@ public class CommandWords {
             validCommands.put(element.getText(), element);
         }
     }
-    
+
     /**
      * Check whether a given String is a valid command word.
      * 
@@ -34,15 +34,15 @@ public class CommandWords {
      */
     public static boolean isCommand(String aString) {
         boolean valid = false;
-        
+
         if(validCommands.containsKey(aString)) {
             valid = true;
         }
-        
+
         // if we get here, the string was not found in the commands
         return valid;
     }
-    
+
     /**
      * Returns a list of the available commands, of the form:
      *      Your command words are:
@@ -53,11 +53,13 @@ public class CommandWords {
     public static String getCommandString() {
         String answer = "";
         for (CommandEnum element : CommandEnum.values()) {
-            answer += element.getText() + "  ";
+            if (!(element.getText().equalsIgnoreCase("isabella"))) {
+                answer += element.getText() + "  ";
+            }
         }
         return answer;
     }
-    
+
     /**
      * Converts a String into a CommandEnum object.
      * 

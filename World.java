@@ -390,7 +390,7 @@ public class World {
         rooms.get("sir sean fortevir's secret room").addItem(largePuzzlePiece);
 
         BuildableItem superPuzzlePiece = new BuildableItem("Super Puzzle Piece", "This is a combination of the puzzle pieces.", 10, 3);
-        rooms.get("northern door").getExit("north").setLocked(true);
+        //rooms.get("northern door").getExit("north").setLocked(true);
         rooms.get("northern door").getExit("north").setKey(superPuzzlePiece);
         buildables.put("Super Puzzle Piece", superPuzzlePiece);
         superPuzzlePiece.addItemNeeded(smallPuzzlePiece);
@@ -415,7 +415,7 @@ public class World {
 
         Container queensChest = new Container("Queen's Chest", "This chest at the foot of Queen Isa's bed.", 0, 100);
         rooms.get("the queen's hidden room").addItem(queensChest);
-        queensChest.setLocked(true);
+        //queensChest.setLocked(true);
         queensChest.setKey(ultimateKey);
         queensChest.addItem(gem);
 

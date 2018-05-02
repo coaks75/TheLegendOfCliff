@@ -8,17 +8,20 @@ The room is big and open. You don't see much here but an altar in the center, an
      Exits: east, south, north, west, 
      Items: Broom, Altar, Backpack, 
      There is currently no monster in the room.
-> go north
-Northern Door :
-You look at the door. There is a huge puzzle piece shaped cut out on the door. 
-     Exits: south, north, 
-     Items: Currently nothing.
-     There is currently no monster in the room.
+> help
+You are lost. You are alone. You wander
+     around the caverns of the
+         Castle of Isa.
+
+Your command words are:
+     look  go  help  quit  score  turns  back  status  examine  take  drop  inventory  lock  unlock  pack  unpack  eat  equip  unequip  build  dismantle  hit  
+> isabella
+You have 75.0 shield, and 100.0 health.
 
 AH! Snake is attacking!
 Snake just did 2.5 damage to you.
-	You have 0.0 shield left, and 97.5 health left.
+	You have 72.5 shield left, and 100.0 health left.
 > quit
 It looks like your Legend of Cliff will end here.
-You have earned 0 points out of 225 in 1 turns.
+You have earned 0 points out of 225 in 3 turns.
 Thank you for playing.  Good bye.

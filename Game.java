@@ -32,6 +32,8 @@ public class Game {
     private boolean inBattle;
     /** A field to store a random int. */
     private Random rand;
+    /**  Afield for if you won. */
+    private boolean won;
 
     /**
      * Create the game and initialize its internal map.
@@ -56,10 +58,11 @@ public class Game {
         // execute them until the game is over.
 
         boolean wantToQuit = false;
-        boolean won = false;
+        won = false;
         Command command = Reader.getCommand();
         wantToQuit = processCommand(command);
-        
+        turnCounter++;
+
         Monster sirSean = new Monster("Sir Sean Fortevir", 100, 25, 80);
         Monster threeHeadedLion = new Monster("Three-Headed Lion", 50, 10, 80);
         world.getRoom("The Queen's Art Chamber").setMonster(threeHeadedLion);
@@ -80,14 +83,10 @@ public class Game {
             if (player.getRoom().getMonster() != null) {
                 inBattle = true;
             }
-            while (inBattle && player.getRoom().getMonster() != null) {
+            while (inBattle && player.getRoom().getMonster() != null && !won && !wantToQuit) {
                 if (monsterAttack(player.getRoom().getMonster()) != true) {
                     command = Reader.getCommand();
-                    if (processCommand(command)) {
-                        won = true;
-                        wantToQuit = true;
-                        score += Math.round(player.getHealth());
-                    }
+                    wantToQuit = processCommand(command);
                 }
                 else {
                     wantToQuit = true;
@@ -101,6 +100,7 @@ public class Game {
             // other stuff that needs to happen every turn can be added here.
         }
         if (won) {
+            score += Math.round(player.getHealth());
             Writer.println("");
             Writer.println("\tCongratulations!");
             Writer.println("\tYou beat 'The Legend of Cliff' by obtaining the Valentinian Gem \n   and defeating Sir Sean Fortevir!");
@@ -816,7 +816,7 @@ public class Game {
             }
         }
     }
-    
+
     /**
      * A method used to unequip something
      * 
@@ -850,7 +850,7 @@ public class Game {
      */
     private boolean hit(Command commandValue) {
         boolean hasWord = false;
-        boolean killedSirSean = false;
+        won = false;
         String targetName = null;
         Monster target = null;
         String weaponName = null;
@@ -888,7 +888,7 @@ public class Game {
                     Writer.println("You killed " + targetName + ".");
                     player.getRoom().setMonster(null);
                     if (targetName.equalsIgnoreCase("sir sean fortevir")) {
-                        killedSirSean = true;
+                        won = true;
                     }
                 }
                 else {
@@ -899,7 +899,7 @@ public class Game {
                 Writer.println("You missed your attack!");
             }
         }
-        return killedSirSean;
+        return won;
     }
 
     /**

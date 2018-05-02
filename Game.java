@@ -59,6 +59,7 @@ public class Game {
         boolean won = false;
         Command command = Reader.getCommand();
         wantToQuit = processCommand(command);
+        
         Monster sirSean = new Monster("Sir Sean Fortevir", 100, 25, 80);
         Monster threeHeadedLion = new Monster("Three-Headed Lion", 50, 10, 80);
         world.getRoom("The Queen's Art Chamber").setMonster(threeHeadedLion);
@@ -153,7 +154,7 @@ public class Game {
                 Writer.println(player.getRoom().toString());
                 break;
                 case STATUS:
-                Writer.println("Your current score is " + score);
+                Writer.println("Your current score is " + score + " out of " + MAX_POINTS + ".");
                 Writer.println("The current number of turns you've taken are " + turnCounter);
                 Writer.println("You have " + player.getShield() + " shield, and " + player.getHealth() + " health.");
                 Writer.println(player.getRoom().toString());
@@ -187,6 +188,9 @@ public class Game {
                 break;
                 case EQUIP:
                 equip(command);
+                break;
+                case UNEQUIP:
+                unequip(command);
                 break;
                 case BUILD:
                 build();
@@ -331,6 +335,10 @@ public class Game {
             player.removeItem(commandValue.getRestOfLine());
             player.getRoom().addItem(itemValue);
             Writer.println("You dropped the " + itemValue.getName() + ".");
+            if (itemValue instanceof Equippable) {
+                Equippable using = (Equippable)itemValue;
+                using.unequip(player);
+            }
         }
     }
 
@@ -363,7 +371,7 @@ public class Game {
      * A method used to list the items in the inventory.
      */
     private void inventory() {
-        Writer.println(player.getInventory());
+        Writer.println(player.getProperInventory());
     }
 
     /**
@@ -629,8 +637,13 @@ public class Game {
                     toPack = player.getItem(itemName);
                     player.removeItem(itemName);
                 }
-                using.addItem(toPack);
-                Writer.println("You packed " + toPack.getName());
+                if (toPack == using) {
+                    Writer.println("Cliff, why would you pack " + itemName + " into itself?");
+                }
+                else {
+                    using.addItem(toPack);
+                    Writer.println("You packed " + toPack.getName());
+                }
             }
         }
     }
@@ -744,6 +757,7 @@ public class Game {
                 thing = (Edible)theFood;
                 Writer.println("You ate " + foodName + " and gained " + thing.getHealthGained() + " health.");
                 player.addHealth(thing.getHealthGained());
+                player.removeItem(foodName);
             }
         }
     }
@@ -799,6 +813,32 @@ public class Game {
             }
             else {
                 Writer.println("You can't equip " + equipping.getName() + ".");
+            }
+        }
+    }
+    
+    /**
+     * A method used to unequip something
+     * 
+     * @param commandValue The command to equip
+     */
+    private void unequip(Command commandValue) {
+        boolean hasWord = false;
+        String itemName = "";
+        if(!commandValue.hasSecondWord()) {
+            Writer.println("Unequip what?");
+        }
+        else {
+            hasWord = true;
+            itemName = commandValue.getRestOfLine();
+        }
+        if (hasWord) {
+            if (!(player.getItemEquipped().getName().equalsIgnoreCase(itemName))) {
+                Writer.println("You dont have " + itemName + " equipped.");
+            }
+            else {
+                Equippable using = player.getItemEquipped();
+                Writer.println(using.unequip(player));
             }
         }
     }
@@ -1007,6 +1047,9 @@ public class Game {
                 }
                 else {
                     remainder = damageDone - player.getShield();
+                    player.setShield(0);
+                    player.setArmorEquipped(null);
+                    player.setHelmetEquipped(null);
                     player.addHealth(-1 * remainder);
                 }
                 Writer.println(monster.getName() + " just did " + damageDone + " damage to you.");

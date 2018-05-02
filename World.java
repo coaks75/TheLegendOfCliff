@@ -18,7 +18,7 @@ public class World {
     private HashMap<String, Room> rooms;
     /** All of the buildable items in the game. */
     private HashMap<String, BuildableItem> buildables;
-    
+
     /**
      * Constructor for the world.
      */
@@ -39,7 +39,7 @@ public class World {
     public Room getRoom(String name) {
         return rooms.get(name.toLowerCase());
     }
-    
+
     /**
      * A method used to get all the buildableItems.
      * 
@@ -52,10 +52,10 @@ public class World {
         }
         return buildablesList;
     }
-    
+
     /////////////////////////////////////////////////////////////////////////////////////
     // Start of private helper methods
-    
+
     /**
      * Helper method for recreating a Room. Ensure that the room is created and
      * installed in to the collection of Rooms
@@ -190,7 +190,7 @@ public class World {
 
         this.createDoor(forkedPassage, "south", theHallwaysEnd);
         this.createDoor(theHallwaysEnd, "north", forkedPassage);
-        
+
         this.createDoor(mainRoom, "south", southernDoor);
         this.createDoor(southernDoor, "north", mainRoom);
 
@@ -279,20 +279,20 @@ public class World {
         easternHallway.setPoints(20);
         northernHallway.setPoints(20);
     }
-    
+
     /**
      * A method used to create all the items of the world.
      */
     private void createItems() {
         buildables = new HashMap<String, BuildableItem>();
-        
+
         Item broom = new Item("Broom", "The broom is ratty and old.", 0, 3);
         rooms.get("main room").addItem(broom);
         Item altar = new Item("Altar", "The Altar is in the center of the room. There's a little divot in the center...", 0, 100);
         rooms.get("main room").addItem(altar);
         Container backpack = new Container("Backpack", "This backpack will be useful to carry items.", 0, 0);
         rooms.get("main room").addItem(backpack);
-        
+
         Weapon weakSword = new Weapon("Sword", "This sword seems heavy but useful.", 0, 8, 1);
         rooms.get("sleeping chamber").addItem(weakSword);
 
@@ -309,42 +309,42 @@ public class World {
 
         Item forkedPainting = new Item("Painting", "This painting is very interesting looking.", 0, 2);
         rooms.get("forked passage").addItem(forkedPainting);
-        
+
         //Create easter egg
-        
+
         Item redKey = new Item("Red Key", "This key is a standard wooden key with three bumps in it.", 5, 1);
         rooms.get("end of forked passage").addItem(redKey);
-        
+
         Item cinderBlock = new Item("Cinderblock", "This cinderblock is about a foot tall.", 0, 10);
         rooms.get("end of forked passage").addItem(cinderBlock);
         redKey.setOnTopOf(cinderBlock);
-        
+
         Weapon hammer = new Weapon("Hammer", "This hammer is very dusty, but seems like it was never used.", 0, 3, 1.5);
         rooms.get("southern door").addItem(hammer);
-        
+
         Food cannedFood = new Food("Canned Food", "This canned food doesn't look that good but it should restore some health...", 0, 2, 25);
         rooms.get("the trapping chamber").addItem(cannedFood);
-        
+
         Item pinkKey = new Item("Pink Key", "This pink key has a few divots in it.", 0, 1);
         rooms.get("equipment room").addItem(pinkKey);
         rooms.get("sir sean fortevir's room").getExit("east").setLocked(true);
         rooms.get("sir sean fortevir's room").getExit("east").setKey(pinkKey);
-        
+
         Item yellowKey = new Item("Yellow Key", "This yellow key has a few divots in it.", 0, 1);
         rooms.get("equipment room").addItem(yellowKey);
-        
+
         Item keyTable = new Item("Table", "This table is very sturdy.", 0, 100);
         rooms.get("equipment room").addItem(keyTable);
         yellowKey.setOnTopOf(keyTable);
         pinkKey.setOnTopOf(keyTable);
-        
+
         Container toolChest = new Container("Chest", "This chest is big, heavy, and being held shut by a rope.", 0, 100);
         rooms.get("hidden tool room").addItem(toolChest);
         Weapon pickaxe = new Weapon("Pickaxe", "This pickaxe looks like it could be useful.", 0, 15, 2);     
         Item blueKey = new Item("Blue Key", "This blue key has a few divots in it.", 0, 1);
         toolChest.addItem(pickaxe);
         toolChest.addItem(blueKey);
-        
+
         BuildableItem superKey = new BuildableItem("Super Key", "This is the combinaion of all the keys.", 10, 3);
         rooms.get("eastern door").getExit("east").setLocked(true);
         rooms.get("eastern door").getExit("east").setKey(superKey);
@@ -352,41 +352,43 @@ public class World {
         superKey.addItemNeeded(redKey);
         superKey.addItemNeeded(blueKey);
         superKey.addItemNeeded(yellowKey);
-        
+
         Item bookKey = new Item("Book of Keys", "This old dusty book looks like it's filled with a bunch of old keys. They must not be used for anything too important.", 0, 5);
         rooms.get("end of southern basement").addItem(bookKey);
         rooms.get("the old library").getExit("north").setLocked(true);
         rooms.get("the old library").getExit("north").setKey(bookKey);
-        
+
         Item smallPuzzlePiece = new Item("Small Puzzle Piece", "This looks like a small puzzle piece. About one inch wide.", 0, 1);
         rooms.get("hidden puzzle room").addItem(smallPuzzlePiece);
-        
+
         Armor guardArmor = new Armor("Sleeping Guard Armor", "This is the armor worn by the sleeping guard. It is a little beat up but it is advanced armor.", 0, 15, 25);
         rooms.get("the break room").addItem(guardArmor);
-        
+
         Helmet guardHelmet = new Helmet("Sleeping Guard Helmet", "This is the helmet worn by the sleeping guard. It is in good condition.", 0, 5, 15);
         rooms.get("the break room").addItem(guardHelmet);
-        
+
         Weapon guardSword = new Weapon("Sleeping Guard Sword", "This is the sword used by the sleeping guard. It is a little beat up but it is an advanced sword.", 0, 15, 2);
         rooms.get("the break room").addItem(guardSword);
-        
+
         Food dinnerFood = new Food("The Guards Dinner", "This food looks decently appetizing.", 0, 3, 35);
         rooms.get("sir sean fortevir's room").addItem(dinnerFood);
-        
+
         Item necklace = new Item("Key Necklace", "This is the necklace that was around Maximus's neck, it has a key on it.", 0, 1);
         rooms.get("maximus' den").addItem(necklace);
-        
+
         BuildableItem secretRoomKey = new BuildableItem("Secret Room Key", "This key looks very unlike a key. It must bee for something secret.", 10, 2);
         buildables.put("Secret Room Key", secretRoomKey);
+        rooms.get("sir sean fortevir's secret door").getExit("east").setLocked(true);
+        rooms.get("sir sean fortevir's secret door").getExit("east").setKey(secretRoomKey);
         secretRoomKey.addItemNeeded(bookKey);
         secretRoomKey.addItemNeeded(necklace);
-        
+
         Item mediumPuzzlePiece = new Item("Medium Puzzle Piece", "This puzzle piece looks medium sized. About 2 inches wide", 0, 1);
         rooms.get("maximus' den").addItem(mediumPuzzlePiece);
-        
+
         Item largePuzzlePiece = new Item("Large Puzzle Piece", "This puzzle piece looks rather large. About 4 inces in diameter.", 0, 1);
         rooms.get("sir sean fortevir's secret room").addItem(largePuzzlePiece);
-        
+
         BuildableItem superPuzzlePiece = new BuildableItem("Super Puzzle Piece", "This is a combination of the puzzle pieces.", 10, 3);
         rooms.get("northern door").getExit("north").setLocked(true);
         rooms.get("northern door").getExit("north").setKey(superPuzzlePiece);
@@ -394,28 +396,29 @@ public class World {
         superPuzzlePiece.addItemNeeded(smallPuzzlePiece);
         superPuzzlePiece.addItemNeeded(mediumPuzzlePiece);
         superPuzzlePiece.addItemNeeded(largePuzzlePiece);
-        
+
         Armor royalArmor = new Armor("Royal Armor", "This looks like the armor worn by the Royal Guard.", 0, 15, 50);
         rooms.get("the royal equipment room").addItem(royalArmor);
-        
+
         Helmet royalHelmet = new Helmet("Royal Helmet", "This looks like the helmets worn by the Royal Guard.", 0, 5, 25);
         rooms.get("the royal equipment room").addItem(royalHelmet);
-        
+
         Weapon royalSword = new Weapon("Royal Sword", "This looks like a sword used by the Royal Guard.", 0, 15, 2);
         rooms.get("the royal tool room").addItem(royalSword);
-        
+
         BuildableItem ultimateKey = new BuildableItem("Ultimate Key", "This looks like a roayl key.", 10, 2);
+        buildables.put("Ultimate Key", ultimateKey);
         ultimateKey.addItemNeeded(superPuzzlePiece);
-        ultimateKey.addItemNeeded(superKey);;
-        
+        ultimateKey.addItemNeeded(superKey);
+
         Item gem = new Item("Valentinian Gem", "This is the fabled Valentinian Gem...", 25, 5);
-        
+
         Container queensChest = new Container("Queen's Chest", "This chest at the foot of Queen Isa's bed.", 0, 100);
         rooms.get("the queen's hidden room").addItem(queensChest);
         queensChest.setLocked(true);
         queensChest.setKey(ultimateKey);
         queensChest.addItem(gem);
-        
+
     }
-    
+
 }

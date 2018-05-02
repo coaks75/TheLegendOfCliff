@@ -99,13 +99,13 @@ public class Item {
     public String toString() {
         String answer = description;
         if (weight >= HEAVY) {
-            answer += " and is heavy.";
+            answer += " and is heavy";
         }
         else {
-            answer += " and is light.";
+            answer += " and is light";
         }
         if (onTopOf != null) {
-            answer += "And is also on top of ";
+            answer += ", and is also on top of ";
             answer += onTopOf.getName();
             answer += ".";
         }

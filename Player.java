@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class Player {
     /** A field for the players max carry weight. */
-    private static final int MAX_WEIGHT = 35;
+    private static final int MAX_WEIGHT = 60;
     /**  Afield for the players max health. */
     private static final int MAX_HEALTH = 100;
     /** A field for the max shield. */
@@ -189,8 +189,35 @@ public class Player {
     public String getInventory() {
         String answer = "";
         for (Item element : inventory) {
-            answer += element.getName().toLowerCase() + ", ";
+            answer += element.getName().toLowerCase() + " ";
         }
+        return answer;
+    }
+    
+    /**
+     * A method used to get the proper inventory
+     * 
+     * @retrun a string of the inventory
+     */
+    public String getProperInventory() {
+        String answer = "";
+        
+        if (inventory.size() == 0) {
+            answer += "Nothing right now";
+        }
+        else {
+            for (Item element : inventory) {
+                if (element instanceof Container) {
+                    Container using = (Container)element;
+                    answer += using.getName() + " which contains " + using.getItemString();
+                }
+                else {
+                    answer += element.getName();
+                }
+                answer += ", ";
+            }
+        }
+        
         return answer;
     }
 
@@ -285,6 +312,15 @@ public class Player {
         if (shield > MAX_SHIELD) {
             shield = MAX_SHIELD;
         }
+    }
+    
+    /**
+     * Mutator mehod for the players shield
+     * 
+     * @param shieldValue The new shield
+     */
+    public void setShield(double shieldValue) {
+        shield = shieldValue;
     }
 
     /**

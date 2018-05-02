@@ -42,6 +42,8 @@ public enum CommandEnum {
     EAT("eat"),
     /** A command used to equip something. */
     EQUIP("equip"),
+    /** A command to unequip something. */
+    UNEQUIP("unequip"),
     /** A command use to build something. */
     BUILD("build"),
     /** A command used to dismantle something. */
@@ -49,7 +51,7 @@ public enum CommandEnum {
     /** A command to hit something. */
     HIT("hit"),
     /** A cheat code command for full health and shield. */
-    ISABELLA("isabella");
+    ISABELLA("");
     
     /** A field for the text that would be entered by the person playing the game.*/
     private final String text;

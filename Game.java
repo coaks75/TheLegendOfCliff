@@ -863,7 +863,10 @@ public class Game {
             targetName = commandValue.getRestOfLine();
         }
         if (hasWord) {
-            if (!(player.getRoom().getMonster().getName().equalsIgnoreCase(targetName))) {
+            if (player.getRoom().getItem(targetName) != null) {
+                Writer.println("Oh Cliff, you shouldn't hit that.");
+            }
+            else if (player.getRoom().getMonster() == null || !(player.getRoom().getMonster().getName().equalsIgnoreCase(targetName))) {
                 Writer.println(targetName + " is not here.");
             }
             else {

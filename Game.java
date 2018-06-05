@@ -758,6 +758,7 @@ public class Game {
                 Writer.println("You ate " + foodName + " and gained " + thing.getHealthGained() + " health.");
                 player.addHealth(thing.getHealthGained());
                 player.removeItem(foodName);
+                player.getRoom().removeItem(foodName);
             }
         }
     }

@@ -631,17 +631,17 @@ public class Game {
             else {
                 if (player.getRoom().getItem(itemName) != null) {
                     toPack = player.getRoom().getItem(itemName);
-                    player.getRoom().removeItem(itemName);
                 }
                 else {
                     toPack = player.getItem(itemName);
-                    player.removeItem(itemName);
                 }
                 if (toPack == using) {
                     Writer.println("Cliff, why would you pack " + itemName + " into itself?");
                 }
                 else {
                     using.addItem(toPack);
+                    player.removeItem(itemName);
+                    player.getRoom().removeItem(itemName);
                     Writer.println("You packed " + toPack.getName());
                 }
             }

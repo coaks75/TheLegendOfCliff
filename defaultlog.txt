@@ -8,11 +8,33 @@ The room is big and open. You don't see much here but an altar in the center, an
      Exits: east, south, north, west, 
      Items: Broom, Altar, Backpack, 
      There is currently no monster in the room.
-> hit altar
-Oh Cliff, you shouldn't hit that.
-> hit snake
-snake is not here.
+> go west
+Western Door :
+This door is open. There is a carving on the door that reads 'Turn around! Don't do it! save yourself! They've come afte...' It ends there 
+     Exits: east, west, 
+     Items: Currently nothing.
+     There is currently no monster in the room.
+> go west
+Western Hallway :
+You walk into the begginning of a long passageway. You can't see all the way down the hallway. Slightly down the hall however; you see two doors. One to the north and one to the south. 
+     Exits: east, south, north, west, 
+     Items: Currently nothing.
+     There is currently no monster in the room.
+> go north
+Sleeping Chamber :
+This looks like it was a sleeping chamber for the queen's Royal Guard. Someone must have been stuck in here, because it looks like there is a skeleton in the corner. 
+     Exits: south, 
+     Items: Sword, 
+     There is currently no monster in the room.
+> equip sword
+You equipped Sword
+> look
+Sleeping Chamber :
+This looks like it was a sleeping chamber for the queen's Royal Guard. Someone must have been stuck in here, because it looks like there is a skeleton in the corner. 
+     Exits: south, 
+     Items: Currently nothing.
+     There is currently no monster in the room.
 > quit
 It looks like your Legend of Cliff will end here.
-You have earned 0 points out of 225 in 4 turns.
+You have earned 0 points out of 225 in 10 turns.
 Thank you for playing.  Good bye.

@@ -810,6 +810,7 @@ public class Game {
                 }
                 if (canHold) {
                     Writer.println(using.equip(player));
+                    player.getRoom().removeItem(itemName);
                 }
             }
             else {

@@ -279,10 +279,12 @@ public class Game {
      */
     private void printWelcome() {
         Writer.println();
-        Writer.println("You fall through a trap after taking the gem!");
+        Writer.println("You fall through a trap after trying to take the gem!");
         Writer.println("You fall into a dark room, you can't see anyhting it's so dark.");
         Writer.println("You light the lantern on your backpack.");
         Writer.println();
+        Writer.println("Your command words are:");
+        Writer.println("     " + CommandWords.getCommandString());
         printLocationInformation();
     }
 

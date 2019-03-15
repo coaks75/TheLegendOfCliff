@@ -12,3 +12,7 @@ problems. It serves as an example to discuss good and bad design.
 We will fix the problems with this project through the next couple of labs which
 walk students through fixing bad design decisions and give them an opportunity
 to become familiar with the existing code.
+
+UPDATED
+
+The project has since been finfished as required in class, and there have still been some other updates to the project as well.
